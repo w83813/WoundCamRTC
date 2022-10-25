@@ -1,0 +1,153 @@
+apply plugin: 'com.android.application'
+import org.apache.tools.ant.taskdefs.condition.Os
+
+android {
+    //http://tw-hkt.blogspot.com/2016/01/compilesdkversion-minsdkversion.html
+    compileSdkVersion 29
+
+    //https://developer.android.com/studio/releases/build-tools?hl=zh-cn
+    buildToolsVersion '29.0.3'
+
+    publishNonDefault true
+    defaultConfig {
+        applicationId "org.itri.woundcamrtc"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 3
+        versionName "1.3"
+        testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
+        ndk {
+            abiFilters "armeabi","armeabi-v7a","x86"
+            }
+        }
+
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable   true
+            jniDebuggable true
+            renderscriptDebuggable true
+            renderscriptOptimLevel 0
+            useProguard false
+            multiDexEnabled false
+        }
+
+        release {
+            minifyEnabled false
+            debuggable  true
+            jniDebuggable true
+            renderscriptDebuggable true
+            renderscriptOptimLevel 0
+            useProguard false
+            multiDexEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        doNotStrip "*/*/*.so"
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "../CMakeLists.txt"
+        }
+    }
+}
+
+dependencies {
+    //implementation fileTree(dir: new File(buildDir, 'libs'), include: '*.jar')
+    implementation fileTree(dir: 'libs', include: ['*.jar','*.so'])
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:support-v4:27.1.0'
+    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.android.support:recyclerview-v7:27.0.0'
+    implementation 'com.android.support:cardview-v7:27.0.0'
+    implementation "com.android.support:support-annotations:27.1.0"
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.9.8'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.8'
+
+    //implementation 'com.android.support:support-compat:28.0.0'
+    //implementation 'com.android.support:appcompat-v7:27.1.1'
+    //implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.android.gms:play-services-vision:16.2.0'
+
+    implementation project(':jobqueue')
+    implementation project(':anyversion')
+    implementation project(':openCV3470')
+    implementation project(path: ':libusbcamera')
+    debugImplementation project(path: ':libusbcamera')
+
+//    implementation project(':camera2')
+    //implementation files('libs/javacv.jar')
+    //implementation files('libs/javacv-platform.jar')
+    //implementation files('libs/opencv-android-arm64.jar')
+    //implementation files('libs/opencv-android-arm.jar')
+
+    //implementation files('libs/openblas.jar')
+    //implementation files('libs/openblas-android-arm64.jar')
+
+    //implementation files('libs/javacpp.jar')
+    //implementation files('libs/javacpp-android-arm.jar')
+    //implementation files('libs/javacpp-android-arm64.jar')
+
+    implementation files('libs/lite-http-3.1.3.6.jar')
+    implementation files('libs/lite-go-1.0.0.jar')
+    implementation files('libs/jtar-1.0.4.jar')
+    implementation('io.socket:socket.io-client:1.0.0') {
+        implementation files('libs/json_simple-1.1.jar')
+        exclude group: 'org.json', module: 'json'
+    }
+//    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+//    implementation 'org.ini4j:ini4j:0.5.4'
+//    implementation 'org.xeustechnologies:jtar:1.0.4'
+
+    implementation 'io.apptik.widget:multislider:1.3'
+    implementation 'com.code-troopers.betterpickers:library:3.1.0'
+    implementation 'com.github.filippudak.progresspieview:library:1.0.4'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+
+    implementation 'org.tensorflow:tensorflow-android:1.9.0'
+    implementation 'com.journeyapps:zxing-android-embedded:3.5.0'
+
+//    implementation 'org.webrtc:google-webrtc:1.0.26131' // audio ok with https://appr.tc/
+//    implementation 'org.webrtc:google-webrtc:1.0.28513'
+//    implementation 'org.webrtc:google-webrtc:1.0.30039'
+    implementation 'org.webrtc:google-webrtc:1.0.32006'
+    implementation files('libs/autobanh.jar')
+//    implementation 'io.crossbar.autobahn:autobahn-android:17.10.4'
+
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    implementation 'net.zetetic:android-database-sqlcipher:3.5.2@aar'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.20'
+//    implementation 'com.github.jiangdongguo:AndroidUSBCamera:1.3.8'
+//
+//    implementation ("com.serenegiant:common:1.4.3") {
+//        exclude module: 'support-v4'
+//    }
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+
+    configurations {
+        all*.exclude group: 'com.google.code.gson'
+        all*.exclude group: 'org.bytedeco.ffmpeg'
+    }
+}
+
+configurations {
+    // Expose the debug version of the library to other modules
+    debug
+    release
+}

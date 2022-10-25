@@ -1,0 +1,268 @@
+#-----------------
+#----- method 1 with new container
+#-----------------
+##################
+###安裝docker
+##################
+apt-get update
+apt-get upgrade
+sudo apt-get install docker.io
+
+##################
+#下載 piasy 開箱即用
+##################
+sudo docker pull piasy/apprtc-server
+
+##################
+#web room server port 8180對應到container為8080
+##################
+sudo docker rm -f apprtc
+sudo docker run -d --name apprtc -p 1122:22 -p 8180:8080 -p 8089:8089 -p 3478:3478 -p 3478:3478/udp -p 3033:3033 \
+--expose=59000-65000 -v ~/apprtcdir:/apprtcdir -e PUBLIC_IP=192.168.108.124 -t -i piasy/apprtc-server
+
+##################
+#進到apprtc 中, 編輯 apprtc
+##################
+sudo docker exec -t apprtc /bin/bash
+sudo chmod 777 apprtcdir
+
+##################
+#進到apprtc 中, 編輯 apprtc
+##################
+apt-get update
+apt-get install nano
+apt-get install ssh
+passwd 123456
+nano /etc/ssh/sshd_config PermitRootLogin yes
+/etc/init.d/ssh restart
+scp root:123456
+sync
+/apprtc/out/app_engine/constants.py
+/apprtc/out/app_engine/js/util.js
+/apprtc/out/app_engine/js/appcontroller.js
+
+
+##################
+#upgrade apprtc
+##################
+download https://github.com/webrtc/apprtc to ~/apprtcdir
+edit /apprtc/src/app_engine/constants.py for PUBLIC_IP
+winscp rename /apprtc /apprtc_
+cp -R /apprtcdir/* /apprtc
+cd /apprtc
+npm install
+npm audit fix --force
+python3 get-pip.py --force-reinstall
+pip install --upgrade pip
+pip install --upgrade cryptography
+python -m easy_install --upgrade pyOpenSSL
+pip install -r requirements.txt
+grunt build
+
+##################
+#restart apprtc
+##################
+sudo docker restart apprtc
+pause
+
+
+#-----------------
+#----- method 2 with 保留container
+#-----------------
+##################
+###安裝docker
+##################
+apt-get update
+apt-get upgrade
+sudo apt-get install docker.io
+
+##################
+###匯出/匯入/執行 modified apprtc
+##################
+#docker export apprtc > apprtc20201012.tar
+#cat apprtc20201012.tar | sudo docker import - local/apprtc20201012
+#sudo docker images
+#sudo docker ps -la
+
+sudo docker rm -f apprtc
+sudo docker run -d --name apprtc \
+-p 1122:22 -p 8180:8080 -p 8089:8089 \
+-p 3478:3478 -p 3478:3478/udp \
+-p 3033:3033 --expose=59000-65000 \
+-e GAE_VER=1.9.74 \
+-e GOLANG_VER=1.8.3 \
+-e LIBEVENT_VER=2.1.8 \
+-e COTURN_VER=4.5.0.7 \
+-e GOLANG_TAR=go$GOLANG_VER.linux-amd64.tar.gz
+-e PUBLIC_IP=140.96.170.75 -t \
+-e PATH=$PATH:/usr/local/go/bin \
+-e GOPATH=/goWorkspace \
+-e GAE_ZIP=google_appengine_$GAE_VER.zip \
+-e PATH=$PATH:/usr/local/google_appengine
+-i local/apprtc20201012 "/bin/sh -c run.sh"
+
+#sudo docker restart apprtc
+#sudo docker exec -t apprtc /bin/bash
+pause
+
+
+
+#CHROME 權限問題
+chrome://flags/ Insecure origins treated as secure
+append http://140.96.170.75:8180,http://140.96.170.75:3033
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#下載 piasy 開箱即用
+sudo docker pull piasy/apprtc-server
+
+#web room server port 8180對應到container為8080
+sudo docker rm -f apprtc
+sudo docker run -d --name apprtc -p 1122:22 -p 8180:8080 -p 8089:8089 -p 3478:3478 -p 3478:3478/udp -p 3033:3033 \
+--expose=59000-65000 -e PUBLIC_IP=140.96.170.75 -t -i piasy/apprtc-server
+#pause
+
+#檢查 apprtc service
+#sudo docker ps -la
+#sudo docker restart apprtc
+sudo docker exec -t apprtc /bin/bash
+
+#進到apprtc 中, 編輯 apprtc
+apt-get update
+apt-get install nano
+apt-get install ssh
+passwd 123456
+nano /etc/ssh/sshd_config PermitRootLogin yes
+/etc/init.d/ssh restart
+scp root:123456
+sync
+/apprtc/out/app_engine/index_template.html 主頁面
+/apprtc/out/app_engine/js/apprtc.debug.js
+
+#update apprtc
+download https://github.com/webrtc/apprtc to ~/apprtcdir
+edit /apprtc/src/app_engine/constants.py for PUBLIC_IP
+cp -R /apprtcdir/* /apprtc
+npm install
+npm audit fix --force
+pip install --upgrade pip
+pip install --upgrade cryptography
+sudo python -m easy_install --upgrade pyOpenSSL
+pip install -r requirements.txt
+grunt build
+
+
+#CHROME 權限問題
+chrome://flags/ Insecure origins treated as secure
+append http://140.96.170.75:8180,http://140.96.170.75:3033
+
+#參考資料
+https://www.gitmemory.com/issue/webrtc/apprtc/526/492617260
+https://blog.piasy.com/2017/06/17/out-of-the-box-webrtc-dev-env/index.html
+https://www.itread01.com/content/1549837092.html
+https://linxunfeng.top/2018/06/07/apprtc%E5%AE%9E%E6%88%98/
+https://kknews.cc/zh-tw/code/4j2bqg3.html
+
+
+#進入 container 修改
+sudo docker exec apprtc /bin/bash
+sudo docker exec -it continer_id /bin/bash
+#apt-get update
+#apt-get install nano
+#cd /
+#nano ice.js
+resp.header(“Access-Control-Allow-Origin”,”*”)
+cd /apprtc ; grunt build
+/usr/local/google_appengine/dev_appserver.py /apprtc/out/app_engine/
+
+保留container
+sudo docker export continer_id > ~/kernoli-apprtc.tar
+sudo docker import ~/kernoli-apprtc.tar kernoli/apprtc
+sudo docker run --rm \
+  -p 8180:8080 -p 8089:8089 -p 3478:3478 -p 3478:3478/udp -p 3033:3033 \
+  --expose=59000-65000 \
+  -e PUBLIC_IP=140.90.170.75 \
+  -v ~/apprtc_configs \
+  -t -i kernoli/apprtc /bin/sh -c /run.sh
+
+
+
+nano /apprtc/src/web_app/js
+
+nano /ice.js  3478->8478, 3033->8033
+bypass_join_confirmation
+
+
+nano /etc/turnserver.conf  3478->8478, 3033->8033, 59000-65000 -> 8444-9000
+nano /apprtc/out/app_engine/constants.py turn server url
+
+nano /apprtc/src/web_app/js/peerconnectionclient.js
+nano /apprtc/out/js/apprtc.debug.js
+find "bye"
+var roomserver = this.params_.roomLink;
+  roomserver = roomserver.substring( 0, roomserver.indexOf('/r/') );
+  var path = roomserver + "/clear/" + this.params_.roomId + "/" + this.params_.clientId;
+  return sendUrlRequest("POST", path, true);
+
+nano /apprtc/out/app_engine/apprtc.py
+find "def get_other_client"
+https://github.com/webrtc/apprtc/issues/526
+
+nano collider/collider/ collider.go
+ httpStatusHandler & httpHandler
+ w.Header().Add("Access-Control-Allow-Origin", "*")
+ 	w.Header().Add("Access-Control-Allow-Methods", "GET, POST, DELETE")
+
+resp.header("Access-Control-Allow-Origin", "*")
+resp.header("Access-Control-Allow-Credentials","true")
+resp.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+resp.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS")
+
+
+
+
+
+  https://github.com/Piasy/WebRTC-Docker/issues/1
+  https://kknews.cc/zh-tw/code/4j2bqg3.html
+  https://read01.com/zh-tw/Rny2dP.html#.XvIEGpMzbEZ
+  https://naurudao.blogspot.com/2016/07/webrtc.html
+
+
+重新啟動 container
+sudo docker stop apprtc
+sudo docker restart apprtc
+#sudo docker images
+#sudo docker ps -a
+#sudo docker rm -f apprtc
+apt-get update
+apt-get install nano
+
+url參數
+http://140.90.170.75:8180/params.html
+http://140.90.170.75:8180/r/12345?asbr=32&arbr=256&vsibr=90&vsbr=300&vrbr=4000&audio=true&video=false&tt=1
+
+r=roomName 指定房間名稱。
+hd=true||false切換高清（1280x720 || 640x480）。在Chrome上默認啟用。
+tt=time設置頻道超時。默認值為30，最大為1440分鐘。
+audio=true||false 切換音頻。
+video=true||false 切換視頻。
+opusmaxpbr=bitrate 設置音頻的最大發送比特率（例如100）
+asbr=bitrate 將發送比特率限制為指定的值（例如100）。
+arbr=bitrate 將接收比特率限制為指定的值（例如100）。
+vsbr=bitrate 限制發送比特率（例如1200）。
+vrbr=bitrate 限制接收比特率（例如1200）。
+vsibr=bitrate 設置初始發送比特率（例如600）。

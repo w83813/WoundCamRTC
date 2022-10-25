@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="pref_uploadRawFilesLabels">
+        <item>@string/needUpload</item>
+        <item>@string/dontUpload</item>
+    </string-array>
+
+    <string-array name="pref_uploadRawFiles">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+
+    <string-array name="pref_DownsampleTypeLabels">
+        <item>@string/best_quality</item>
+        <item>@string/normal_quality</item>
+        <item>@string/rough_quality</item>
+    </string-array>
+
+    <string-array name="pref_DownsampleType">
+        <item>8</item>
+        <item>10</item>
+        <item>12</item>
+    </string-array>
+
+    <string-array name="pref_jpegQualityLabels">
+        <item>@string/best_quality</item>
+        <item>@string/delicate_quality</item>
+        <item>@string/normal_quality</item>
+        <item>@string/normal_quality80</item>
+        <item>@string/rough_quality</item>
+        <item>@string/rough_quality70</item>
+    </string-array>
+
+    <string-array name="pref_jpegQuality">
+        <item>100</item>
+        <item>92</item>
+        <item>85</item>
+        <item>80</item>
+        <item>75</item>
+        <item>70</item>
+    </string-array>
+
+
+    <string-array name="pref_videoBitrateLabels">
+        <item>4G fast(4320kbps)</item>
+        <item>4G slow(2160kbps)</item>
+        <item>3G fast(720kbps)</item>
+        <item>3G slow(360kbps)</item>
+        <item>2G fast(90kbps)</item>
+    </string-array>
+
+    <string-array name="pref_videoBitrate">
+        <item>4320</item>
+        <item>2160</item>
+        <item>720</item>
+        <item>360</item>
+        <item>90</item>
+    </string-array>
+
+
+    <string-array name="pref_focus_area_labels">
+        <item>Touch Point</item>
+        <item>Shut Full</item>
+    </string-array>
+
+    <string-array name="pref_focus_area">
+        <item>point</item>
+        <item>shut</item>
+    </string-array>
+
+    <string-array name="pref_screenOrientationLabels">
+        <item>@string/potrait</item>
+        <item>@string/landscape</item>
+    </string-array>
+
+    <string-array name="pref_screenOrientation">
+        <item>Portrait</item>
+        <item>Landscape</item>
+    </string-array>
+
+    <string-array name="pref_ThermalTypeLabels">
+        <item>Auto Gain</item>
+        <item>27~38℃</item>
+        <item>Center Point ±7℃</item>
+        <item>Center Point ±1℃</item>
+        <item>Center Point ±0.5℃</item>
+    </string-array>
+
+    <string-array name="pref_ThermalType">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+</resources>

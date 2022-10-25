@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.itri.woundcamrtc.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#d9d9d9" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_card_shadow"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <!--<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="使用者登入"
+            android:textColor="#000"
+            android:layout_gravity="center"
+            android:textSize="24sp" />-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/userName" />
+
+        <AutoCompleteTextView
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/userName_tip"
+            android:textSize="20sp"
+            android:inputType="textEmailAddress"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@._"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/password" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/update_psd"
+                android:textSize="16sp"
+                android:text="@string/updatePsd"
+                android:gravity="end"
+                android:onClick="updatePsd"
+                android:clickable="true" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/password"
+            android:hint="@string/pass_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:inputType="textPassword"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@."
+            android:drawableLeft="@drawable/ic_vpn_key"
+            android:drawableRight="@drawable/ic_visibility_off"
+            android:drawablePadding="15dp" />
+
+        <TextView
+            android:id="@+id/choosePeriod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textColor="@color/dialog_text"
+            android:text="@string/time_setting"
+            android:layout_alignParentLeft="true"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/periodGrp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/choosePeriod"
+            android:layout_marginTop="10dp">
+
+            <RadioGroup
+                android:id="@+id/radioBtnGrp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/eighthour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/eight_hours"
+                    android:checked="true"
+                    android:theme="@style/radio_btn" />
+
+                <RadioButton
+                    android:id="@+id/oneday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/one_day"
+                    android:theme="@style/radio_btn" />
+
+                <RadioButton
+                    android:id="@+id/threeday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/three_days"
+                    android:theme="@style/radio_btn" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <!--<Button
+            android:id="@+id/updatepwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/login_btn"
+            android:text="@string/updatePwd"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:padding="10dp" />-->
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/login"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:background="@drawable/login_btn"
+            android:padding="5dp"/>
+
+    </LinearLayout>
+
+    <!--<ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"/>-->
+
+    <TextView
+        android:id="@+id/version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/copyright"
+        android:layout_marginBottom="5dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/copyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:text="V1.0-210406-3007.01-MI" />
+</RelativeLayout>

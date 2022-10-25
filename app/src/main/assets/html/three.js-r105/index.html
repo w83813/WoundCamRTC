@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title></title>
+		<meta charset="utf-8"><meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+		<script type="text/javascript" src="../../lib/lazyload.js"></script>
+		<style>
+        body {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #loading {
+			z-index: 1;
+			padding: 10px 10px 5px;
+			background: rgb(255, 0, 136);
+			left: 0;
+			top: 0;
+			color: #fff;
+			position: fixed;
+			width: 150px;
+			height: 30px;
+			text-align: center;
+			box-shadow: 2px 2px 10px;
+			border-radius: 5px;
+		}
+
+		#loadingPage{
+				min-width: 100%;
+				min-height: 100%;
+				position:absolute;
+				left:0px;
+				top: 0px;
+				z-index:1;
+				background-color: #000000;
+				color: #fff;
+				text-align: center;
+				vertical-align: middle;
+				line-height: 100vh;
+		}
+    </style>
+	</head>
+
+	<body>
+	<center><div id='loadingPage'>Loading...</div></center>
+<script type="text/javascript">
+var container, stats;
+var camera, scene, renderer;
+var mouseX = 0;
+var mouseY = 0;
+var mouseIsDown = false;
+var windowHalfX = window.innerWidth / 2;
+var windowHalfY = window.innerHeight / 2;
+
+LazyLoad.css(['./main.css'], function () {
+	LazyLoad.js(['../../lib/jquery.min.js', './build/three.js', './examples/js/loaders/DDSLoader.js', './examples/js/loaders/MTLLoader.js', './examples/js/loaders/OBJLoader.js', './examples/js/controls/OrbitControls.js', './examples/js/libs/stats.min.js'], function () {
+		$(document).ready(function () {
+			//init();
+			//animate();
+			if (getValue('PATH') != '' && getValue('FILE') != '')
+				getGen3DColorImage(getValue('PATH'), getValue('FILE'));
+			else
+				getGen3DColorImage('./', 'test');
+		});
+		//$(document).ready
+	});
+	//LazyLoad.js
+});
+//LazyLoad.css
+
+
+function init(param1, param2) {
+	container = document.createElement('div');
+	document.body.appendChild(container);
+
+	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+	camera.position.z = 250;
+
+	// scene
+	scene = new THREE.Scene();
+
+	var ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
+	scene.add(ambientLight);
+
+	var pointLight = new THREE.PointLight(0xffffff, 0.8);
+	camera.add(pointLight);
+	scene.add(camera);
+
+	// model
+	var onProgress = function (xhr) {
+		if (xhr.lengthComputable) {
+			var percentComplete = xhr.loaded / xhr.total * 100;
+			console.log(Math.round(percentComplete, 2) + '% downloaded');
+		}
+	};
+
+	var onError = function (object) {
+		if (object.returnValue!=true)
+			$("#loadingPage").html("Error "+ object);
+	};
+
+	THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+	new THREE.MTLLoader()
+		.setPath(param1)
+		.load(param2 + '.mtl', function (materials) {
+			materials.preload();
+			new THREE.OBJLoader()
+				.setMaterials(materials)
+				.setPath(param1)
+				.load(param2 + '.obj', function (object) {
+					object.position.y = 0;
+					scene.add(object);
+					$("#loadingPage").fadeOut();
+				}, onProgress, onError);
+		}, onError);
+
+	//
+	renderer = new THREE.WebGLRenderer();
+	renderer.setClearColor(0x202020, 1);
+	renderer.setPixelRatio(window.devicePixelRatio);
+	renderer.setSize(window.innerWidth, window.innerHeight);
+	container.appendChild(renderer.domElement);
+
+	/* Controls */
+	controls = new THREE.OrbitControls(camera, renderer.domElement);
+	controls.target.set(0, 0, -50);
+	controls.enableDamping = false;
+	controls.dampingFactor = 0.25;
+	controls.enableZoom = true;
+	controls.screenSpacePanning = false;
+
+	controls.minDistance = 100;
+	controls.maxDistance = 300;
+	controls.maxPolarAngle = Math.PI /1.2;
+	controls.minPolarAngle = 0.6;
+
+	controls.minAzimuthAngle = -Math.PI * (60 / 180);
+	controls.maxAzimuthAngle = Math.PI * (60 / 180);
+	controls.update();
+
+	//document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+	//document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+	//document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+
+	//
+	window.addEventListener('resize', onWindowResize, false);
+}
+
+function onWindowResize() {
+
+	windowHalfX = window.innerWidth / 2;
+	windowHalfY = window.innerHeight / 2;
+
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+
+	renderer.setSize(window.innerWidth, window.innerHeight);
+
+}
+
+function onDocumentMouseMove(event) {
+	if (mouseIsDown) {
+		mouseX = (event.clientX - windowHalfX) / 2;
+		mouseY = (event.clientY - windowHalfY) / 2;
+	}
+}
+
+function onDocumentMouseDown(event) {
+	mouseIsDown = true;
+	mouseLastX = event.clientX;
+	mouseLastY = event.clientY;
+}
+
+function onDocumentMouseUp(event) {
+	mouseIsDown = false;
+}
+
+function animate() {
+	requestAnimationFrame(animate);
+	controls.update();
+	render();
+}
+
+function render() {
+
+	//camera.position.x += ( mouseX - camera.position.x ) * .05;
+	//camera.position.y += ( - mouseY - camera.position.y ) * .05;
+
+	//camera.lookAt( scene.position );
+
+	renderer.render(scene, camera);
+
+}
+
+function getValue(param_key) {
+	var str = window.location.search;
+	if (str.indexOf(param_key) != -1) {
+		var pos_start = str.indexOf(param_key) + param_key.length + 1;
+		var pos_end = str.indexOf("&", pos_start);
+		if (pos_end == -1) {
+			return str.substring(pos_start);
+		} else {
+			return str.substring(pos_start, pos_end)
+		}
+	} else {
+		return "";
+	}
+}
+
+function getGen3DColorImage(param1, param2) {
+	init(param1, param2);
+	animate();
+}
+		</script>
+	</body>
+</html>

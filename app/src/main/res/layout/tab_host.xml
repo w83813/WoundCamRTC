@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tabhost"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:showDividers="middle" />
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp">
+
+            <RelativeLayout
+                android:id="@+id/oldRecord"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dialog_background"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/recordHint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/dialog_text"
+                        android:text="@string/record_show_hint"
+                        android:layout_alignParentLeft="true"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <ListView
+                        android:id="@+id/listView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/recordHint"
+                        android:layout_marginTop="10dp"
+                        android:cacheColorHint="@color/transparent"
+                        android:choiceMode="singleChoice" />
+
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/clinicNo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/choosePeriod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/dialog_text"
+                    android:text="@string/choose_period"
+                    android:layout_alignParentLeft="true"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/periodGrp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/choosePeriod"
+                    android:layout_marginTop="10dp">
+
+                    <RadioGroup
+                        android:id="@+id/radioBtnGrp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/morning"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/morning"
+                            android:checked="true"
+                            android:theme="@style/radio_btn" />
+
+                        <RadioButton
+                            android:id="@+id/afternoon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/afternoon"
+                            android:theme="@style/radio_btn" />
+
+                        <RadioButton
+                            android:id="@+id/night"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/night"
+                            android:theme="@style/radio_btn" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/chooseNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:layout_below="@id/periodGrp"
+                    android:textColor="@color/dialog_text"
+                    android:text="@string/choose_no"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chooseNo"
+                    android:layout_marginTop="10dp">
+
+                    <EditText
+                        android:id="@+id/room"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:hint="@string/room"
+                        android:theme="@style/tab_content_number_type" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="─" />
+
+                    <EditText
+                        android:id="@+id/patientNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:hint="@string/serialNo"
+                        android:theme="@style/tab_content_number_type" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/recordNo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dialog_background"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/record_scan"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@mipmap/scan_48"
+                        android:layout_toStartOf="@+id/record_ocr"
+                        android:clickable="true"
+                        android:scaleType="fitXY"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/transparent"
+                        android:layout_centerVertical="true" />
+
+                    <ImageButton
+                        android:id="@+id/record_ocr"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@mipmap/ocr_48"
+                        android:clickable="true"
+                        android:scaleType="fitXY"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/transparent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true" />
+
+                    <EditText
+                        android:id="@+id/record"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toStartOf="@+id/record_scan"
+                        android:gravity="center"
+                        android:hint="@string/record_format"
+                        android:theme="@style/tab_content_character_type" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/idNo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dialog_background"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/id_scan"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@mipmap/scan_48"
+                        android:layout_toStartOf="@+id/id_ocr"
+                        android:clickable="true"
+                        android:scaleType="fitXY"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/transparent"
+                        android:layout_centerVertical="true" />
+
+                    <ImageButton
+                        android:id="@+id/id_ocr"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@mipmap/ocr_48"
+                        android:clickable="true"
+                        android:scaleType="fitXY"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/transparent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true" />
+
+                    <EditText
+                        android:id="@+id/idcard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toStartOf="@+id/id_scan"
+                        android:gravity="center"
+                        android:hint="@string/id_format"
+                        android:theme="@style/tab_content_character_type" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </FrameLayout>
+    </LinearLayout>
+</TabHost>

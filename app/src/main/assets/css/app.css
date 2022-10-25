@@ -1,0 +1,190 @@
+/* App共用的 CSS */
+
+@font-face {
+    font-family: defaultFont;
+    src: local('./default_font.ttf');
+}
+
+body {
+    background: #e6e6e6;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    width: 100vw;
+    height: 100vh;
+    font-size: 5vw;
+    font-family: defaultFont;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
+
+.round_border_button {
+    border-radius: 6vw;
+    border: 0.5vw solid #eeedee;
+    box-shadow: 1vw 1vw 2vw -0.1vw #ECECEC;/* rgba(20%, 20%, 40%, 0.04); */
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    padding: 3vw 2vw 2vw 2vw;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 5vw;
+    color: #595757;
+    width: 40vw;
+    height: 6vw;
+}
+
+.busy_mode_dialog {
+    background-color: rgba(0.1, 0.1, 0.1, 0.85);
+    position: fixed;
+    top: 0;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 990;
+}
+
+.busy_dialog_img {
+    position: absolute;
+    top: 30%;
+    left: 5vw;
+    right: 5vw;
+    height: 100%;
+    line-height: 100%;
+    width: 90vw;
+    height: 60vw;    
+}
+
+.input_mode_shield {
+    background-color: rgba(0, 0, 0, 0.75);
+    position: fixed;
+    top: 0;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 9999;
+}
+
+.dialog_input_panel {
+    background-color: white;
+    position: relative;
+    border-radius: 2vw;
+    border: 0vw solid gray;
+    box-shadow: 1vw 1vw 6vw -0.1vw rgba(20%, 20%, 40%, 0.3);
+    margin: 15vh 10vw 15vh 10vw;
+    padding: 0 0 0 0;
+    text-align: center;
+    width: 80vw;
+    height: 70vh;
+    font-size: 3vh;
+    z-index: 101;
+}
+
+.dialog_title {
+    background-color: #357EC7;
+    border-radius: 2vw;
+    width: 80vw;
+    height: 12vh;
+    line-height: 10vh;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.dialog_title_text {
+    color: #FFFFFF;
+    font-size: 6vw;
+    font-weight: bold;
+    vertical-align: middle;
+    display: inline-grid;
+    margin-top: -2vh;
+}
+
+.dialog_content {
+    background-color: white;
+    margin-top: -3vh;
+    padding-top: 2vh;
+    color: white;
+    font-size: 6vw;
+    width: 80vw;
+    height: 20vh;
+    line-height: 80%;
+}
+
+.dialog_message {
+    margin-left: 4vw;
+    margin-right: 4vw;
+    text-align: left;
+    color: #0041C2;
+    font-size: 5vw;
+    height: 120%;
+    line-height: 120%;
+}
+
+.dialog_button {
+    background-color: transparent; 
+    text-align: center;
+    display: inline-block;
+    font-size: 6vw;
+    color: #0041C2;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    width: 20vw;
+    height: 6vh;
+    line-height: 6vh;
+}
+
+.loader_panel {
+    height: 100vh;
+    line-height: 100vh;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.loader_text {
+    height: 10vh;
+    padding-top: 10vh;
+    font-size: 5vw;
+    color: white;
+}
+
+.loader {
+    position: absolute;
+    border: 1vw solid #F2F2F2;
+    border-radius: 50%;
+    border-top: 1vw solid #52D017; /* #3498DB; */
+    margin-top: 45vh;
+    margin-left: 40vw;
+    width: 16vw;
+    height: 16vw;
+
+    animation: spin 2s linear infinite;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.op_button {
+    width: 36vw;
+    height: 36vw;
+}
+

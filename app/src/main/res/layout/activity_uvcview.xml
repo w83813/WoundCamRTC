@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mjpeg_background"
+    android:isScrollContainer="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/mjview_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/mjpeg_background"
+        android:orientation="horizontal"></LinearLayout>
+
+
+
+
+    <TextureView
+        android:id="@+id/uvccamera_view_sub"
+        android:layout_width="320dp"
+        android:layout_height="240dp"
+        android:visibility="invisible"
+        />
+    <TextureView
+        android:id="@+id/cdpreview_sub"
+        android:layout_width="320dp"
+        android:layout_height="240dp"
+        android:layout_below="@id/uvccamera_view_sub" />
+    <!--
+
+   <com.serenegiant.usb.widget.UVCCameraTextureView
+       android:id="@+id/uvccamera_view0"
+       android:layout_width="320dp"
+       android:layout_height="240dp" />
+
+   <top.defaults.camera.CameraView
+       android:id="@+id/camera_view1"
+       android:layout_width="320dp"
+       android:layout_height="240dp"
+       android:layout_centerInParent="true"
+       app:aspectRatio="4:3"
+       app:autoFocus="false"
+       app:facing="back"
+       app:fillSpace="false"
+       app:flash="off"
+       app:mode="video"
+       app:pinchToZoom="false"
+       app:showFocusIndicator="false" />
+
+    <top.defaults.camera.CameraView
+        android:id="@+id/camera_view0"
+        android:layout_width="320dp"
+        android:layout_height="240dp"
+        android:layout_centerInParent="true"
+        app:aspectRatio="4:3"
+        app:autoFocus="false"
+        app:facing="front"
+        app:fillSpace="false"
+        app:flash="off"
+        app:mode="video"
+        app:pinchToZoom="false"
+        app:showFocusIndicator="false" />
+
+  <com.serenegiant.usb.widget.UVCCameraTextureView
+        android:id="@+id/uvccamera_view1"
+        android:layout_width="320dp"
+        android:layout_height="240dp" /> -->
+
+</LinearLayout>

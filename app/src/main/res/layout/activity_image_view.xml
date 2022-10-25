@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <WebView
+            android:id="@+id/imageWebview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+        </WebView>
+
+        <TextView
+            android:id="@+id/patientId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/uuid_name"
+            android:textSize="22sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="40sp"
+            android:layout_marginTop="40sp"/>
+
+        <EditText
+            android:id="@+id/patientIdInput"
+            android:layout_width="200sp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textSize="20sp"
+            android:textColor="@color/bpblack"
+            android:background="#CC0000FF"
+            android:layout_marginLeft="40sp"
+            android:layout_marginTop="80sp"/>
+
+        <TextView
+            android:id="@+id/bodyPart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="部位"
+            android:textSize="22sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="40sp"
+            android:layout_marginTop="120sp"/>
+
+        <EditText
+            android:id="@+id/bodyPartInput"
+            android:layout_width="140sp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textSize="20sp"
+            android:textColor="@color/bpblack"
+            android:background="#CC0000FF"
+            android:layout_marginLeft="40sp"
+            android:layout_marginTop="160sp"/>
+
+        <Button
+            android:id="@+id/searchBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="150dp"
+            android:layout_toEndOf="@+id/bodyPartInput"
+            android:background="@drawable/search"
+            android:onClick="searchBodyPart"
+            android:ems="10" />
+
+        <Button
+            android:id="@+id/analysisBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="20sp"
+            android:width="180sp"
+            android:onClick="startAnalysis"
+            android:text="@string/start_analysis"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

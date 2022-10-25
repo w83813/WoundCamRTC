@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pref_uploadRawFilesLabels">
+        <item>@string/needUpload</item>
+        <item>@string/dontUpload</item>
+    </string-array>
+
+    <string-array name="pref_uploadRawFiles">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+
+    <string-array name="pref_DownsampleTypeLabels">
+        <item>@string/best_quality</item>
+        <item>@string/normal_quality</item>
+        <item>@string/rough_quality</item>
+    </string-array>
+
+    <string-array name="pref_DownsampleType">
+        <item>5</item>
+        <item>8</item>
+        <item>12</item>
+    </string-array>
+
+    <string-array name="pref_jpegQualityLabels">
+        <item>@string/best_quality</item>
+        <item>@string/delicate_quality</item>
+        <item>@string/normal_quality</item>
+        <item>@string/normal_quality80</item>
+        <item>@string/rough_quality</item>
+        <item>@string/rough_quality70</item>
+    </string-array>
+
+    <string-array name="pref_jpegQuality">
+        <item>100</item>
+        <item>92</item>
+        <item>85</item>
+        <item>80</item>
+        <item>75</item>
+        <item>70</item>
+    </string-array>
+
+
+    <string-array name="pref_whiteBalanceLabels">
+        <item>鎢絲燈 (2700K)</item>
+        <item>投射燈 (3000K)</item>
+        <item>日光燈 (5000K)</item>
+        <item>白晝光/晴天 (5500K)</item>
+        <item>冷白光/陰天 (6500K)</item>
+        <item>陰影 (7500K)</item>
+        <item>日出落(15000K)</item>
+    </string-array>
+
+    <string-array name="pref_whiteBalance">
+        <item>INCANDESCENT</item>
+        <item>WARM_FLUORESCENT</item>
+        <item>FLUORESCENT</item>
+        <item>DAYLIGHT</item>
+        <item>CLOUDY_DAYLIGHT</item>
+        <item>SHADE</item>
+        <item>TWILIGHT</item>
+    </string-array>
+
+
+    <string-array name="pref_videoBitrateLabels">
+        <item>4G fast(4320kbps)</item>
+        <item>4G slow(2160kbps)</item>
+        <item>3G fast(720kbps)</item>
+        <item>3G slow(360kbps)</item>
+        <item>2G fast(90kbps)</item>
+    </string-array>
+
+    <string-array name="pref_videoBitrate">
+        <item>4320</item>
+        <item>2160</item>
+        <item>720</item>
+        <item>360</item>
+        <item>90</item>
+    </string-array>
+
+
+    <string-array name="pref_focus_area_labels">
+        <item>Touch Point</item>
+        <item>Shut Full</item>
+    </string-array>
+
+    <string-array name="pref_focus_area">
+        <item>point</item>
+        <item>shut</item>
+    </string-array>
+
+    <string-array name="pref_screenOrientationLabels">
+        <item>@string/potrait</item>
+        <item>@string/landscape</item>
+    </string-array>
+
+    <string-array name="pref_screenOrientation">
+        <item>Portrait</item>
+        <item>Landscape</item>
+    </string-array>
+
+    <string-array name="pref_ThermalTypeLabels">
+        <item>Auto Gain</item>
+        <item>26~40℃</item>
+        <item>Center Point ±7.0℃</item>
+        <item>Center Point ±1.5℃</item>
+        <item>Center Point ±0.5℃</item>
+    </string-array>
+
+    <string-array name="pref_ThermalType">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="pref_shutbtnLabels">
+        <item>@string/center</item>
+        <item>@string/left</item>
+        <item>@string/right</item>
+    </string-array>
+
+    <string-array name="pref_shutbtn">
+        <item>c</item>
+        <item>l</item>
+        <item>r</item>
+    </string-array>
+
+    <string-array name="pref_AppLanguageLabel">
+        <item>English</item>
+        <item>Chinese</item>
+    </string-array>
+
+    <string-array name="pref_AppLanguage">
+        <item>en</item>
+        <item>zh-TW</item>
+    </string-array>
+
+</resources>

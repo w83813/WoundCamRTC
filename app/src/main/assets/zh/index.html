@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" />
+    <script type="text/javascript" src="./../lib/lazyload.js"></script>
+</head>
+<body>
+<div id='loaading_wait_dialog' class='input_mode_shield' style='z-index: 1001;' >
+    <div class='loader_panel' >
+        <div class="loader" ></div>
+        <div class='loader_text' >資料載入中，請稍待...</div>
+    </div>
+</div>
+<div id='dialog_input' class='input_mode_shield' >
+    <div id='dialog_input_panel' class='dialog_input_panel' style='height: 30vh; z-index: 1001;' >
+        <div class='dialog_title' style='margin-top: 20vh;' >
+            <div class='dialog_title_text' >系統訊息</div>
+        </div>
+        <div class='dialog_content' style='height: 9vh;' >
+            <div id='dialog_message' class='dialog_message' >刪除檔案</div>
+            <div style='text-align: center; width: 100%;' >
+                <div id='closeDialogBtn' class='dialog_button' onclick='hideDialogMessage()' style='width: 40vw;' >確定</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id='delete_confirm_dialog' class='input_mode_shield' >
+    <div class='dialog_input_panel' style='height: 30vh; z-index: 1001;' >
+        <div class='dialog_title' style='margin-top: 20vh;' >
+            <div class='dialog_title_text' >刪除檔案</div>
+        </div>
+        <div class='dialog_content' style='height: 9vh;' >
+            <div class='dialog_message' >請再次確定是否刪除所有選取圖檔?(檔案刪除後將無法復原)</div>
+            <div style='text-align: center; width: 100%;' >
+                <div class='dialog_button' onclick='confirmDeleteSelected()' style='width: 20vw;' >確定</div>
+                <div class='dialog_button' onclick='hideDeleteConfirmDialog()' style='width: 20vw;' >取消</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id='nofile_selected_dialog' class='input_mode_shield' >
+    <div class='dialog_input_panel' style='height: 30vh; z-index: 1001;' >
+        <div class='dialog_title' style='margin-top: 20vh;' >
+            <div class='dialog_title_text' >貼心提醒</div>
+        </div>
+        <div class='dialog_content' style='height: 9vh;' >
+            <div class='dialog_message' >您未選取任何圖檔，請再次檢查!</div>
+            <div style='text-align: center; width: 100%;' >
+                <div class='dialog_button' onclick='hideNoFileSelectedDialog()' style='width: 20vw;' >了解</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id='settings_dialog' class='input_mode_shield' style='background-color: transparent;' onclick='hideSettingsDialog()' >
+    <div class='settings_dialog' >
+        <div onclick='deleteSelected()' >刪除照片</div>
+    </div>
+</div>
+<div class='toolbar' >
+    <div class='tool_button' style='left: 2vw;' onclick='goback()' ><img src="./../images/arrow_back.svg" /></div>
+    <div class="title">照片預覽</div>
+    <div class='tool_button' style='right: 2vw;' onclick='deleteSelected()' ><img src="./../images/delete.svg" /></div>
+</div>
+<hr/>
+<div class='content' id='content' ></div>
+
+<script type="text/javascript">
+LazyLoad.css(['./../css/app.css', './../css/preview.css'], function () {
+	LazyLoad.js(['./../lib/jquery.min.js', './../lib/app.js'], function () {
+		$(document).ready(function () {
+			$(".container_loading").fadeOut();
+		    APP.getPhotoList();
+			//initList();
+		});
+		//$(document).ready
+	});
+	//LazyLoad.js
+});
+//LazyLoad.css
+
+var data = {
+	"list": [{
+			"id": "2020-04-09 12-50-55-055",
+			"title": "2020-04-09 12-50-55-055",
+			"ownerId": "A123456789",
+			"evlId": "2020-04-09 12-50-55-055",
+			"info": [{
+					"area": "0.0",
+					"itemId": "7",
+					"slough": "0",
+					"width": "0.0",
+					"eschar": "100",
+					"epithelium": "0",
+					"granular": "0",
+					"bodyPart": "部位1",
+					"height": "0.0",
+					"imagePath": "./css/images/noimage.png"
+				},
+				{
+					"itemId": "8",
+					"bodyPart": "部位2",
+					"imagePath": "./css/images/noimage.png"
+				}
+			],
+			"createTime": "12:50",
+			"bodyparts": ["部位1"]
+		},
+		{
+			"id": "2020-04-09 13-33-28-488",
+			"title": "2020-04-09 13-33-28-488",
+			"evlId": "2020-04-09 13-33-28-488",
+			"info": [{
+					"itemId": "1",
+					"bodyPart": "",
+					"imagePath": "./css/images/noimage.png"
+				},
+				{
+					"itemId": "1",
+					"bodyPart": "",
+					"imagePath": "./css/images/noimage.png"
+				},
+				{
+					"itemId": "1",
+					"bodyPart": "",
+					"imagePath": "./css/images/noimage.png"
+				},
+				{
+					"itemId": "1",
+					"bodyPart": "",
+					"imagePath": "./css/images/noimage.png"
+				},
+				{
+					"itemId": "1",
+					"bodyPart": "",
+					"imagePath": "./css/images/noimage.png"
+				}
+			],
+			"createTime": "12:50",
+			"bodyparts": ["部位1"]
+		}
+	]
+};
+
+var isSelectMode = false;
+
+function onGetPhotoList(rsp) {
+	data = JSON.parse(rsp);
+	console.info(rsp);
+	//
+	initList();
+}
+
+function initList() {
+	isSelectMode = false;
+	//
+	var content = document.getElementById('content');
+	content.innerHTML = '';
+	var items = data.list;
+	//var bodyparts = data.bodyparts;
+	for (var i = 0; i < items.length; i++) {
+		var group = items[i];
+		var group_block = document.createElement('div');
+		group_block.className = 'group_block';
+		var title_block = document.createElement('div');
+		title_block.className = 'title_block';
+		var list_block = document.createElement('div');
+		list_block.className = 'list_block';
+		//
+		title_block.innerHTML = '<div class="group_title" >' + '拍攝日期： ' + group.title.substring(0,16) + '</div>';
+		if (group.ownerId) {
+			title_block.innerHTML += '<div class="group_ownerId" >' + '病患編號： ' + group.ownerId + '</div>';
+		} else {
+			title_block.innerHTML += '<div class="group_ownerId" >病患編號： 待填寫</div>';
+		}
+		//
+		var info = group.info;
+		var bodyparts = group.bodyparts; // 已分析過的部位
+		console.log(bodyparts,bodyparts);
+		//
+		for (var j = info.length - 1; j >= 0; j--) {
+		    var image_div = document.createElement('div');
+			image_div.className = 'image_div';
+
+			var image_block = document.createElement('div');
+			image_block.className = 'image_block';
+			var img = document.createElement('img');
+			img.className = 'image_container';
+			img.src = info[j].imagePath;
+			// image element id 格式為 群組Id + '_' + ItemId
+			img.id = group.id + '_' + info[j].itemId;
+			// 透過Attributes傳遞資料(itemId)
+			img.setAttribute('itemId', info[j].itemId);
+			img.setAttribute('bodyPart', info[j].bodyPart);
+			img.setAttribute('evlId', group.evlId);
+			//
+			if (info[j].heightPixel) {
+				img.setAttribute('heightPixel', info[j].heightPixel);
+			}
+			if (info[j].widthPixel) {
+				img.setAttribute('widthPixel', info[j].widthPixel);
+			}
+			if (info[j].blueArea) {
+				img.setAttribute('blueArea', info[j].blueArea);
+			}
+			if (info[j].height) {
+				img.setAttribute('_height', info[j].height);
+			}
+			if (info[j].width) {
+				img.setAttribute('_width', info[j].width);
+			}
+			if (info[j].depth) {
+				img.setAttribute('depth', info[j].depth);
+			}
+			if (info[j].area) {
+				img.setAttribute('area', info[j].area);
+			}
+			if (info[j].epithelium) {
+				img.setAttribute('epithelium', info[j].epithelium);
+			}
+			if (info[j].granular) {
+				img.setAttribute('granular', info[j].granular);
+			}
+			if (info[j].slough) {
+				img.setAttribute('slough', info[j].slough);
+			}
+			if (info[j].eschar) {
+				img.setAttribute('eschar', info[j].eschar);
+			}
+			if (info[j].calibrationColor) {
+				img.setAttribute('calibrationColor', info[j].calibrationColor);
+			}
+			if (info[j].bValue) {
+				img.setAttribute('bValue', info[j].bValue);
+			}
+			if (info[j].gValue) {
+				img.setAttribute('gValue', info[j].gValue);
+			}
+			if (info[j].rValue) {
+				img.setAttribute('rValue', info[j].rValue);
+			}
+
+			//
+			if (group.ownerId) { // 身份證/病歷號
+				img.setAttribute('ownerId', group.ownerId);
+			}
+			// 開啟詳細資訊
+			img.onclick = function (e) {
+				openItemPreview(this);
+			};
+			// 選取本項目
+			img.oncontextmenu = function (e) {
+				if (isSelectMode) {
+					initList();
+				} else {
+					initCheckableList();
+				}
+			};
+			//
+			var image_desc = document.createElement('div');
+			var bodyPartName = info[j].bodyPart == "" ? "無部位" : info[j].bodyPart;
+			//
+			if (info[j].bodyPart.length > 8) {
+				image_desc.innerHTML = bodyPartName.substring(0, 8) + "...";
+			} else {
+				image_desc.innerHTML = bodyPartName;
+			}
+			//
+			if (info[j].epithelium) {
+				image_desc.className = 'image_desc image_analyzed';
+			} else {
+				image_desc.className = 'image_desc';
+			}
+			//
+			var image_time = document.createElement('div');
+			var filmingTime = info[j].createTime;
+			image_time.innerHTML = filmingTime;
+			image_time.className = 'image_time';
+			//
+
+			image_div.appendChild(img);
+
+			image_block.appendChild(image_div);
+			image_block.appendChild(image_desc);
+			image_block.appendChild(image_time);
+			//
+			list_block.appendChild(image_block);
+		}
+		//
+		group_block.appendChild(title_block);
+		group_block.appendChild(list_block);
+		//
+		content.appendChild(group_block);
+	}
+}
+
+function initCheckableList() {
+	isSelectMode = true; // 設定為可選取模式
+	//
+	var content = document.getElementById('content');
+	content.innerHTML = '';
+	var items = data.list;
+
+	for (var i = 0; i < items.length; i++) {
+	    console.log(items[i]);
+		var group = items[i];
+		var group_block = document.createElement('div');
+		group_block.className = 'group_block';
+		var title_block = document.createElement('div');
+		title_block.className = 'title_block';
+		var list_block = document.createElement('div');
+		list_block.className = 'list_block';
+		//
+		title_block.innerHTML = '<div class="group_title" >' + '拍攝日期： ' + group.title.substring(0,16) + '</div>';
+		if (group.ownerId) {
+			title_block.innerHTML += '<div class="group_ownerId" >' + '病患編號： ' + group.ownerId + '</div>';
+		} else {
+			title_block.innerHTML += '<div class="group_ownerId" >病患編號： 待填寫</div>';
+		}
+		//
+		var info = group.info;
+		var bodyparts = group.bodyparts; // 已分析過的部位
+		//
+		for (var j = info.length - 1; j >= 0; j--) {
+			var image_block = document.createElement('div');
+			image_block.className = 'image_block';
+			image_block.style.backgroundColor = '#CFCFCF';
+			var image_div = document.createElement('div');
+			image_div.className = 'image_div';
+			var img = document.createElement('img');
+			img.className = 'image_container';
+			img.setAttribute('check_status', false);
+			img.src = info[j].imagePath;
+			img.id = group.id + '_' + info[j].itemId;
+			// 選取本項目
+			image_block.onclick = function (e) {
+				checkImage(this);
+			};
+			// 選取本項目
+			image_block.oncontextmenu = function (e) {
+				if (isSelectMode) {
+					initList();
+				} else {
+					initCheckableList();
+				}
+			};
+			//
+			var image_desc = document.createElement('div');
+			  console.log(info[j].bodyPart,info[j].bodyPart);
+			var bodyPartName = info[j].bodyPart == "" ? "無部位" : info[j].bodyPart;
+			//
+			if (info[j].bodyPart.length > 5) {
+				image_desc.innerHTML = bodyPartName.substring(0, 5);
+			} else {
+				image_desc.innerHTML = bodyPartName;
+			}
+			//
+			if (bodyparts.includes(info[j].bodyPart)) {
+				image_desc.className = 'image_desc image_analyzed';
+			} else {
+				image_desc.className = 'image_desc';
+			}
+
+			var image_time = document.createElement('div');
+			var filmingTime = info[j].createTime;
+			image_time.innerHTML = filmingTime;
+			image_time.className = 'image_time';
+
+			//
+			image_div.appendChild(img);
+			image_block.appendChild(image_div);
+			image_block.appendChild(image_desc);
+			image_block.appendChild(image_time);
+			//
+			list_block.appendChild(image_block);
+		}
+		//
+		group_block.appendChild(title_block);
+		group_block.appendChild(list_block);
+		//
+		content.appendChild(group_block);
+	}
+}
+
+function checkImage(img) {
+    APP.vibrating();
+	//console.info("選取本項目 " + img.id);
+	if (img.style.borderColor == '') {
+		img.setAttribute('check_status', true);
+		img.style.borderColor = '#4040FF';
+	} else {
+		img.setAttribute('check_status', false);
+		img.style.borderColor = '';
+	}
+}
+
+function goback() {
+	APP.goback();
+}
+
+function openItemPreview(img) {
+    APP.vibrating();
+	// console.info('openItemPreview ' + img.src);
+	/*
+	var params = {};
+	params.itemId = img.getAttribute('itemId');
+	params.evlId = img.getAttribute('evlId');
+	var ownerId = img.getAttribute('ownerId');
+	if (ownerId != null) {
+	    params.ownerId = ownerId;
+	}
+	params.bodyPart = img.getAttribute('bodyPart');
+	params.heightPixel = img.getAttribute('heightPixel');
+	params.widthPixel = img.getAttribute('widthPixel');
+	params.blueArea = img.getAttribute('blueArea');
+	params.height = img.getAttribute('_height');
+	params.width = img.getAttribute('_width');
+	params.depth = img.getAttribute('depth');
+	params.area = img.getAttribute('area');
+	params.epithelium = img.getAttribute('epithelium');
+	params.granular = img.getAttribute('granular');
+	params.slough = img.getAttribute('slough');
+	params.eschar = img.getAttribute('eschar');
+	params.calibrationColor = img.getAttribute('calibrationColor');
+	params.bValue = img.getAttribute('bValue');
+	params.gValue = img.getAttribute('gValue');
+	params.rValue = img.getAttribute('rValue');
+	//
+	params.imagePath = img.src;
+	//
+	console.info(JSON.stringify(params));
+	*/
+	//APP.gotoImageView(params);
+	var params = 'itemId=' + img.getAttribute('itemId') +
+		'&evlId=' + img.getAttribute('evlId') +
+		'&bodyPart=' + img.getAttribute('bodyPart');
+	if (img.getAttribute('ownerId')) {
+		params += '&ownerId=' + img.getAttribute('ownerId');
+	}
+	if (img.getAttribute('heightPixel')) {
+		params += '&heightPixel=' + img.getAttribute('heightPixel');
+	}
+	if (img.getAttribute('widthPixel')) {
+		params += '&widthPixel=' + img.getAttribute('widthPixel');
+	}
+	if (img.getAttribute('blueArea')) {
+		params += '&blueArea=' + img.getAttribute('blueArea');
+	}
+	if (img.getAttribute('_height')) {
+		params += '&height=' + img.getAttribute('_height');
+	}
+	if (img.getAttribute('_width')) {
+		params += '&width=' + img.getAttribute('_width');
+	}
+	if (img.getAttribute('depth')) {
+		params += '&depth=' + img.getAttribute('depth');
+	}
+	if (img.getAttribute('area')) {
+		params += '&area=' + img.getAttribute('area');
+	}
+	if (img.getAttribute('epithelium')) {
+		params += '&epithelium=' + img.getAttribute('epithelium');
+	}
+	if (img.getAttribute('granular')) {
+		params += '&granular=' + img.getAttribute('granular');
+	}
+	if (img.getAttribute('slough')) {
+		params += '&slough=' + img.getAttribute('slough');
+	}
+	if (img.getAttribute('eschar')) {
+		params += '&eschar=' + img.getAttribute('eschar');
+	}
+	if (img.getAttribute('calibrationColor')) {
+		params += '&calibrationColor=' + img.getAttribute('calibrationColor');
+	}
+	if (img.getAttribute('bValue')) {
+		params += '&bValue=' + img.getAttribute('bValue');
+	}
+	if (img.getAttribute('gValue')) {
+		params += '&gValue=' + img.getAttribute('gValue');
+	}
+	if (img.getAttribute('rValue')) {
+		params += '&rValue=' + img.getAttribute('rValue');
+	}
+	params += '&img=' + img.src;
+	//
+	console.info(params);
+	document.location = './../zh/demo.html?' + params;
+}
+
+function deleteSelected() {
+    APP.vibrating();
+	if (isSelectMode) {
+		showDeleteConfirmDialog();
+	} else {
+		showNoFileSelectedDialog();
+	}
+}
+
+function confirmDeleteSelected() {
+    APP.vibrating();
+	var content = document.getElementById('content');
+	var imgList = content.getElementsByClassName('image_block');
+	var deleteItems = new Array();
+	for (var i = 0; i < imgList.length; i++) {
+		var check_status = imgList[i].getAttribute('check_status');
+		// Attribute 會變成 String
+		if (check_status == 'true') {
+			//console.info('刪除: ' + imgList[i].id);
+			// img.src 是指向照片檔案名稱
+			//
+			// 要去掉 'file://'
+			var imgElements = imgList[i].getElementsByTagName('img');
+			var imagePath = imgElements[0].src.replace("file:///", "/").replace("%20", " "); // 可能包含空白字元(%20)
+			deleteItems.push(imagePath);
+		}
+	}
+	APP.delPhotoList(deleteItems);
+	hideDeleteConfirmDialog();
+
+
+}
+
+// 刪除檔案執行完成後呼叫的Callback
+function onDeleteFinish(message) {
+	document.location.reload();
+	showDialogMessage(message);
+}
+
+function showSettingsDialog() {
+	document.getElementById("settings_dialog").style.display = "block";
+}
+
+function hideSettingsDialog() {
+	document.getElementById("settings_dialog").style.display = "none";
+}
+
+function showDeleteConfirmDialog() {
+	document.getElementById("delete_confirm_dialog").style.display = "block";
+}
+
+function hideDeleteConfirmDialog() {
+	document.getElementById("delete_confirm_dialog").style.display = "none";
+}
+
+function showNoFileSelectedDialog() {
+	document.getElementById("nofile_selected_dialog").style.display = "block";
+}
+
+function hideNoFileSelectedDialog() {
+	document.getElementById("nofile_selected_dialog").style.display = "none";
+}
+
+function showDialogMessage(message) {
+	document.getElementById("dialog_message").innerHTML = message;
+	document.getElementById("dialog_input").style.display = "block";
+}
+
+function hideDialogMessage() {
+	document.getElementById("dialog_message").innerHTML = '';
+	document.getElementById("dialog_input").style.display = "none";
+}
+</script>
+</body>
+</html>

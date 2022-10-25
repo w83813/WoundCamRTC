@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" />
+    <script type="text/javascript" src="./../lib/lazyload.js"></script>
+    <!--<script type="text/javascript" src="./../lib/fabric_with_gestures.js"></script>-->
+    <script type="text/javascript" src="./../lib/fabric.js"></script>
+
+    <style>
+        .input_field {
+            font-size: 4vh;
+            margin-left: 5vw;
+            height: 6vh;
+            line-height: 6vh;
+            width: 60vw;
+        }
+
+        .input_value {
+            font-size: 4vh;
+            margin-left: 5vw;
+            height: 5vh;
+            line-height: 5vh;
+            width: 60vw;
+        }
+
+        .image_container{
+            width: 100vw;
+            height: 70vw;
+            padding: 2.5vh 2.5vw;
+            text-align: center;
+            border: 1px solid red;
+        }
+
+        .woundImg{
+            position: relative;
+            height: 47vh;
+            margin: 0.5vh 2vw;
+            background: #bfbfbf;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .insight-info{
+            position: relative;
+            background: #ffffff;
+            margin: 0.5vh 2vw;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+			display:none;
+        }
+
+        .zoomIn-icon{
+            position: absolute;
+            background-image: url('./../images/zoom_in.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            bottom: 1.5vh;
+            right: 2vw;
+            width: 8vw;
+            height: 4vh;
+            line-height: 4vh;
+        }
+
+        .zoomOut-icon{
+            position: absolute;
+            background-image: url('./../images/zoom_out.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            bottom: 1.5vh;
+            left: 2vw;
+            width: 8vw;
+            height: 4vh;
+            line-height: 4vh;
+        }
+		
+        .reset-icon{
+            position: absolute;
+            background-image: url('./../images/reset.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            top: 1.5vh;
+            right: 2vw;
+            width: 8vw;
+            height: 4vh;
+            line-height: 4vh;
+			display:none;
+        }
+		
+        .crosshair{
+            position: absolute;
+            background-image: url('./../images/crosshair.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            top: 1.5vh;
+            left: 200px;
+            width: 20px;
+            height: 20px;
+            line-height: 4vh;
+        }
+
+        .color-3d-icon{
+            position: absolute;
+            background-image: url('./../images/3d_rotation.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            top: 1.5vh;
+            left: 2vw;
+            width: 8vw;
+            height: 4vh;
+            line-height: 4vh;
+        }
+
+        .color-3d2-icon{
+            position: absolute;
+            background-image: url('./../images/thermometer.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            top: 8.5vh;
+            left: 2vw;
+            width: 8vw;
+            height: 4vh;
+            line-height: 4vh;
+        }
+		
+        .mark-move-icon{
+            position: absolute;
+            background-image: url('./../images/crosshair.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            top: 15vh;
+            left: 2vw;
+            width: 8vw;
+            height: 33px;
+        }
+		
+		
+        .angle-distance-icon{
+            position: absolute;
+            background-image: url('./../images/angle.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            top: 22vh;
+            left: 2vw;
+            width: 8vw;
+            height: 25px;
+        }
+		
+        .distance-icon{
+            position: absolute;
+            background-image: url('./../images/diatance.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            top: 15vh;
+            left: 2vw;        
+			width: 8vw;
+            height: 4vh;
+            line-height: 4vh;
+        }
+
+        .imgZoomArea img{
+            /*min-width: 100%;
+            max-height: 47vh;*/
+            max-width: 100%;
+            height: 47vh;
+            margin: 0;
+            padding: 0;
+            display: block;
+        }
+		
+        .div_canvas{
+            /*min-width: 100%;
+            max-height: 47vh;*/
+            width: 246px;
+            height: 328px;
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+			top:0px;
+			left:60px;
+        }
+
+        .thumbImg{
+            width: 100%;
+            height: 100%;
+            border: 1px solid #b3b3b3;
+            border-radius: 4px;
+            padding: 5px;
+            transition: 0.2s;
+            background: #ffffff;
+        }
+
+        .input-group-addon, .idNo, .bodypart{
+            font-size: 5vw;
+        }
+
+        .input-group{
+            padding: 0vh 2vw !important;
+        }
+
+        .input-group:nth-child(2){
+            margin-top: 0.3vh;
+        }
+
+        .input-group-addon, .form-control{
+            padding: 0vh 2vw !important;
+        }
+
+        .form-control{
+            height: 6vh !important;
+            line-height: 6vh !important;
+        }
+
+        .woundInfoTable{
+            position: absolute;
+            bottom: 1vh;
+            margin: 0 5vw 0 5vw;
+            width: 90vw;
+            font-size: 5vw;
+			display:none;
+        }
+
+        .woundInfoTable tr td{
+            padding: 0.4vh 0vw;
+        }
+
+        .woundInfoTable tr:not(first-child) td:nth-child(2),
+        .woundInfoTable tr:not(first-child) td:nth-child(5){
+            text-align: right;
+        }
+
+        .infoTitle{
+            color: #157DEC;
+            border-bottom: 1px solid #157DEC;
+            width: 47%;
+            text-align: center;
+        }
+		
+        .woundPointTable{
+            position: absolute;
+            margin: 1vh 5vw 0 5vw;
+            font-size: 5vw;
+			border-collapse:collapse;
+        }
+		
+		.woundPointTable .table_header td{
+            border-top: 2px solid #c4c4c4;
+            border-right: 2px solid #c4c4c4;
+            border-bottom: 2px solid #c4c4c4;
+			text-align:center;
+			width:16vw;
+
+		}
+		
+		.woundPointTable .table_body td{
+            border-bottom: 0px;
+            border-right: 2px solid #c4c4c4;
+			text-align:center;
+			line-height:6vh;
+		}
+		
+		.woundPointTable .table_tail td{
+            border-bottom: 2px solid #c4c4c4;
+            border-right: 2px solid #c4c4c4;
+			text-align:center;
+			line-height:6vh;
+		}
+		
+		.last_col {
+		    border-right: 0px !important;
+		}
+		
+		.first_col {
+		    width: 30px !important;
+			text-align:left;
+		}
+		
+		.cnt-icon {
+            width: 15px;
+            height: 18px;
+            background-image: url('./../images/number.png');
+		}
+		
+		#cnt-icon-1 {
+            position: absolute;
+			background-size:49.8px 73.1px;
+            background-position: 0px 0;
+		}
+		
+		#cnt-icon-2 {
+            position: absolute;
+			background-size:49.8px 73.1px;
+            background-position: 32px 0;
+            top: 1.5vh;
+            left: 200px;
+		}
+		
+		#cnt-icon-3 {
+            position: absolute;
+			background-size:49.8px 73.1px;
+            background-position: 15px 0;
+            top: 1.5vh;
+            left: 200px;
+		}
+		
+		#cnt-icon-4 {
+            position: absolute;
+			background-size:49.8px 73.1px;
+            background-position: 0px -19px;
+            top: 1.5vh;
+            left: 200px;
+		}
+		
+		#cnt-icon-5 {
+            position: absolute;
+			background-size:49.8px 73.1px;
+            background-position: 32px -19px;
+            top: 1.5vh;
+            left: 200px;
+		}
+    </style>
+
+</head>
+
+<body>
+
+<div id='settings_dialog' class='input_mode_shield' style='background-color: transparent;' onclick='hideSettingsDialog()'>
+    <div class='settings_dialog'>
+        <div onclick='gotoAnalysis()'>開始分析</div>
+    </div>
+</div>
+
+<div class='toolbar'>
+    <div class='tool_button' style='left: 2vw;' onclick='goback()'><img src="./../images/arrow_back.svg" /></div>
+    <div class="title"></div>
+    <div class='tool_button' style='right: 2vw;' onclick='gotoAnalysis()'><img src="./../images/exam.svg" /></div>
+</div>
+<div id='content'>
+    <div class="input-group col-md-12">
+        <span class="input-group-addon">Patient No.</span>
+        <input type="text" id='ownerId' class="form-control idNo" aria-describedby="basic-addon1" onkeyup="this.value=this.value.trim().toUpperCase()" placeholder="Enter record No. / id No.">
+    </div>
+    <div class="input-group col-md-12">
+        <span class="input-group-addon">Bodypart</span>
+        <input type="text" id='bodyPart' class="form-control bodypart" aria-describedby="basic-addon1" onkeyup="this.value=this.value.trim()" placeholder="Enter bodypart.">
+        <span class="input-group-addon btn" onclick="gotoBodyPartPicker()"><img src="./../images/search.svg" /></span>
+    </div>
+
+    <!--<a class="image_container" >
+    <img id='preview' class="thumbImg">
+</a>-->
+
+    <div class="woundImg" id="woundImg">
+        <div class="zoomOut-icon" onclick="zoomOut()"></div>
+        <div class="zoomIn-icon" onclick="zoomIn()"></div>
+        <div class="color-3d-icon" onclick="getGen3DColorImage()"></div>
+        <div class="color-3d2-icon" onclick="checkThmImage()"></div>
+        <div class="mark-move-icon" onclick="switchClickMode()"></div>
+        <div class="angle-distance-icon" onclick="switchAD()"></div>
+        <div class="reset-icon" onclick="undoPoint()"></div>
+        <div class="imgZoomArea" style="display:none">
+            <img />
+        </div>
+		<div class="div_canvas">
+		    <canvas id="c" width="246" height="328"></canvas>
+		</div>
+
+    </div>
+	
+	<div id="div_woundPointTable">
+	    <table class="woundPointTable" id="woundPointTable">
+		    <!--
+	        <tr class="table_header">
+	    	    <td class="first_col"></td>
+	    		<td>1</td>
+	    		<td>2</td>
+	    		<td>3</td>
+	    		<td>4</td>
+	    		<td class="last_col">5</td>
+	    	</tr>
+	        <tr class="table_body">
+	    	    <td class="first_col">X</td>
+	    		<td>111</td>
+	    		<td>111</td>
+	    		<td>111</td>
+	    		<td>111</td>
+	    		<td class="last_col">111</td>
+	    	</tr>
+	        <tr class="table_body">
+	    	    <td>Y</td>
+	    		<td>222</td>
+	    		<td>222</td>
+	    		<td>222</td>
+	    		<td>222</td>
+	    		<td class="last_col">222</td>
+	    	</tr>
+	        <tr class="table_body">
+	    	    <td>D</td>
+	    		<td>5</td>
+	    		<td>5</td>
+	    		<td>5</td>
+	    		<td>5</td>
+	    		<td class="last_col">5</td>
+	    	</tr>
+	        <tr class="table_tail">
+	    	    <td>T</td>
+	    		<td>35</td>
+	    		<td>35</td>
+	    		<td>35</td>
+	    		<td>35</td>
+	    		<td class="last_col">35</td>
+	    	</tr>
+			-->
+	    </table>
+	</div>
+	
+    <div class="insight-info" >Current Position: -- °C, -- CM</div>
+
+    <table class="woundInfoTable">
+        <tr>
+            <td colspan="2" class="infoTitle">Size</td>
+            <td width='6%'></td>
+            <td colspan="2" class="infoTitle">Proportion</td>
+        </tr>
+        <tr>
+            <td>Height:</td>
+            <td><span id='size1'>0.0</span></td>
+            <td></td>
+            <td>Epit.:</td>
+            <td><span id='perc1'>0.0</span></td>
+        </tr>
+        <tr>
+            <td>Width:</td>
+            <td><span id='size2'>0.0</span></td>
+            <td></td>
+            <td>Gran.:</td>
+            <td><span id='perc2'>0.0</span></td>
+        </tr>
+        <tr>
+            <td>Depth:</td>
+            <td><span id='size3'>0.0</span></td>
+            <td></td>
+            <td>Slou.:</td>
+            <td><span id='perc3'>0.0</span></td>
+        </tr>
+        <tr>
+            <td>Area:</td>
+            <td><span id='size4'>0.0</span></td>
+            <td></td>
+            <td>Esch.:</td>
+            <td><span id='perc4'>0.0</span></td>
+        </tr>
+    </table>
+    <img class='testExistImg hidden' />
+</div>
+
+<script type="text/javascript">
+        var params;
+        var imagePath;
+        var imageType;
+        var viewer;
+        var viewerContainer;
+		var gClickPointCnt = 0;
+		var gLastX = 0;
+		var gLastY = 0;
+        var gCanvas;
+		var gShowAngel = false;
+        var gJsonClickPoint = new Array();
+		gJsonClickPoint.point = new Array();
+        var gThermalX;
+        var gThermalY;
+        var spaceX;
+        var spaceY;
+        var gZoom;
+		var gFontSize = 180;
+		var gStrokeWidth = 5;
+		var gColorScale;
+		var gThermalScale;
+		var gClickMode = "drag";
+
+        LazyLoad.css(['./../css/bootstrap.css', './../css/imageViewer.min.css', './../css/app.css', './../css/preview.css'], function() {
+            LazyLoad.js(['./../lib/jquery.min.js', './../lib/bootstrap.min.js', './../lib/imageViewer.js', './../lib/app.js', './../lib/SDK.js'], function() {
+                $(document).ready(function() {
+                    $(".container_loading").fadeOut();
+					
+	                gCanvas = new fabric.Canvas('c', { 
+                        preserveObjectStacking: true, 
+                        fireRightClick: true,
+                        selection: false,
+                    });
+					gCanvas.setBackgroundColor('#ffffff', gCanvas.renderAll.bind(gCanvas));
+                    //imagePath = "./2020-08-24 11-57-32-068_2020-08-24_1_jpg.jpg";
+                    //imageType = 'j';
+                    //checkGaiImage();
+                    params = SDK.getUrlValues();
+                    if (params) {
+                        console.info('demo: ' + JSON.stringify(params));
+                    } else {
+                        return;
+                    }
+                    //
+                    if (params.ownerId) {
+                        document.getElementById('ownerId').value = params.ownerId;
+                    }
+                    document.getElementById('bodyPart').value = params.bodyPart;
+                    //
+                    if (params.height) {
+                        document.getElementById('size1').innerHTML = params.height + " cm";
+                    }
+                    if (params.width) {
+                        document.getElementById('size2').innerHTML = params.width + " cm";
+                    }
+                    if (params.depth) {
+                        document.getElementById('size3').innerHTML = params.depth + " cm";
+                    }
+                    if (params.area) {
+                        document.getElementById('size4').innerHTML = params.area + " cm<sup>2</sup>";
+                    }
+                    if (params.epithelium) {
+                        document.getElementById('perc1').innerHTML = params.epithelium + " %";
+                    }
+                    if (params.granular) {
+                        document.getElementById('perc2').innerHTML = params.granular + " %";
+                    }
+                    if (params.slough) {
+                        document.getElementById('perc3').innerHTML = params.slough + " %";
+                    }
+                    if (params.eschar) {
+                        document.getElementById('perc4').innerHTML = params.eschar + " %";
+                    }
+                    //
+                    $(".title").html(params.img.split("CameraImg/")[1].split("_")[0]);
+					//params.img = "http://10.10.66.121:8080/assets/zh/test_jpg.jpg"
+                    //
+                    imagePath = params.img;
+                    imageType = 'j';
+                    checkGaiImage();
+					
+					gCanvas.on('mouse:down', function(evt){
+					    var pointer = gCanvas.getPointer(evt.e);
+					    var active = gCanvas.getActiveObject();
+						console.log(active);
+						
+						if ( gClickMode == "mark" )
+						    return;
+						
+                        
+                        // if max number of rects created, groups all objects and moves within
+                        // contained area. Contained areas expands when zoom clicked to allow
+                        // user to access all parts of the image.
+	                    
+                        gCanvas.discardActiveObject();
+	                    
+                        active.lockMovementX = false;
+                        active.lockMovementY = false;
+							
+
+							
+	                        
+                        // sets grouped object position
+	                        
+                        var originalX = active.left,
+                            originalY = active.top,
+                            mouseX = evt.e.pageX,
+                            mouseY = evt.e.pageY;
+	                        
+                        var lastLeft = active.left,
+                            lastTop = active.top;
+								
+                        active.on('moving', function(evt) {
+                            // sets boundary area for image when zoomed
+                            // THIS IS THE PART THAT DOESN'T WORK
+						        
+                            active.setCoords();
+						        
+                            // SET BOUNDING RECT TO 'active'
+						        
+                            var boundingRect = active.getBoundingRect();
+						        
+                            var zoom = gCanvas.getZoom();
+                            var viewportMatrix = gCanvas.viewportTransform;
+						        
+                            // scales bounding rect when zoomed
+						        
+                            boundingRect.top = boundingRect.top  / zoom;
+                            boundingRect.left = boundingRect.left  / zoom;
+                            boundingRect.width /= zoom;
+                            boundingRect.height /= zoom;
+						        
+                            var canvasHeight = gCanvas.height / zoom,
+                                canvasWidth = gCanvas.width / zoom,
+                                rTop = boundingRect.top + boundingRect.height,
+                                rLeft = boundingRect.left + boundingRect.width;
+								  
+						    /*
+                            // checks top left
+                            if ( rTop < canvasHeight || rLeft < canvasWidth ) {
+                                active.top = Math.max(active.top, canvasHeight - boundingRect.height);
+                                active.left = Math.max(active.left, canvasWidth - boundingRect.width);
+                            }
+						        
+                            // checks bottom right
+                            if ( rTop > 0 || rLeft > 0 ) {
+                                active.top = Math.min(active.top, gCanvas.height - boundingRect.height + active.top - boundingRect.top);
+                                active.left = Math.min(active.left, gCanvas.width - boundingRect.width + active.left - boundingRect.left);
+                            }
+							*/
+						        
+							// active.id  color_img
+	                        gCanvas.forEachObject(function(obj){
+                                if ( obj.id != active.id ) {
+                                    obj.left += active.left - lastLeft;
+                                    obj.top += active.top - lastTop;
+                                    obj.setCoords();
+							    }
+	                        })
+								
+								
+                            lastLeft = active.left;
+                            lastTop = active.top;
+	                        
+                        });
+						    
+                        // deactivates all objects on mouseup
+                        active.on('mouseup', function() {
+							console.log("up");
+                            active.off('moving');
+                            gCanvas.discardActiveObject();
+                            gCanvas.renderAll();
+                        });
+						
+					})
+					
+					gCanvas.on('object:moving', null);
+					
+					
+					gCanvas.on('mouse:up', function(o){
+						//console.log("img left: "+gCanvas.item(0).left);
+						//console.log("img top: "+gCanvas.item(0).top);
+					    if ( gClickMode == "drag" || imageType == "t" )
+						    return;
+						  
+				        var clicklimit;
+				        if ( gShowAngel )
+				            clicklimit = 3;
+				        else
+				            clicklimit = 5;
+						
+						if ( gClickPointCnt < clicklimit ) {
+						    var pointer = gCanvas.getPointer(o.e);
+							//console.log("up_x:"+pointer.x+" up_y: "+pointer.y);
+							
+							var img_x, img_y;
+							img_x = pointer.x - gCanvas.item(0).left;
+							img_y = pointer.y - gCanvas.item(0).top;
+							console.log("img_x:"+img_x+" "+"img_y:"+img_y)
+							
+							if ( img_x < 0 || img_y < 0 )
+                                return;
+							if ( imageType == "j" && (img_x > 2448 || img_x > 3264) )
+                                return;
+							else if ( imageType == "g" && (img_x > 720 || img_x > 960) )
+                                return;
+								
+			                var obj = new Object();
+				            obj.ImgX = Math.round(img_x);
+				            obj.ImgY = Math.round(img_y);
+							/*
+							
+							*/
+			                gJsonClickPoint.point.push(obj);
+								
+						    gClickPointCnt++;
+                            //addPoint();
+						    var str = gClickPointCnt.toString();
+	                        var text = new fabric.Text( str, {
+							    id: "text_"+gClickPointCnt,
+                                left: pointer.x,
+                                top: pointer.y,
+                                originX: 'center',
+                                originY: 'center',
+		                        fill:"#000000",
+						    	fontSize: gFontSize/(gCanvas.getZoom()*6.66),
+                                hasBorders: false,
+                                hasControls: false,
+						    	lockMovementY: true,
+						    	lockMovementX: true
+                            });
+	                        gCanvas.add(text);
+							
+                            APP.getSensingValueWithRGBCoord({
+                                f:imagePath,
+					        	cnt:gClickPointCnt,
+                                x:img_x,
+                                y:img_y,
+                                type:imageType
+                            });
+							
+			                if ( gClickPointCnt == 3 && gShowAngel )
+			                    addAngleLine();
+						}
+						
+				        if ( gClickPointCnt > 0 )
+				            $('.reset-icon').css("display","block");
+							
+					})
+					
+					createTableHead();
+                });
+                //$(document).ready
+            });
+            //LazyLoad.js
+        });
+        //LazyLoad.css
+
+        function createTableHead(){
+            var body = document.getElementById('div_woundPointTable');
+	        body.innerHTML = "";
+			var tbl = document.createElement('table');
+			tbl.setAttribute("class","woundPointTable");
+			tbl.setAttribute("id","woundPointTable");
+			
+			var tr = document.createElement('tr');
+			tr.setAttribute("class","table_header");
+			tr.setAttribute("id","tr_No");
+			var td = document.createElement("td");
+			td.setAttribute("class","first_col");
+			td.innerHTML = "&nbsp;";
+			tr.appendChild(td);
+			tbl.appendChild(tr);
+			
+			tr = document.createElement('tr');
+			tr.setAttribute("class","table_body");
+			tr.setAttribute("id","tr_L");
+			td = document.createElement("td");
+			td.setAttribute("class","first_col");
+			td.innerText = "L";
+			tr.appendChild(td);
+			tbl.appendChild(tr);
+			
+			tr = document.createElement('tr');
+			tr.setAttribute("class","table_body");
+			tr.setAttribute("id","tr_D");
+			td = document.createElement("td");
+			td.setAttribute("class","first_col");
+			td.innerText = "D";
+			tr.appendChild(td);
+			tbl.appendChild(tr);
+
+            if ( gShowAngel ) {
+			    tr = document.createElement('tr');
+			    tr.setAttribute("class","table_body");
+			    tr.setAttribute("id","tr_Angle");
+			    td = document.createElement("td");
+			    td.setAttribute("class","first_col");
+			    td.innerText = "∠";
+			    tr.appendChild(td);
+			    tbl.appendChild(tr);
+			}
+			
+			tr = document.createElement('tr');
+			tr.setAttribute("class","table_tail");
+			tr.setAttribute("id","tr_T");
+			td = document.createElement("td");
+			td.setAttribute("class","first_col");
+			td.innerText = "T";
+			tr.appendChild(td);
+			tbl.appendChild(tr);
+			
+			body.appendChild(tbl);
+		}
+
+        //啟動與顯示圖檔幻燈片
+        function showImgZoom(imgPath) {
+		    resetCanvas();
+            loadColorImg(imgPath);
+            console.info("圖片位置:" + imgPath);
+			/*
+            if (viewer!==undefined && viewer!=null) {
+                viewer.destroy();
+                $(".imgZoomArea").html("<img height=100%/>");
+            }
+            var target = $(".imgZoomArea").find("img:first-child");
+            target.attr("src", imgPath);
+            viewer = ImageViewer(target, {
+                maxZoom: 1200
+            });
+            viewer.load(imgPath);
+            viewer.onTouchCallback = function(x, y, z) {
+                //for phone
+                parentTop = viewer.container.offset().top
+                parentLeft = viewer.container.offset().left
+
+                // set iv-large-image (left,top) point to (0,0)
+                x = x - parentLeft
+                y = y - parentTop
+
+                viewerContainer = document.getElementsByClassName("iv-large-image")[0];
+
+                // zooming offset
+                x = (x + Math.abs(viewerContainer.offsetLeft))/z;
+                y = (y + Math.abs(viewerContainer.offsetTop))/z;
+
+                scaleX = (viewerContainer.naturalWidth/(viewerContainer.width/z)) * x;
+                scaleY = (viewerContainer.naturalHeight/(viewerContainer.height/z)) * y;
+                console.log("onTouchCallback x:" + x + ",y:" + y + ",z:" + z);
+                console.log("onTouchCallback scaleX:" + scaleX + ", scaleY:" + scaleY );
+				
+				gLastX = x;
+				gLastY = y;
+				
+				if ( gClickPointCnt < 5 ) { 
+				    gClickPointCnt++;
+				    //addPointToTable();
+					addCrossHair();
+                    APP.getSensingValueWithRGBCoord({
+                        f:imgPath,
+						cnt:gClickPointCnt,
+                        x:scaleX,
+                        y:scaleY,
+                        type:imageType
+                    });
+				}
+				
+				if ( gClickPointCnt > 0 )
+				    $('.reset-icon').css("display","block");
+				
+
+            }
+            viewer.onClickCallback = function(x, y, z) {
+                //for pc
+				
+                console.log("onClickCallback x:" + x + ",y:" + y + ",z:" + z);
+                APP.getSensingValueWithRGBCoord({
+                    f:imgPath,
+                    x:x,
+                    y:y,
+                    type:imageType
+                });
+				
+            }
+			*/
+        }
+
+        function onGetSensingValueWithRGBCoordCallback(type, cnt, celsius, cm, spaceX, spaceY, lThermalX, lThermalY){
+            try {
+                console.log("onGetSensingValueWithRGBCoordCallback "+ celsius +" " +cm);
+                /*
+                if (celsius==-999 && cm==-999)
+                    $(".insight-info").html("Current Position: --- °C, --- CM");
+                else if (celsius==-999)
+                    $(".insight-info").html("Current Position: --- °C, " +cm +" CM");
+                else if (cm==-999)
+                    $(".insight-info").html("Current Position: "+celsius+" °C, --- CM");
+                else
+                    $(".insight-info").html("Current Position: " + celsius +" °C, " + cm + " CM");
+				*/
+                gJsonClickPoint.point[cnt-1].SpaceX = spaceX;
+                gJsonClickPoint.point[cnt-1].SpaceY = spaceY;
+                gJsonClickPoint.point[cnt-1].ThermalX = lThermalX;
+                gJsonClickPoint.point[cnt-1].ThermalY = lThermalY;
+		        gJsonClickPoint.point[cnt-1].D = cm;
+			    gJsonClickPoint.point[cnt-1].T = celsius;
+		        var table = $('#woundPointTable');
+			    table.find('tr').each(function(){
+			        $(this).find(':last-child').removeClass("last_col");
+			    	var trow = $(this);
+			        if ( trow.attr('id') == "tr_No" )
+			    	    trow.append('<td class="last_col">'+cnt+'</td>');
+			    	else if ( trow.attr('id') == "tr_L" ) {
+					    if ( cnt == 1 || cm == -999 || gJsonClickPoint.point[0].D == -999 )
+			                trow.append('<td class="last_col">---</td>');
+						else 
+						    trow.append('<td class="last_col">'+(calLength(cnt)).toFixed(2)+'</td>');
+
+					}
+			    	else if ( trow.attr('id') == "tr_D" ) {
+					    if ( cm == -999 )
+			                trow.append('<td class="last_col">---</td>');
+						else 
+			                trow.append('<td class="last_col">'+cm+'</td>');
+					}
+			    	else if ( trow.attr('id') == "tr_Angle" ) {
+					    if ( cnt == 3 && gJsonClickPoint.point[0].D != -999 && gJsonClickPoint.point[1].D != -999 && gJsonClickPoint.point[2].D != -999 ) 
+			                trow.append('<td class="last_col">'+Math.round(calAngle())+'</td>');
+						else
+			                trow.append('<td class="last_col">---</td>');
+					}
+			    	else if ( trow.attr('id') == "tr_T" ) {
+					    if ( celsius == -999 )
+			                trow.append('<td class="last_col">---</td>');
+						else
+			                trow.append('<td class="last_col">'+celsius+'</td>');
+					}
+			    });
+            } catch (e) {
+                console.log(e);
+            }
+        }
+
+		function addPoint() {
+		    var table = $('#woundPointTable');
+		    gJsonClickPoint.point[gClickPointCnt-1].D = getRandom(30,60);
+			gJsonClickPoint.point[gClickPointCnt-1].T = getRandom(20,30);
+			if ( imageType == "g") {
+                gJsonClickPoint.point[gClickPointCnt-1].SpaceX = getRandom(0,720);
+                gJsonClickPoint.point[gClickPointCnt-1].SpaceY = getRandom(0,960);
+			
+			}
+			else if ( imageType == "t" ) {
+                gJsonClickPoint.point[gClickPointCnt-1].SpaceX = getRandom(0,2448);
+                gJsonClickPoint.point[gClickPointCnt-1].SpaceY = getRandom(0,3226);
+			}
+            gJsonClickPoint.point[gClickPointCnt-1].ThermalX = getRandom(0,120);
+            gJsonClickPoint.point[gClickPointCnt-1].ThermalY = getRandom(0,160);
+		    //gJsonClickPoint.point[cnt-1].D = cm;
+			//gJsonClickPoint.point[cnt-1].T = celsius;
+			table.find('tr').each(function(){
+			    $(this).find(':last-child').removeClass("last_col");
+				var trow = $(this);
+			    if ( trow.attr('id') == "tr_No" )
+				    trow.append('<td class="last_col">'+gClickPointCnt+'</td>');
+				else if ( trow.attr('id') == "tr_L" ) {
+					if ( gClickPointCnt == 1 )
+			            trow.append('<td class="last_col">---</td>');
+					else 
+						trow.append('<td class="last_col">'+Math.round(calLength(gClickPointCnt))+'</td>');
+				}
+				else if ( trow.attr('id') == "tr_D" ) 
+			        trow.append('<td class="last_col">'+"30"+'</td>');
+			    else if ( trow.attr('id') == "tr_Angle" ) {
+					if ( gClickPointCnt == 3 ) 
+			            trow.append('<td class="last_col">'+Math.round(calAngle())+'</td>');
+				    else
+			            trow.append('<td class="last_col">---</td>');
+				}
+				else if ( trow.attr('id') == "tr_T" ) 
+			        trow.append('<td class="last_col">'+"36"+'</td>');
+			});
+			
+		}
+		
+		function addSingleCrossHair() {
+		    viewerContainer = document.getElementsByClassName("iv-large-image")[0];
+			var woundImg = document.getElementById("woundImg");
+			var div = document.createElement("div");
+			div.setAttribute("class","cnt-icon");
+			div.setAttribute("id","cnt-icon-"+gClickPointCnt);
+			div.style.left = gLastX+viewer.container.offset().left-15+"px";
+			div.style.top = gLastY-5+"px";
+			woundImg.appendChild(div);
+			
+			if ( gClickPointCnt == 3 && gShowAngel )
+			    addAngleLine();
+		}
+        /*
+        //圖片放大
+        function zoomIn() {
+            viewer.zoom(600);
+        }
+
+        //圖片縮小
+        function zoomOut() {
+            viewer.zoom(100);
+        }
+		*/
+		
+        //圖片放大
+        function zoomIn() {
+            gCanvas.zoomToPoint(new fabric.Point(gCanvas.width / 2, gCanvas.height / 2), gCanvas.getZoom() * 1.5);
+			gZoom = gCanvas.getZoom();
+	        gCanvas.forEachObject(function(obj){
+                if ( obj.get('type') == "text" ) {
+                    obj.fontSize = gFontSize / (gCanvas.getZoom()*6.66);
+                    gCanvas.renderAll();
+				}
+				else if ( obj.get('type') == "line" ) {
+				    console.log("strokeWidth:"+gStrokeWidth / (gCanvas.getZoom()));
+				    obj.strokeWidth = gStrokeWidth / (gCanvas.getZoom()*10);
+				}
+	        })
+        }
+
+        //圖片縮小
+        function zoomOut() {
+            gCanvas.zoomToPoint(new fabric.Point(gCanvas.width / 2, gCanvas.height / 2), gCanvas.getZoom() / 1.5);
+			gZoom = gCanvas.getZoom();
+	        gCanvas.forEachObject(function(obj){
+                if ( obj.get('type') == "text" ) {
+                    obj.fontSize = gFontSize / (gCanvas.getZoom()*6.66);
+                    gCanvas.renderAll();
+				}
+				else if ( obj.get('type') == "line" ) {
+				    console.log("strokeWidth:"+gStrokeWidth / (gCanvas.getZoom()));
+				    obj.strokeWidth = gStrokeWidth / (gCanvas.getZoom()*10);
+				}
+	        })
+        }
+
+        function saveParams() {
+            params.ownerId = document.getElementById('ownerId').value;
+            params.bodyPart = document.getElementById('bodyPart').value;
+        }
+
+        function goback() {
+            saveParams();
+            //
+            APP.saveTxtData(params);
+            //
+            document.location = "./../en/index.html";
+        }
+
+        function showSettingsDialog() {
+            document.getElementById("settings_dialog").style.display = "block";
+        }
+
+        function hideSettingsDialog() {
+            document.getElementById("settings_dialog").style.display = "none";
+        }
+
+        function gotoAnalysis() {
+            saveParams();
+            APP.gotoAnalysis(params);
+        }
+
+        function gotoBodyPartPicker() {
+            saveParams();
+            APP.gotoBodyPartPicker(params);
+        }
+
+        function getGen3DColorImage() {
+            var getImg = APP.getGen3DColorImage(params);
+            if (getImg) {
+                APP.returnGen3DColorImage();
+                //塞入圖資訊
+                //showImgZoom(params.img);
+            }
+        }
+
+        function checkGaiImage() {
+            var gaiPath = imagePath.replace("_jpg", "_gai");
+            $.ajax({
+                type: 'HEAD',
+                url: gaiPath,
+                success: function() {
+                    imageType = 'g';
+                    $('.color-3d2-icon').css('background-image', 'url(./../images/thermometer.png)');
+                    showImgZoom(gaiPath);
+                    console.info("圖片存在");
+                },
+                error: function() {
+                    imageType = 'j';
+                    $('.color-3d2-icon').css('background-image', 'url(./../images/thermometer.png)');
+                    showImgZoom(imagePath);
+                    console.info("圖片不存在");
+                }
+            });
+        }
+
+       function checkThmImage() {
+            APP.vibrating();
+			
+            var imgPath = "";
+            if ( imageType == 't' ) {
+                $('.color-3d2-icon').css('background-image', 'url(./../images/thermometer.png)');
+                imageType = 'j';
+				resetCanvas();
+                checkGaiImage();
+            } else {
+			    $('.color-3d2-icon').css('background-image', 'url(./../images/photo.png)');
+			    imageType = 't';
+				resetCanvas();
+                var strs = imagePath.split("_");
+                imgPath = strs[0] + "_" + strs[1] + "_" + (parseInt(strs[2]) + 99) + "_thm.png";
+				//imgPath = "http://10.10.66.121:8080/assets/zh/test_thm.png";
+		        var img = new Image();
+			    img.src = imgPath;
+			    img.onload = function() {
+	                var width_scale = 246 / img.width;
+		            var height_scale = 328 / img.height;
+					var lock = gClickMode == "mark" ? true : false;
+                    var img_obj = new fabric.Image(img, {
+                        selectable: true,
+			    	    id: "thermal_img",
+                        hasBorders: false,
+                        hasControls: false,
+					    lockMovementX: lock,
+					    lockMovementY: lock,
+		                left: (246-img.width*Math.min(width_scale, height_scale))/Math.min(width_scale, height_scale)/2
+                    });
+		            gCanvas.add(img_obj);
+                    gCanvas.zoomToPoint(new fabric.Point(0, 0), Math.max(width_scale, height_scale));
+	                gThermalScale = Math.max(width_scale, height_scale);
+			    	console.log("add thermal img");
+			        if ( gJsonClickPoint.point.length > 0 )
+			            reDraw();
+			    }
+			
+            }
+			
+
+        }
+
+        //確認是否有圖片，如有則先放置
+        function checkImage() {
+            if (imageType == 'j' || imageType == 'g') {
+                checkGaiImage();
+            } else {
+                checkThmImage();
+            }
+        }
+
+        function replaceImg() {
+
+        }
+		
+		
+		function undoPoint() {
+			$("#cnt-icon-"+gClickPointCnt).remove(); 
+			$(".last_col").remove(); 
+			
+	        gCanvas.forEachObject(function(obj){
+                if ( obj.id == "text_"+gClickPointCnt ) {
+                    gCanvas.remove(obj);
+				}
+	        })
+			
+		    var table = $('#woundPointTable');
+			table.find('tr').each(function(){
+			    if ( gClickPointCnt != 1 )
+			        $(this).find(':last-child').addClass("last_col");
+			});
+			
+			gJsonClickPoint.point.pop();
+			gClickPointCnt--;
+			
+			console.log(gJsonClickPoint);
+			
+			if ( gClickPointCnt < 3 ) {
+			    $(".line").remove(); 
+	            gCanvas.forEachObject(function(obj){
+                    if ( obj.get('type') == "line" ) {
+                        gCanvas.remove(obj);
+			    	}
+	            })
+			}
+			
+			if ( gClickPointCnt == 0 ) 
+			    $('.reset-icon').css('display','none');
+
+		}
+		
+		function addAngleLine() {
+			for ( var i = 1 ; i < 3 ; i++ ) {
+			    if ( imageType == "j" ||  imageType == "g" ) {
+				    var x1 = gJsonClickPoint.point[0].ImgX + gCanvas.item(0).left,
+				        y1 = gJsonClickPoint.point[0].ImgY + gCanvas.item(0).top,
+						x2 = gJsonClickPoint.point[i].ImgX + gCanvas.item(0).left,
+				        y2 = gJsonClickPoint.point[i].ImgY + gCanvas.item(0).top;
+                    var line = new fabric.Line([x1,y1,x2,y2], {
+                        stroke: '#000000',
+						fill: '#ffffff',
+                        strokeWidth: gStrokeWidth / (gCanvas.getZoom()*10),
+                        hasBorders: false,
+                        hasControls: false,
+                        lockMovementX: true,
+                        lockMovementY: true,
+						id: "line_"+i
+                    });
+					gCanvas.add(line);
+					gCanvas.renderAll();
+					console.log("add line");
+
+				}
+				else if ( imageType == "t" ) {
+				    var x1 = gJsonClickPoint.point[0].ThermalX + gCanvas.item(0).left,
+				        y1 = gJsonClickPoint.point[0].ThermalY + gCanvas.item(0).top,
+						x2 = gJsonClickPoint.point[i].ThermalX + gCanvas.item(0).left,
+				        y2 = gJsonClickPoint.point[i].ThermalY + gCanvas.item(0).top;
+                    var line = new fabric.Line([x1,y1,x2,y2], {
+                        stroke: '#000000',
+						fill: '#ffffff',
+                        strokeWidth: gStrokeWidth / (gCanvas.getZoom()*10),
+                        hasBorders: false,
+                        hasControls: false,
+                        lockMovementX: true,
+                        lockMovementY: true,
+						id: "line_"+i
+                    });
+					gCanvas.add(line);
+					gCanvas.renderAll();
+					console.log("add line");
+				}
+			}
+		}
+		
+		function switchAD() {
+		    gShowAngel = !gShowAngel;
+			if ( gShowAngel ) 
+			    $('.angle-distance-icon').css('background-image',"url('./../images/distance.png')");
+			
+		    else 
+			    $('.angle-distance-icon').css('background-image',"url('./../images/angle.png')");
+			
+			createTableHead();
+			gClickPointCnt = 0;
+			gJsonClickPoint.point = new Array();
+			$(".cnt-icon").remove(); 
+			$(".line").remove(); 
+			
+	        gCanvas.forEachObject(function(obj){
+                if ( obj.get('type') == "text" || obj.get('type') == "line" ) {
+                    gCanvas.remove(obj);
+				}
+	        })
+		}
+		
+		function calLength(cnt) {
+		    var p1 = gJsonClickPoint.point[0];
+			var p2 = gJsonClickPoint.point[cnt-1];
+			
+			if ( p1.D == -999 || p2.D == -999 )
+			    return "---";
+			
+			var a = (p2.SpaceX - p1.SpaceX);
+			var b = (p2.SpaceY - p1.SpaceY);
+			var c = p2.D - p1.D;
+			return Math.sqrt( a*a + b*b + c*c );
+		}
+		
+		function calAngle() {
+			if ( gJsonClickPoint.point[0].D == -999 || gJsonClickPoint.point[1].D == -999 || gJsonClickPoint.point[2].D == -999 )
+			    return "---";
+				
+		    var p0 = [gJsonClickPoint.point[0].SpaceX, gJsonClickPoint.point[0].SpaceY, gJsonClickPoint.point[0].D];
+			var p1 = [gJsonClickPoint.point[1].SpaceX, gJsonClickPoint.point[1].SpaceY, gJsonClickPoint.point[1].D];
+			var p2 = [gJsonClickPoint.point[2].SpaceX, gJsonClickPoint.point[2].SpaceY, gJsonClickPoint.point[2].D];
+			var v1 = [p1[0]-p0[0],p1[1]-p0[1],p1[2]-p0[2]];
+			var v2 = [p2[0]-p0[0],p2[1]-p0[1],p2[2]-p0[2]];
+			var cosine = (v1[0]*v2[0]+v1[1]*v2[1]+v1[2]*v2[2]) / (Math.sqrt( v1[0]*v1[0] + v1[1]*v1[1] + v1[2]*v1[2] ) * Math.sqrt( v2[0]*v2[0] + v2[1]*v2[1] + v2[2]*v2[2] ));
+			console.log("cosine: "+cosine);
+			console.log("degree: "+Math.acos(cosine) / Math.PI * 180 );
+			return Math.acos(cosine) / Math.PI * 180;
+		}
+		
+		function reDraw() {
+		    console.log(gJsonClickPoint);
+			for ( var i = 0 ; i < gJsonClickPoint.point.length ; i++ ) {
+			    var top = imageType == "t" ? gJsonClickPoint.point[i].ThermalY : gJsonClickPoint.point[i].ImgY;
+				var left = imageType == "t" ? gJsonClickPoint.point[i].ThermalX : gJsonClickPoint.point[i].ImgX;
+			    var str = (i+1).toString();
+	            var text = new fabric.Text( str, {
+					id: "text_"+(i+1),
+                    left: left,
+                    top: top,
+                    originX: 'center',
+                    originY: 'center',
+		            fill:"#000000",
+					fontSize: gFontSize/(gCanvas.getZoom()*6.66),
+                    hasBorders: false,
+                    hasControls: false,
+					lockMovementY: true,
+					lockMovementX: true
+                });
+	            gCanvas.add(text);
+				gCanvas.renderAll();
+
+		    }   
+			
+			if ( gClickPointCnt == 3 && gShowAngel )
+			    addAngleLine();			
+
+		}
+		
+		function loadColorImg(imgPath){
+		
+		    var img = new Image();
+			img.src = imgPath;
+			img.onload = function() {
+	            var width_scale = 246 / img.width;
+		        var height_scale = 328 / img.height;
+				//gCanvas.setViewportTransform([1,0,0,1,0,0]); 
+				var lock = gClickMode == "mark" ? true : false;
+                var img_obj = new fabric.Image(img, {
+                    selectable: true,
+				    id: "color_img",
+                    hasBorders: false,
+                    hasControls: false,
+				    lockMovementX: lock,
+				    lockMovementY: lock,
+		            left: (246-img.width*Math.min(width_scale, height_scale))/Math.min(width_scale, height_scale)/2
+                });
+		        gCanvas.add(img_obj);
+		           
+                if ( Math.min(width_scale, height_scale) < 1 )
+		              gCanvas.zoomToPoint(new fabric.Point(0, 0), Math.min(width_scale, height_scale));
+		        
+	            gColorScale = Math.min(width_scale, height_scale);
+				console.log("add color img");
+
+			    if ( gJsonClickPoint.point.length > 0 )
+			        reDraw();
+			}
+
+		}
+		
+		function switchClickMode() {
+			if ( gClickMode == "drag" ) { 
+			    $('.mark-move-icon').css('background-image',"url('./../images/drag.png')");
+				gClickMode = "mark";
+				gCanvas.item(0).lockMovementX = true;
+				gCanvas.item(0).lockMovementY = true;
+				gCanvas.renderAll();
+			}
+			
+		    else if ( gClickMode == "mark" ) { 
+			    $('.mark-move-icon').css('background-image',"url('./../images/crosshair.png')");
+				gClickMode = "drag";
+				gCanvas.item(0).lockMovementX = false;
+				gCanvas.item(0).lockMovementY = false;
+				gCanvas.renderAll();
+				
+			}
+		}
+		
+		function resetCanvas() {
+		    gCanvas.clear();
+			gCanvas.setBackgroundColor('#ffffff', gCanvas.renderAll.bind(gCanvas));
+			gCanvas.setViewportTransform([1,0,0,1,0,0]);
+		}
+		
+        function getRandom(min,max){
+            return Math.floor(Math.random()*(max-min+1))+min;
+        };
+		
+        fabric.Object.prototype.toObject = (function (toObject) {
+            return function (properties) {
+                return fabric.util.object.extend(toObject.call(this, properties), {
+                    id: this.id,
+                });
+            };
+        })(fabric.Object.prototype.toObject);
+    </script>
+</body>
+
+</html>

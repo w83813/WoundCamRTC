@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+        <script type="text/javascript" charset="utf-8" src="./lib/SDK.js" ></script>
+
+        <script type="text/javascript" >
+
+            var imagePath;
+
+            window.onload = function(e) {
+                var params = SDK.getUrlValues();
+                var preview = document.getElementById('preview');
+                imagePath = params.img;
+                // imagePath = './demo.png';
+                preview.src = imagePath;
+                console.info(window.history);
+            }
+
+            function goback() {
+                console.info(document.location + " press back...");
+                window.history.back();
+            }
+
+
+        </script>
+
+        <link rel="stylesheet" type="text/css" href="./css/app.css" />
+        <style>
+            .image_container {
+                width: 100vw;
+                height: 100vh;
+                line-height: 100vh;
+                background-color: #202020;
+                vertical-align: middle;
+                text-align: center;
+            }
+
+            .preview {
+                width: 100%;
+                height: auto;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class='image_container' onclick='goback()' >
+            <img id='preview' class='preview' />
+        </div>
+
+    </body>
+
+</html>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_updatepwd"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.itri.woundcamrtc.UpdatePwdActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#d9d9d9" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_card_shadow"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:textSize="26sp"
+            android:layout_gravity="center"
+            android:text="@string/updatePsd" />
+
+        <!--<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="使用者登入"
+            android:textColor="#000"
+            android:layout_gravity="center"
+            android:textSize="24sp" />-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/userName" />
+
+        <EditText
+            android:id="@+id/username1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/userName_tip"
+            android:textSize="20sp"
+            android:inputType="textEmailAddress"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@._"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/oldPsd" />
+
+        <EditText
+            android:id="@+id/oldPsd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/oldPass_tip"
+            android:textSize="20sp"
+            android:inputType="textPassword"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@."
+            android:drawableLeft="@drawable/ic_vpn_key"
+            android:drawableRight="@drawable/ic_visibility_off"
+            android:drawablePadding="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/newPsd" />
+
+        <EditText
+            android:id="@+id/newPsd"
+            android:hint="@string/newPass_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:inputType="textPassword"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@."
+            android:drawableLeft="@drawable/ic_vpn_key"
+            android:drawableRight="@drawable/ic_visibility_off"
+            android:drawablePadding="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/checkPsd" />
+
+        <EditText
+            android:id="@+id/checkPsd"
+            android:hint="@string/checkPass_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:inputType="textPassword"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@."
+            android:drawableLeft="@drawable/ic_vpn_key"
+            android:drawableRight="@drawable/ic_visibility_off"
+            android:drawablePadding="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+            android:layout_marginTop="18dp"
+            android:divider="@drawable/divider"
+            android:showDividers="middle">
+
+            <Button
+                android:id="@+id/cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_btn"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:text="@string/back_to_login"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/updatePsd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_btn"
+                android:padding="5dp"
+                android:layout_weight="1"
+                android:text="@string/confirm_updatePsd"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/copyright"
+        android:layout_marginBottom="5dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/copyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/copyright"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

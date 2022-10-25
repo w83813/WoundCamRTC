@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" />
+
+
+    <script type="text/javascript" charset="utf-8" src="./../lib/jquery-1.9.0.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="./../lib/bootstrap.min.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="./../lib/jquery.dataTables.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="./../lib/dataTables.list.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="./lib/table_util.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="./../lib/app.js" ></script>
+
+    <script type="text/javascript" >
+
+    var dialog = null;
+    var ownerId = "";
+    var roleId = "";
+    var gCurPage = 1;
+	var gCurlist = "PtNoList";
+
+    window.onload = function (e) {
+        if (dialog != null) {
+            dialog.close();
+        }
+
+        roleId = getUrlParam("roleId");
+        ownerId = getUrlParam("ownerId");
+
+		if(roleId != undefined){
+		    generatePager('.patient-table', 1, roleId, ownerId);
+        }
+    }
+
+    function goToFullList(){
+	    gCurlist = "FullList";
+		$('#search').val(""); 
+	    gCurPage = 1;
+        if(roleId != undefined){
+            generatePager('.patient-table', 1, roleId, "");
+        }
+    }
+
+    function assignPatientNo(){
+	    gCurlist = "PtNoList";
+		$('#search').val(""); 
+	    gCurPage = 1;
+        if(roleId != undefined){
+            generatePager('.patient-table', 1, roleId, ownerId);
+        }
+    }
+
+    function format ( d ) {
+        var content = "";
+        //console.info("抓到網址為： http://192.168.1.157:8080/wgnursing/wound/tsgh/v3/api/qryInfoByPatient?keyNo=" + d.keyNo);
+
+        $.ajax({
+            //url: "http://192.168.1.157:8080/wgnursing/wound/tsgh/v3/api/qryInfoByPatient?keyNo=" + d.keyNo + "&location=TC",
+            //url: "http://192.168.50.75:8080/wgnursing/wound/tsgh/v2/api/qryWoundInfoByPatient?keyNo=" + d.keyNo + "&location=TC",
+            url: "http://52.10.24.93:8080/woundcare/connect/v3/api/qryInfoByPatient?keyNo=" + d.keyNo + "&location=YT",
+            //url: "http://192.168.50.12:8080/wgnursing/wound/tsgh/v2/api/qryWoundInfoByPatient?keyNo=" + d.keyNo,
+            type: "POST",
+            data: JSON.stringify(),
+            async : false,
+            dataType: "json",
+            success: function (data) {
+                var item = data.data;
+                content += "<div class='list_block'>";
+
+                for (var i=0; i<item.length; i++){
+                    var obj = {"charNo": d.charNo, "bodyPart": item[i].bodypart};
+                     console.info("抓到網址：http://192.168.1.157:8080/wgnursing" + item[i].imgUrl  + "&q=128");
+                    /*content += "<div class='image_block' onclick='clickItem(" + JSON.stringify(obj) + ")'><div class='image_div'><img  class='image_container' src='http://192.168.50.12:8080/wgnursing" + item[i].imgUrl  + "&q=128' /></div>" +
+                               "<div class='image_desc'>" + item[i].bodypart + "</div></div>";*/
+                    content += "<div class='image_block' onclick='clickItem(" + JSON.stringify(obj) + ")'><div class='image_div'><img  class='image_container' src='http://52.10.24.93:8080/woundcare" + item[i].imgUrl  + "&q=128&location=YT' /></div>" +
+                               "<div class='image_desc'>" + item[i].bodypart + "</div></div>";
+                    /*content += "<div class='image_block' onclick='clickItem(" + JSON.stringify(obj) + ")'><div class='image_div'><img  class='image_container' src='http://192.168.50.75:8080/wgnursing" + item[i].imgUrl  + "&q=128&location=TC' /></div>" +
+                               "<div class='image_desc'>" + item[i].bodypart + "</div></div>";*/
+                    //console.info("Webview檔案網址為： http://192.168.1.157:8080/wgnursing" + item[i].imgUrl + "&q=128&location=TC");
+                }
+                content += "</div>";
+            }
+        });
+
+        return '<table class="detail" cellpadding="5" cellspacing="0" border="0">' + content + '</table>';
+    }
+
+    function clickItem(obj) {
+        APP.checkpart(obj);
+    }
+
+    function goback() {
+        APP.goback();
+    }
+
+    function getUrlParam(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    }
+	
+    function click_page(page) {
+        console.log("click "+page);
+        cleanDataTables();
+    	gCurPage = page;
+		if ( $('#search').val() != "" ) 
+		    generatePager('.patient-table', page, roleId, $('#search').val() );
+		else if ( gCurlist == "FullList" )
+		    generatePager('.patient-table', page, roleId, "");
+		else if ( gCurlist == "PtNoList" )
+		    generatePager('.patient-table', page, roleId, ownerId);
+		/*
+    	if ( gSerach ) {
+    	    var divNo = "${currentUser.id!""}" != 18 ? "" : "${currentUser.id!""}";
+    	    var totalStr = "page_num="+gCurPage+"&limit="+limit+"&status=" + $(".status").val() + "&source=" + $(".source").val() + "&from=" +
+    	    			   $(".from").val() + "&ptNo=" + $(".keyNo").val() + "&date=" +
+    	    			   $(".datepick").val() + "&bodyPart=" + $(".bodyPart").val() +
+    	    			   "&divNo=" + divNo;
+    	    generatePager('.patient-table', "${base}/connect/v3/api/qryPatientList?" + totalStr);
+    	}
+    	else
+            generatePager('.patient-table', "${base}/connect/v3/api/qryPatientList?page_num="+page+"&limit="+limit, "zhTW"); 	
+		*/
+    }
+	
+	function search() {
+	    gCurPage = 1;
+        cleanDataTables();
+		generatePager('.patient-table', 1, roleId, $('#search').val() );
+	}
+
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="./../css/bootstrap.css" />
+
+    <link rel="stylesheet" type="text/css" href="./../css/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./../css/select.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./../css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="./../css/app.css" />
+    <link rel="stylesheet" type="text/css" href="./../css/preview.css" />
+    <link rel="stylesheet" type="text/css" href="./../css/patientList.css" />
+
+    <style>
+        td.details-control {
+            background: url('./../images/details_open.png') no-repeat center center;
+            cursor: pointer;
+        }
+
+        tr.shown td.details-control {
+            background: url('./../images/details_close.png') no-repeat center center;
+        }
+
+		div.dataTables_filter label{
+			text-align: center;
+			width: 100%;
+		}
+		div.dataTables_filter input{
+			display: inline-block;
+			width: 18em;
+		}
+		div.dataTables_paginate{
+			text-align: center;
+			width: 100%;
+		}
+    </style>
+
+</head>
+
+<div id='dialog_input' class='input_mode_shield' >
+    <div id='dialog_input_panel' class='dialog_input_panel' style='height: 30vh; z-index: 1001;' >
+        <div class='dialog_title' style='margin-top: 20vh;' >
+            <div class='dialog_title_text' >Message</div>
+        </div>
+
+        <div class='dialog_content' style='height: 9vh;' >
+
+        </div>
+    </div>
+</div>
+
+<div class='toolbar' >
+    <div class='tool_button' style='left: 2vw;' onclick='goback()' ><img src="./../images/arrow_back.svg" /></div>
+    <div class="title">Patient List</div>
+</div>
+
+<hr/>
+
+<div class="input-group col-md-12">
+    <span class="input-group-addon btn single-list" onclick="assignPatientNo()">Single Patient</span>
+    <span class="input-group-addon btn full-list" onclick="goToFullList()">Full List</span>
+</div>
+<div class="content">
+    <table class="table table-striped table-bordered bootstrap-datatable patient-table">
+        <thead>
+        <tr class="tablesorter-headerRow">
+            <th class="details-control">Details</th>
+            <th>No.</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <div class="row">
+		    <div class="col-sm-12">
+			    <div id="DataTables_Table_0_filter" class="dataTables_filter">
+				    <label>Search:&nbsp;&nbsp;<input type="text" id="search" onkeyup="search()"  class="form-control input-md" placeholder="" aria-controls="DataTables_Table_0"></label>
+				</div>
+			</div>
+		</div>
+        <tbody id="list_content">
+
+        </tbody>
+    </table>
+    <div>
+		<div class="dataTables_paginate paging_simple_numbers" >
+			<ul id="pagination" class="pagination">
+			    <li class="paginate_button previous disabled" aria-controls="DataTables_Table_0" id="DataTables_Table_0_previous"><a href="#"><</a></li>
+			    <li class="paginate_button active" aria-controls="DataTables_Table_0"><a href="#">1</a></li>
+			    <li class="paginate_button next" aria-controls="" id="DataTables_Table_0_next"><a href="#">></a></li>
+			</ul>
+		</div>
+    </div>
+</div>
+
+</body>
+
+</html>

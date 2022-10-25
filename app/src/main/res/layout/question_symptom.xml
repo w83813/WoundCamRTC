@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/question_symptom"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/viewfinder_frame">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:padding="5dp"
+        android:background="@color/content_background">
+
+        <TextView
+            android:id="@+id/required_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/required_note"
+            android:text="@string/required_note"
+            android:gravity="center_vertical|left"
+            android:visibility="gone"
+            android:layout_marginVertical="5dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/case_child_title"
+            android:text="@string/question_fever"
+            android:id="@+id/text_ownerId"
+            android:gravity="center_vertical|left"
+            android:layout_marginVertical="5dp" />
+
+        <org.itri.woundcamrtc.view.FlowRadioGroup
+            android:id="@+id/fever_radioBtnGrp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/yes_555"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/yes"
+                android:textColor="#000"
+                android:theme="@style/radio_btn" />
+
+            <RadioButton
+                android:id="@+id/no_556"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/no"
+                android:textColor="#000"
+                android:theme="@style/radio_btn" />
+
+        </org.itri.woundcamrtc.view.FlowRadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/case_child_title"
+            android:text="@string/question_smell"
+            android:gravity="center_vertical|left"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp" />
+
+        <org.itri.woundcamrtc.view.FlowRadioGroup
+            android:id="@+id/smell_radioBtnGrp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/yes_557"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/yes"
+                android:textColor="#000"
+
+                android:theme="@style/radio_btn" />
+
+            <RadioButton
+                android:id="@+id/no_558"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/no"
+
+                android:textColor="#000"
+                android:theme="@style/radio_btn" />
+
+        </org.itri.woundcamrtc.view.FlowRadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/case_child_title"
+            android:text="@string/question_level"
+            android:gravity="center_vertical|left"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp" />
+
+        <org.itri.woundcamrtc.view.FlowRadioGroup
+            android:id="@+id/level_radioBtnGrp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/dry_559"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/answer_dry"
+                android:textColor="#000"
+
+                android:theme="@style/radio_btn" />
+
+            <RadioButton
+                android:id="@+id/few_560"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/answer_few"
+
+                android:textColor="#000"
+                android:theme="@style/radio_btn" />
+
+            <RadioButton
+                android:id="@+id/middle_561"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/answer_middle"
+
+                android:textColor="#000"
+                android:theme="@style/radio_btn" />
+
+            <RadioButton
+                android:id="@+id/large_562"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/answer_large"
+
+                android:textColor="#000"
+                android:theme="@style/radio_btn" />
+
+        </org.itri.woundcamrtc.view.FlowRadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/case_child_title"
+            android:text="@string/question_character"
+            android:gravity="center_vertical|left"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp" />
+
+        <org.itri.woundcamrtc.view.FlowRadioGroup
+            android:id="@+id/character_radioBtnGrp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/none_563"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/answer_none"
+                android:textColor="#000"
+
+                android:theme="@style/radio_btn" />
+
+            <RadioButton
+                android:id="@+id/serum_564"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/answer_serum"
+
+                android:textColor="#000"
+                android:theme="@style/radio_btn" />
+
+            <RadioButton
+                android:id="@+id/bloodWater_565"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/answer_bloodWater"
+
+                android:textColor="#000"
+                android:theme="@style/radio_btn" />
+
+            <RadioButton
+                android:id="@+id/slurry_566"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/answer_slurry"
+
+                android:textColor="#000"
+                android:theme="@style/radio_btn" />
+
+            <RadioButton
+                android:id="@+id/pus_567"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/answer_pus"
+
+                android:textColor="#000"
+                android:theme="@style/radio_btn" />
+
+        </org.itri.woundcamrtc.view.FlowRadioGroup>
+
+    </LinearLayout>
+
+</ScrollView>

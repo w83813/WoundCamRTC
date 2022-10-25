@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="user-scalable=yes, initial-scale=10, maximum-scale=10, minimum-scale=1, width=device-width">
+    <title></title>
+    <style>
+        .ui-loader {
+            display: none;
+        }
+
+        .ui-tabs .ui-tabs-panel {
+            padding: 0 !important;
+        }
+
+        .ui-tabs .ui-tabs-nav {
+            margin: 0;
+            padding: 0 !important;
+        }
+
+        .ui-tabs {
+
+            padding: 0 !important;
+        }
+
+        .ui-tabs .ui-tabs-nav li { 
+            margin:  0 !important;
+        }
+
+        .ui-widget.ui-widget-content {
+            border: 0 !important;
+        }
+
+        .ui-tabs .ui-tabs-nav .ui-tabs-anchor { 
+            padding: .5em 0.5em !important;
+        }
+
+        body {
+            font-size: 2em !important;
+            padding: 0.1em;
+            margin: 0;
+        }
+
+        img {
+            width: 90%;
+        }
+
+        .c2r1a_left {
+            width: 70%;
+            float: left;
+        }
+
+        .c2r1a_right {
+            width: 30%;
+            float: left;
+        }
+
+        .c2r1b_left {
+            width: 50%;
+            float: left;
+        }
+
+        .c2r1b_right {
+            width: 50%;
+            float: left;
+        }
+
+    </style>
+    <script src="./js/lazyload.js"></script>
+</head>
+
+<body>
+<!-- container_loading -->
+<div class='container_loading'>
+    <div id="loading_text"
+         style="overflow: hidden; position: absolute; width: 150px; top: 40%; left: 0px; right: 0px; margin: auto; padding: 2px; border: 3px solid rgb(187, 187, 187); background-color: rgb(238, 238, 238); border-radius: 10px; text-align: center; font-family: Helvetica, sans-serif; font-size: 13px; font-weight: 700; color: rgb(170, 170, 170); z-index: 100000; ">
+        Loading
+    </div>
+</div>
+<!-- /container_loading -->
+
+<div data-role="page" id="main" class="my-page" style="display: none;">
+    <!-- header -->
+    <div data-role="header" data-position="fixed" style="display: none;">
+        <h1><span id="page_title"></span></h1>
+        <a href="#"
+           onclick="JSBridge.call('bridge','closeApp',{'msg':'Hello JSBridge'},function(res){console.log(JSON.stringify(res));})"
+           data-transition="fade" data-icon="power" data-iconpos="notext" data-rel="back"
+           data-ajax="false">End</a>
+        <a href="#" id="uploadButton" onclick="uploadCurBatchData();" data-icon="arrow-u"
+           data-iconpos="right" data-ajax="false"><span id="waitUploadCount">Upload(0)</span></a>
+    </div>
+    <!-- /header -->
+    <!-- content -->
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1">進展</a></li>
+            <li><a href="#tabs-2">評估</a></li>
+            <!--<li><a href="#tabs-3">清潔</a></li>-->
+            <li><a href="#tabs-4">護理</a></li>
+            <li><a href="#tabs-5">照護</a></li>
+            <li><a href="#tabs-6">離開</a></li>
+        </ul>
+        <div id="tabs-1">
+            <canvas id="chart1" height="135%"></canvas>
+        </div>
+        <div id="tabs-2">
+            <div class="c2r1b_left">
+                <div id="woundAss"></div>
+            </div>
+            <div class="c2r1b_right">
+                <div id="woundSize"></div>
+                <div id="woundTissue"></div>
+                <img src="file:///storage/emulated/0/Download/WoundCam/analytics.jpg">
+            </div>
+        </div>
+        <!-- <div id="tabs-3">
+             <li>傷口乾掉的組織液較多，請清潔後再評估。</li>
+             <li>傷口周圍溫度較低，請注意血循問題。</li>
+         </div>-->
+        <div id="tabs-4">
+            <div class="c2r1a_left">
+                <li>傷口深淺不一，組織液滲出的情形不同、合併的感染程度也不同，請用乾淨的乾棉棒沾藥膏，在傷口上薄擦一層凝膠，不需要厚敷。</li>
+                <li>傷口包覆紗布或敷料，可以保護傷口，免於環境中的各種細菌、病毒伺機性感染，如果敷料能提供傷口床一個濕潤又抑菌的環境，確實會縮短傷口癒合需要的時間。</li>
+            </div>
+            <div class="c2r1a_right">
+                <img src="./products/187368161956a1f3a9a895d.jpg">
+                <img src="./products/146025143556a1e71e47d43.jpg">
+            </div>
+        </div>
+        <div id="tabs-5">
+            <div class="c2r1a_left">
+                <li>避免壓迫傷口，避免傷口碰水。</li>
+                <li>在受傷48小時以內若有腫脹現象，可以間斷式的冰敷。</li>
+                <li>減少該傷口周邊的關節運動，以免牽扯傷口、不利復原。關節活動處多加按摩。</li>
+                <li>多攝取蛋白質(如肉、蛋類、魚肉類等)及維生素 C(如：柳橙、奇異果等)。</li>
+                <li>
+                    傷口在適度濕潤的環境下細胞再生能力及游移速度較快，復原速度比在完全乾燥的環境下快一倍以上；因為傷口自然滲出的分泌物，含有豐富的生長因子，適量地保留在傷口床處，可幫助傷口加速癒合。
+                </li>
+                <li>
+                    傷口需要白血球來吞掉外來的細菌及外來物，需要纖維母細胞移行、增生、進行修復，需要上皮細胞從傷口周圍移行、長出新的皮膚，這些步驟，都必須在濕潤的傷口床上，才能順利進行。
+                </li>
+                <li>
+                    濕潤的傷口床，有利於組織新生、傷口癒合，然而潮濕悶熱的環境，也是細菌的溫床，所以勤換藥，也非常重要。，然而面對滲出液很多的傷口，或是不小心弄濕傷口，只要覆蓋在外層的敷料濕了，就請換藥。
+                </li>
+            </div>
+            <div class="c2r1a_right">
+                <img src="./products/1538666395578873ef5f43d.png">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- /content -->
+</div>
+<!-- /page -->
+
+<script type="text/javascript">
+        var timeout = null;
+        var container = null;
+
+
+
+        LazyLoad.css(['./js/bootstrap-3.3.4.min.css', './js/jquery-ui.css'], function() {
+            LazyLoad.js(['./js/jquery-1.11.3.min.js', './js/jquery-ui.js', './js/jquery.mobile-1.4.5.min.js'], function() {
+                $(document).ready(function() {
+                    LazyLoad.js(['./js/jquery.lazyload-1.9.7.min.js', './js/chartjs/moment.min.js', './js/chartjs/Chart.bundle.js', './js/chartjs/utils.js', './js/JSBridge.js'], function() {
+                        $(".container_loading").fadeOut();
+                        $("#tabs").tabs();
+                        $("#main").show();
+                        timeout = setTimeout(function() {
+                            
+                            $('#tabs').click('tabsselect', function(event, ui) {
+                                var selectedTab = $("#tabs").tabs('option', 'active');
+                                if (selectedTab == 4) {
+                                    JSBridge.call('bridge', 'pageEvent', {
+                                        'msg': 'close'
+                                    }, function(res) {
+                                        console.log(JSON.stringify(res));
+                                    });
+                                }
+                            });
+                            var chartData = '{"labels": ["長度(cm)", "寬度(cm)", "面積(cm2)", "組織T", "感染I", "滲出M", "周邊E"],"datasets": []}';
+                            //var chartData ='{"labels": ["長度(cm)", "寬度(cm)", "面積(cm2)", "T", "I", "M", "E"],"datasets": [{"backgroundColor": "rgba(179,181,198,0.4)","label": "2018-02-28", "data": [10,6,17,0,0,0,0]},{"backgroundColor": "rgba(179,181,198,0.4)","label": "2018-02-28", "data": [6,8,21,0,0,0,0]}]}';
+                            /*
+                            var presets = window.chartColors;
+                            var utils = Samples.utils;
+                            var radarChartData = {
+                                labels: ["長度(cm)", "寬度(cm)", "面積(cm2)", "T", "I", "M", "E"],
+                                datasets: [
+                                    {
+                                        backgroundColor: utils.transparentize(presets.red),
+                                        label: "2018-01-10",
+                                        data: [3,2,5,4,2,2,2]
+                                    },
+                                    {
+                                        backgroundColor: utils.transparentize(presets.blue),
+                                        label: "2018-01-30",
+                                        data: [1,2,2,0,4,1,5]
+                                    }
+                                ]
+                            };
+
+                            var options = {
+
+                            };
+
+                            container = new Chart('chart1', {
+                               type: 'radar',
+                               data: chartData,
+                               options: options
+                            } );
+                            */
+
+                                $.ajax({
+                                    url : "file:///storage/emulated/0/Download/WoundCam/woundSize.txt",
+                                    success : function (data) {
+                                    console.log('load woundSize.txt');
+                                        $("#woundSize").html(data);
+                                    }
+                                });
+                                $.ajax({
+                                    url : "file:///storage/emulated/0/Download/WoundCam/woundTissue.txt",
+                                    success : function (data) {
+                                    console.log('load woundTissue.txt');
+                                        $("#woundTissue").html(data);
+                                    }
+                                });
+
+                                $.ajax({
+                                    url : "file:///storage/emulated/0/Download/WoundCam/woundAss.txt",
+                                    success : function (data) {
+                                    console.log('load woundAss.txt');
+                                        $("#woundAss").html(data);
+                                    }
+                                });
+
+                            showRadarChart(chartData);
+                            JSBridge.call('bridge', 'pageReady', {
+                                'msg': 'Hello JSBridge'
+                            }, function(res) {
+                                console.log(JSON.stringify(res));
+                            });
+
+                        }, 500);
+                        //setTimeout
+                    });
+                    //LazyLoad.js
+                });
+                //$(document).ready
+            });
+            //LazyLoad.js
+        });
+        //LazyLoad.css
+
+        function setCaseId(data) {
+            if (data != null && data != "") {
+                $("#caseId").text(data);
+            }
+        }
+
+        function showRadarChart(data) {
+
+            console.log(data);
+            if (data != null && data != "") {
+                var chartData = JSON.parse(data);
+
+                //console.log(JSON.stringify(chartData));
+                if (container != null) {
+                    try{
+                    container.destory();
+                    }catch(e){}
+                    container = null;
+                }
+
+                var options = {
+                    scale: {
+                        reverse: false,
+                        gridLines: {
+                            color: ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        },
+                        pointLabels: {
+                            fontSize: 24
+                        },
+                    },
+                    layout: {
+                        padding: {
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 20
+                        }
+                    }
+                };
+                container = new Chart('chart1', {
+                    type: 'radar',
+                    data: chartData,
+                    options: options
+                });
+            }
+        }
+
+</script>
+</body>
+
+</html>

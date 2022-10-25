@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="please_set_the_boundary">請設置邊界</string>
+    <string name="please_circle_the_wound">請圈選傷口</string>
+    <string name="taking_pictures">拍照中 . . .</string>
+    <string name="restart">重製</string>
+    <string name="remake_confirmation">確認重製 ?</string>
+    <string name="time_error">時間異常</string>
+    <string name="please_connect_to_wifi_to_adjust_the_time">請連接 Wi-Fi  調整時間</string>
+</resources>

@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WoundCamRTC</string>
+    <string name="mjview_name">Live Thermal Image</string>
+    <string name="grabcut_name">Wound Grabcut</string>
+    <string name="patientList">Patient List</string>
+
+    <string name="doctor_note">Message</string>
+
+    <string name="goback">goback</string>
+    <string name="go_back">Return</string>
+
+    <!--使用權限相關參數-->
+    <string name="no_authority_to_use">Sorry!You are not authorized to use it.</string>
+    <string name="no_account_authority_to_use">Sorry!Your account has problem(ex:password changed,permission denied)，Please login again and reuse this funtion .</string>
+    <!--登入介面參數-->
+    <string name="confirm_network">Please check internet connection.</string>
+    <string name="login_failed">Invalid userName or password, Please retry again.</string>
+    <string name="update_success">Update password success，Please login again</string>
+    <string name="api_failed">Server error! Please contact staff for assistance.</string>
+    <string name="logInfo_not_filled">Can not login without complete information.</string>
+    <string name="login_timeout">Login timeout，Please login again.</string>
+    <string name="camera_failed">Camera parameter need adjust</string>
+    <string name="local_data_error">Local data error.Please contact staff for assistance.</string>
+    <string name="info_update_not_filled">Username or password has not completed.</string>
+    <string name="newpwd_not_match_checkpwd">Your new and confirm password are different. Please enter your passwords again.</string>
+    <string name="confirm_permission">Please check app permissions.</string>
+    <string name="version_no">Version:</string>
+
+    <!--使用者重設密碼介面參數-->
+    <string name="userName">UserName</string>
+    <string name="userName_tip">Enter username</string>
+    <string name="password">Password</string>
+    <string name="pass_tip">Enter password</string>
+    <string name="oldPass_tip">Enter old password</string>
+    <string name="newPass_tip">Enter new password</string>
+    <string name="checkPass_tip">Enter confirm password</string>
+    <string name="time_setting">Time Setting</string>
+    <string name="eight_hours">8 hours</string>
+    <string name="one_day">1 day</string>
+    <string name="three_days">3 days</string>
+    <string name="login">Login</string>
+    <string name="updatePsd">Change Password</string>
+    <string name="oldPsd">Old password</string>
+    <string name="newPsd">New password</string>
+    <string name="checkPsd">Confirm password</string>
+    <string name="confirm_updatePsd">Confirm</string>
+    <string name="back_to_login">Cancel</string>
+    <string name="copyright">Copyright© 2020 ITRI SSTC</string>
+
+    <!--個案管理介面參數-->
+    <string name="qryInfo_failed">Query failed. Reason as follow:(1) Wrong patient No. (2) This patient No. is not in care list.</string>
+    <string name="analysis_id_format">ID/Record No.</string>
+    <string name="analysis_bodypart_format">BodyPart</string>
+
+    <string name="basic_info">Patient Information</string>
+    <string name="case_title_id">Record/ID No.</string>
+    <string name="case_title_name">Name/Sex/Age</string>
+    <string name="case_title_history">History</string>
+    <string name="case_title_note">Note</string>
+    <string name="wound_location">Bodypart</string>
+    <string name="wound_record">Record</string>
+    <string name="no_wound_data">No bodypart.</string>
+    <string name="no_record">Please choose any bodypart as above first.</string>
+    <string name="no_internet">No Internet</string>
+    <string name="wound_analysis_result">Wound Analysis Result</string>
+    <string name="case_height">Height:</string>
+    <string name="case_width">Width:</string>
+    <string name="case_depth">Depth:</string>
+    <string name="case_area">Area:</string>
+    <string name="case_epithelium">Epit.:</string>
+    <string name="case_granular">Gran.:</string>
+    <string name="case_slough">Slou.:</string>
+    <string name="case_eschar">Esch.:</string>
+    <string name="default_cm">0.0 cm</string>
+    <string name="default_cm2">0.0 cm<sup>2</sup></string>
+    <string name="default_prop">0 %</string>
+    <string name="cm"> cm</string>
+    <string name="cm2"> cm<sup>2</sup></string>
+    <string name="prop">　%</string>
+
+    <!--主畫面功能參數-->
+    <string name="user">User</string>
+    <string name="setting">Set.</string>
+    <string name="case_mgnt">Case</string>
+    <string name="call">Call</string>
+    <string name="list">List</string>
+    <string name="light">LT.</string>
+    <string name="detect">DET.</string>
+    <string name="cam">Cam</string>
+    <string name="upload">Upload</string>
+
+    <string name="number_zero">0</string>
+    <string name="number_one">1</string>
+    <string name="number_two">2</string>
+    <string name="number_three">3</string>
+    <string name="number_four">4</string>
+    <string name="number_five">5</string>
+    <string name="number_six">6</string>
+    <string name="number_seven">7</string>
+    <string name="number_eight">8</string>
+    <string name="number_nine">9</string>
+    <string name="btn_clear">Clear</string>
+    <string name="btn_backspace">Back</string>
+
+    <string name="bright">Bright</string>
+    <string name="dark">Dark</string>
+    <string name="bad_distance">Bad distance</string>
+    <string name="far">Too far</string>
+    <string name="near">Too near</string>
+
+    <!--登出介面參數-->
+    <string name="stay">Cancel logout</string>
+    <string name="go_to_login">Logout</string>
+    <string name="logout_and_close_app">Logout and close app</string>
+
+    <!--通知介面參數-->
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="leave">Leave</string>
+    <string name="reset">Reset</string>
+    <string name="stop">Stop</string>
+    <string name="alert_title">Notice</string>
+    <string name="anaylsis_title">Data Storage</string>
+    <string name="confirm_title">Confirm</string>
+    <string name="remind_title">Notice</string>
+    <string name="alert_error">Error occurred!</string>
+    <string name="bad_localdb">Bad local database</string>
+    <string name="recommend">Recommendation</string>
+    <string name="takePic_error">Failed in taking picture because of thermal/3D Images error.</string>
+
+    <!--Grabcut傷口圈選介面參數-->
+    <string name="backto">Back</string>
+    <string name="keep">Keep</string>
+    <string name="exclude">Exclude</string>
+    <string name="clean">Clean</string>
+    <string name="undo">Undo</string>
+    <string name="with">With </string>
+    <string name="interactied">interactied </string>
+    <string name="ColorAI">AI(Color) </string>
+    <string name="DnnAI">AI(DNN) </string>
+    <string name="default_boundary">center of screen </string>
+    <string name="togo">AI</string>
+    <string name="setref">Estimate</string>
+    <string name="symptom">Symptom</string>
+    <string name="history">History</string>
+    <string name="finish">Finish</string>
+    <string name="save">Save</string>
+    <string name="marker">Marker</string>
+    <string name="size">Size </string>
+    <string name="height">Height</string>
+    <string name="width">Width</string>
+    <string name="area">Area</string>
+    <string name="distance">Distance</string>
+    <string name="detect_distance">Dist</string>
+    <string name="centimeter"> cm</string>
+    <string name="wound_scale">Height: 0.0, Width: 0.0, Area: 0.0, Distance: 0.0</string>
+    <string name="marker_scale">Height: 0, Width: 0, Distance: 0</string>
+    <string name="wound_scale1c">H:</string>
+    <string name="wound_scale2c">W:</string>
+    <string name="wound_scale3c">A:</string>
+    <string name="wound_scale4c">D:</string>
+    <string name="wound_scale1v">0</string>
+    <string name="wound_scale2v">0</string>
+    <string name="wound_scale3v">0</string>
+    <string name="wound_scale4v">0</string>
+    <string name="scale_info1c">W   :</string>
+    <string name="scale_info2c">H   :</string>
+    <string name="scale_info3c">Area:</string>
+    <string name="scale_info4c">Dist:</string>
+    <string name="image_saved">Image saved already.</string>
+    <string name="confirm_upload_save_data">Do you want to save this result?</string>
+
+    <string name="picker_cancel">Cancel</string>
+    <string name="picker_set">OK</string>
+
+    <string name="proportion">Prop </string>
+    <string name="epithelium">Epit.</string>
+    <string name="granular">Gran.</string>
+    <string name="slough">Slou.</string>
+    <string name="eschar">Esch.</string>
+    <string name="wound_proportion">Epit: 0%, Gran: 0%, Slou: 0%, Esch: 0%</string>
+    <string name="prop_info1c">Epit.:</string>
+    <string name="prop_info2c">Gran.:</string>
+    <string name="prop_info3c">Slou.:</string>
+    <string name="prop_info4c">Esch.:</string>
+
+    <string name="symptom_title">Content of Symptom：</string>
+    <string name="history_title">Content of Wound History：</string>
+    <string name="required_note">Remind you that you still have not finish the form.</string>
+    <string name="question_fever">1.Has a fever? <font color='#FF4081'>*</font></string>
+    <string name="question_smell">2.Does it smell bad? <font color='#FF4081'>*</font></string>
+    <string name="question_level">3.What is the level of the exudate? <font color='#FF4081'>*</font></string>
+    <string name="question_character">4.What is the character of the exudate? <font color='#FF4081'>*</font></string>
+    <string name="question_overtime">1.Has it not healed for more than siz weeks? <font color='#FF4081'>*</font></string>
+    <string name="quesiton_firstOcurred">2.Does it happend for the first time? <font color='#FF4081'>*</font></string>
+    <string name="quesiton_occurredDate">3.What date did it happen?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="date_tip">Please select a date</string>
+    <string name="answer_dry">Dry</string>
+    <string name="answer_few">Few</string>
+    <string name="answer_middle">Middle</string>
+    <string name="answer_large">Large</string>
+    <string name="answer_none">None</string>
+    <string name="answer_serum">Serum(light yellow and thin)</string>
+    <string name="answer_bloodWater">BloodWater(red)</string>
+    <string name="answer_slurry">Slurry(red)</string>
+    <string name="answer_pus">Pus(strong)</string>
+    <string name="not_finished">Symptom and history of wound still has not finished, please check again.</string>
+    <string name="progressing">Progressing‧‧‧</string>
+    <string name="progressing_measuring">Progressing - Measuring‧‧‧</string>
+    <string name="progressing_ranging">Progressing - Ranging‧‧‧</string>
+    <string name="progressing_detecting">Progressing - AI Detecting‧‧‧</string>
+
+    <!--熱感影像介面參數-->
+    <string name="connect_to_">IP Address </string>
+
+    <!--部位選取介面參數-->
+    <string name="front_body">Front</string>
+    <string name="back_body">Back</string>
+    <string name="left_body">Left</string>
+    <string name="right_body">Right</string>
+    <string name="left_side">L</string>
+    <string name="right_side">R</string>
+
+    <string name="head">Head</string>
+    <string name="hindbrain">Hindbrain</string>
+    <string name="left_ear">L.Ear</string>
+    <string name="right_ear">R.Ear</string>
+    <string name="face">Face</string>
+    <string name="neck">Neck</string>
+    <string name="shoulder">Shoulder</string>
+    <string name="left_shoulder">L.Shoulder</string>
+    <string name="right_shoulder">R.Shoulder</string>
+    <string name="chest">Chest</string>
+    <string name="left_chest">L.Chest</string>
+    <string name="right_chest">R.Chest</string>
+    <string name="back">Back</string>
+    <string name="left_back">L.Back</string>
+    <string name="right_back">R.Back</string>
+    <string name="abdomen">Abdomen</string>
+    <string name="waist">Waist</string>
+    <string name="sacrum">Sacrum</string>
+    <string name="hip">Hip</string>
+    <string name="left_hip">L.Hip</string>
+    <string name="right_hip">R.Hip</string>
+    <string name="anus">Anus</string>
+    <string name="left_groin">L.Groin</string>
+    <string name="right_groin">R.Groin</string>
+    <string name="genitals">Genitals</string>
+    <string name="upper_arm">UpperArm</string>
+    <string name="left_upper_arm">L.UpperArm</string>
+    <string name="right_upper_arm">R.UpperArm</string>
+    <string name="elbow">Elbow</string>
+    <string name="left_elbow">L.Elbow</string>
+    <string name="right_elbow">R.Elbow</string>
+    <string name="forearm">Forearm</string>
+    <string name="left_forearm">L.Forearm</string>
+    <string name="right_forearm">R.Forearm</string>
+    <string name="wrist">Wrist</string>
+    <string name="hand">Hand</string>
+    <string name="left_hand">L.Hand</string>
+    <string name="right_hand">R.Hand</string>
+    <string name="left_wrist">L.Wrist</string>
+    <string name="right_wrist">R.Wrist</string>
+    <string name="finger">Finger</string>
+    <string name="thigh">Thigh</string>
+    <string name="left_thigh">L.Thigh</string>
+    <string name="right_thigh">R.Thigh</string>
+    <string name="knee">Knee</string>
+    <string name="left_knee">L.Knee</string>
+    <string name="right_knee">R.Knee</string>
+    <string name="legal">Legal</string>
+    <string name="left_legal">L.Legal</string>
+    <string name="right_legal">R.Legal</string>
+    <string name="ankle">Ankle</string>
+    <string name="left_ankle">L.Ankle</string>
+    <string name="right_ankle">R.Ankle</string>
+    <string name="foot">Foot</string>
+    <string name="left_foot">L.Foot</string>
+    <string name="right_foot">R.Foot</string>
+    <string name="heel">Heel</string>
+    <string name="left_heel">L.Heel</string>
+    <string name="right_heel">R.Heel</string>
+    <string name="toes">Toes</string>
+
+    <string name="left_elbow_in">L.I.Elbow</string>
+    <string name="left_rib">L.Rib</string>
+    <string name="left_elbow_out">L.O.Elbow</string>
+    <string name="left_llium">L.Llium</string>
+    <string name="left_femur">L.Femur</string>
+    <string name="left_knee_in">L.I.Knee</string>
+    <string name="left_knee_out">L.O.Knee</string>
+    <string name="left_ankle_in">L.I.Ankle</string>
+    <string name="left_foot_in">L.I.Foot</string>
+    <string name="left_foot_out">L.O.Foot</string>
+    <string name="left_ankle_out">L.O.Ankle</string>
+
+    <string name="right_elbow_in">R.I.Elbow</string>
+    <string name="right_rib">R.Rib</string>
+    <string name="right_elbow_out">R.O.Elbow</string>
+    <string name="right_llium">R.Llium</string>
+    <string name="right_femur">R.Femur</string>
+    <string name="right_knee_in">R.I.Knee</string>
+    <string name="right_knee_out">R.O.Knee</string>
+    <string name="right_ankle_in">R.I.Ankle</string>
+    <string name="right_foot_in">R.I.Foot</string>
+    <string name="right_foot_out">R.O.Foot</string>
+    <string name="right_ankle_out">R.O.Ankle</string>
+
+    <!--病患編號選取介面參數-->
+    <string name="patient_id">Patient No.</string>
+    <string name="please_scan_barcode">Scan Barcode</string>
+    <string name="scan_patient_barcode">Barcode</string>
+    <string name="oldRecord">REC.</string>
+    <string name="clinicNo">CI.</string>
+    <string name="recordNo">MR.</string>
+    <string name="idNo">ID.</string>
+    <string name="room">Room</string>
+    <string name="period">Period</string>
+    <string name="serialNo">PatientNo</string>
+    <string name="choose_period">Period：</string>
+    <string name="choose_no">Room─PatientNo：</string>
+    <string name="morning">Morning</string>
+    <string name="afternoon">Afternoon</string>
+    <string name="night">Night</string>
+    <string name="record_show_hint">Last 10 records：</string>
+    <string name="record_format">Record No.</string>
+    <string name="id_format">ID No.</string>
+
+    <!--傷口部位選取介面參數-->
+    <string name="bodypart">Bodypart</string>
+    <string name="please_choose_part">Choose Bodypart</string>
+
+    <!--設定選單參數-->
+    <string name="upload_patient_data">Upload Data</string>
+    <string name="preview_threaml_image">Preview Threaml</string>
+    <string name="stop_app">Exit App</string>
+    <string name="setting_camera">Camera Settings</string>
+    <string name="logout">Logout</string>
+
+    <!--檔案上傳功能參數-->
+    <string name="img_preview">Images Preview</string>
+    <string name="no_files">Sorry! No file can upload now.</string>
+    <string name="success_upload">Finish uploading.</string>
+    <string name="please_retry_upload">Please check network and photos annotation(ID and wound site).</string>
+    <string name="nonupload_file_count_">Non-upload：</string>
+    <string name="_count"> </string>
+    <string name="nonupload_jpg">Non-upload Images</string>
+    <string name="included_upload_jpg">Uploaded Images</string>
+    <string name="by_patient_id_jpg">Query by Patient No.</string>
+    <string name="file_uploading">File is uploading now.</string>
+    <string name="start_file_upload">Start to upload files.</string>
+    <string name="today">today</string>
+    <string name="days_ago">days ago</string>
+    <string name="confirm_delete">Do you want to delete this file?</string>
+    <string name="file_not_exist">file not exist!</string>
+
+    <!--呼叫功能參數-->
+    <string name="connected_to_server">Connected to server successfully.</string>
+    <string name="not_connect_backside">Connection failed, please try again.</string>
+    <string name="open_internet_or_wifi">Please connect to mobile network or wifi first.</string>
+    <string name="set_owner_first">Please set patient\'s ID first.</string>
+
+    <!--離開APP參數-->
+    <string name="alert_remember_logout">Please remember to logout!</string>
+    <string name="confirm_leave_app">Are you sure you want to exit?</string>
+
+    <!--照相設定參數-->
+    <string name="upload_rawfiles">Upload Type</string>
+    <string name="downsample_type">Range Quality</string>
+    <string name="jpeg_quality">Image Quality</string>
+    <string name="video_bitrate">Video Bitrate</string>
+    <string name="focus_area">Focus Area</string>
+    <string name="flash_mode">Flash Mode</string>
+    <string name="focus_mode">Focus Mode</string>
+    <string name="white_balance">White Balance</string>
+    <string name="white_balance_adjust">White Balance Adjust(R,G,B)</string>
+    <string name="exposure_compensation">Exposure Compensation</string>
+
+    <!--BarCode掃描及文字掃描功能參數-->
+    <string name="cannt_ocr">Failed to recognize. </string>
+    <string name="recogniting">Start to recognize...</string>
+    <string name="no_context">No context  recognized.</string>
+    <string name="title_activity_ocr">Character Recognition</string>
+    <string name="close">Close</string>
+    <string name="auto_scan_notification">Please put the scanned content into the frame.</string>
+    <string name="notification">Notification</string>
+    <string name="positive_button_confirm">Confirm</string>
+    <string name="could_not_read_qr_code_from_scanner">Failed to read QRCode from scanner.</string>
+    <string name="camera_not_found">Not found camera.</string>
+    <string name="is_qr_code_scanner">Scan mode</string>
+    <string name="is_open_flashlight">Flashlight mode </string>
+    <string name="take_photos">Start to recognize</string>
+    <string name="scan_patient_ocr">Scan Patient No.</string>
+    <string name="previous">Home</string>
+    <string name="rescan">Rescan</string>
+    <string name="scan_ownerId">OCR</string>
+    <string name="patient_name">Name：</string>
+    <string name="patient_no">I.D. number：</string>
+    <string name="patient_bday">Birth：</string>
+
+    <!--舊選單(更新時間/部位/編號)參數-->
+    <string name="reset_dataset_time">Update Time</string>
+    <string name="clean_patient_id">Reset Patient No.</string>
+    <string name="reset_clean_time_id">Update All</string>
+
+
+    <string name="needUpload">Include Raw Files</string>
+    <string name="dontUpload">Exclude Raw Files</string>
+
+    <!--影像品質設定參數-->
+    <string name="best_quality">100(Best quality)</string>
+    <string name="delicate_quality">92(Delicate quality)</string>
+    <string name="normal_quality">85(Normal quality)</string>
+    <string name="normal_quality80">80(Normal quality)</string>
+    <string name="rough_quality">75(Rough quality)</string>
+    <string name="rough_quality70">70(Rough quality)</string>
+
+    <!--舊設定參數-->
+    <string name="btn_position">Button Position</string>
+    <string name="screen_orientation">Screen Orientation</string>
+    <string name="potrait">Potrait</string>
+    <string name="landscape">Landscape</string>
+
+    <!--目前無使用到之參數-->
+    <string name="scale_info">W: 0\nH: 0\nArea: 0\nDist: 0</string>
+    <string name="prop_info">Epit.: 0\nGran.: 0\nSlou.: 0\nEsch.: 0</string>
+
+    <string name="center">Center</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
+
+    <string name="start_analysis">Start</string>
+    <string name="uuid_name">ID/Record No.</string>
+
+    <string name="string_ble_device_choose">連線裝置選擇</string>
+    <string name="string_ble_fore_device_connect_choose">您要與哪一個裝置連線 ? </string>
+    <string name="string_ble_device_fora">FORA</string>
+    <string name="string_ble_device_baby_weight_device">嬰兒秤</string>
+    <string name="string_ble_init_complete">藍芽初始化完成，請開始量測</string>
+    <string name="string_ble_unknow_error">藍芽未知錯誤</string>
+    <string name="string_ble_did_not_support">不支援該裝置使用</string>
+    <string name="string_ble_serial_error">藍芽傳輸錯誤</string>
+    <string name="string_open_ble_driver">請開啟藍芽</string>
+    <string name="string_ble_working">藍芽連線中…</string>
+    <string name="string_ble_connect_fail">藍芽連線失敗</string>
+    <string name="string_ble_connected">藍芽完成正在啟動下載</string>
+    <string name="string_ble_downloading">下載中.....</string>
+    <string name="string_un_switch_device_can_not_connect">尚未配對，請至「設定」完成配對</string>
+    <string name="string_success_download_ble_data">藍芽資訊下載完成</string>
+    <string name="string_success_sync_ble_data">藍芽裝置配對設定完成</string>
+    <string name="string_ble_unsupport">本裝置不支援BLE</string>
+    <string name="string_ble_ready_start">準備開始量測</string>
+    <string name="string_ble_ready_start_with_init">準備開始初始化藍芽裝置</string>
+    <string name="string_ble_ready_stop">準備關閉量測</string>
+    <string name="string_ble_baby_weight_ready_start_message">按下 [開始] 之後，請開啟嬰兒秤裝置開始進行量測動作</string>
+    <string name="string_ble_ready_start_message">按下 [開始] 之後，請拿起Fore裝置開始進行量測動作</string>
+    <string name="string_ble_ready_stop_message">按下 [開始] 之後，關閉BLE裝置輸入</string>
+    <string name="string_ble_ready_start_with_init_message">按下 [開始] 之後，請將福爾裝置設置為可掃瞄狀態以便進行初始化</string>
+
+    <string name="image_url">https://r2h-live.com/storage/posters/300_</string>
+
+    <string name="select">Select USB Web Camera</string>
+    <string name="camera">Camera</string>
+    <string name="refresh">Refresh</string>
+    <string name="no_device">No USB camera found</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="please_wait">Please wait...</string>
+
+</resources>
+

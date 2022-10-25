@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#00000000">
+    <!--<ListPreference
+        android:defaultValue="Portrait"
+        android:entries="@array/pref_screenOrientationLables"
+        android:entryValues="@array/pref_screenOrientation"
+        android:key="screen_orientation"
+        android:title="@string/screen_orientation"   />
+    <ListPreference
+        android:defaultValue="Portrait"
+        android:entries="@array/pref_shutbtnLables"
+        android:entryValues="@array/pref_shutbtn"
+        android:key="shut_btn"
+        android:title="@string/btn_position"   />-->
+    <ListPreference
+        android:defaultValue="0"
+        android:entries="@array/pref_uploadRawFilesLabels"
+        android:entryValues="@array/pref_uploadRawFiles"
+        android:key="upload_rawfile"
+        android:title="@string/upload_rawfiles"   />
+
+    <ListPreference
+        android:defaultValue="5"
+        android:entries="@array/pref_DownsampleTypeLabels"
+        android:entryValues="@array/pref_DownsampleType"
+        android:key="downsample_type"
+        android:title="@string/downsample_type" />
+
+    <ListPreference
+        android:defaultValue="92"
+        android:entries="@array/pref_jpegQualityLabels"
+        android:entryValues="@array/pref_jpegQuality"
+        android:key="jpeg_quality"
+        android:title="@string/jpeg_quality"   />
+
+    <!-- <ListPreference
+      android:key="preview_size"
+      android:title="預覽解析度" />-->
+    <!-- <ListPreference
+      android:key="picture_size"
+      android:title="照片解析度" />-->
+  <!--<ListPreference
+      android:key="video_size"
+      android:title="視頻分辨率" />-->
+    <ListPreference
+        android:defaultValue="150"
+        android:entries="@array/pref_videoBitrateLabels"
+        android:entryValues="@array/pref_videoBitrate"
+        android:key="video_bitrate"
+        android:title="@string/video_bitrate"   />
+    <ListPreference
+        android:defaultValue="touch"
+        android:entries="@array/pref_focus_area_labels"
+        android:entryValues="@array/pref_focus_area"
+        android:key="focus_area"
+        android:title="@string/focus_area" />
+    <ListPreference
+        android:defaultValue="auto"
+        android:key="flash_mode"
+        android:title="@string/flash_mode" />
+    <ListPreference
+        android:defaultValue="auto"
+        android:key="focus_mode"
+        android:title="@string/focus_mode" />
+    <ListPreference
+        android:defaultValue="auto"
+        android:key="white_balance"
+        android:title="@string/white_balance" />
+    <EditTextPreference
+        android:key="white_balance_adjust"
+        android:title="@string/white_balance_adjust"
+        android:defaultValue="0,0,0"
+        android:dialogTitle="@string/white_balance" />
+    <!--<ListPreference
+        android:defaultValue="auto"
+        android:key="scene_mode"
+        android:title="場景" />-->
+    <ListPreference
+        android:defaultValue="0"
+        android:key="exposure_compensation"
+        android:title="@string/exposure_compensation" />
+    <!--<SwitchPreference
+        android:defaultValue="false"
+        android:key="gps_data"
+        android:title="地理位置" />-->
+    <ListPreference
+        android:defaultValue="0"
+        android:entries="@array/pref_ThermalTypeLabels"
+        android:entryValues="@array/pref_ThermalType"
+        android:key="thermal_type"
+        android:title="Thermal Type"   />
+
+    <EditTextPreference
+        android:key="debug_level"
+        android:title="Debug Level"
+        android:defaultValue="0"
+        android:dialogTitle="Debug Level" />
+
+    <EditTextPreference
+        android:key="debug_tag"
+        android:title="Debug tag"
+        android:defaultValue="12345"
+        android:dialogTitle="Debug tag" />
+
+    <!--
+    <EditTextPreference
+        android:key="thermalBoardIP"
+        android:title="Thermal Board IP"
+        android:defaultValue="192.168.1.101"
+        android:dialogTitle="Thermal Board IP" />
+
+
+    <ListPreference
+        android:defaultValue="en"
+        android:entries="@array/pref_AppLanguageLabel"
+        android:entryValues="@array/pref_AppLanguage"
+        android:key="app_language"
+        android:title="App Language"   /> -->
+</PreferenceScreen>

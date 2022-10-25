@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="@color/help_view"
+              android:orientation="vertical">
+
+
+
+  <ImageButton
+      android:id="@+id/done_button"
+      android:layout_width="57dp"
+      android:layout_height="57dp"
+      app:srcCompat="@android:drawable/btn_star" />
+
+  <WebView
+      android:id="@+id/help_contents"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:fadingEdge="vertical"
+      android:fadingEdgeLength="12dip">
+
+
+  </WebView>
+
+</LinearLayout>

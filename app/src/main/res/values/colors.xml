@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+ 
+<resources>
+  <color name="default_color">#000000</color>
+  <color name="default_hint">#ffc0c0c0</color>
+  <color name="default_bottom_line">#45b2a8</color>
+  <color name="help_button_view">#cccccc</color> <!-- help button view background color -->
+  <color name="help_view">#ff404040</color> <!-- background color for entire help view -->
+  <color name="result_minor_text">#ffc0c0c0</color> <!-- source language text/label text color. For example, "OCR English" -->
+  <color name="result_text">#ffffffff</color> <!-- OCR result text color -->
+  <color name="result_view">#b0000000</color> <!-- result view background color -->
+  <color name="status_text">#ffffffff</color> <!-- status_view_top/status_view_bottom text color -->
+  <color name="status_top_text_background">#ffffffff</color> <!-- status_view_top text background color -->
+  <color name="translation_text">#00ccff</color> <!-- translation text color -->
+  <color name="viewfinder_corners">#ffffffff</color> <!-- four corner elements for viewfinder -->
+  <color name="viewfinder_frame">#ffd6d6d6</color> <!-- viewfinder rectangle -->
+  <color name="viewfinder_mask">#f60ff0ff</color>  <!-- viewfinder exterior darkened area -->
+  <color name="colorPrimary">#0aaf0f</color>
+  <color name="colorPrimaryDark">#225e1a</color>
+  <color name="colorAccent">#FF4081</color>
+  <color name="btnBackground">#a6a6a6</color>
+  <color name="btnText">#ffffffff</color>
+  <color name="preview">#262626</color>
+  <color name="update_psd">#3b6cff</color>
+
+
+  <!-- 提醒視窗顏色設置 -->
+  <color name="dialog_background">#ffffffff</color>
+  <color name="dialog_button">#ff404040</color>
+  <color name="dialog_title">#0080ff</color>
+  <color name="dialog_divider">#4da6ff</color>
+  <color name="dialog_text">#ff000000</color>
+  <color name="edit_line">#ffd6d6d6</color>
+
+  <!-- 身體部位選擇按鈕顏色設置 -->
+  <color name="item_background">#f2f2f2</color>
+  <color name="item_pressed">#bfbfbf</color>
+  <color name="bodypart_name">#0073e6</color>
+  <color name="side_info">#ffdd99</color>
+
+  <!-- grabcut畫面顏色設置 -->
+  <color name="required">#FF4081</color>
+  <color name="confirm_data">#FF4081</color>
+  <color name="grabcut_top_layout">#80333333</color>
+  <color name="grabcut_background">#b0000000</color>
+  <color name="button_background">#808080</color>
+  <color name="button_pressed">#bfbfbf</color>
+  <color name="status_text_transparent">#D9FFFFFF</color>
+  <color name="mjpeg_background">#808080</color>
+  <color name="divider">#cccccc</color>
+
+  <!-- 勾選顏色設置 -->
+  <color name="checked">#ffffcc</color>
+  <color name="checked_stroke">#fdc435</color>
+  <color name="unchecked">#bfbfbf</color>
+
+  <color name="prview_background">#40FFFFFF</color>
+
+  <!-- scancode畫面顏色設置 -->
+  <color name="scan_background">#666666</color>
+  <color name="patient_info">#D9FFFFFF</color>
+  <color name="focus_title">#e6e6e6</color>
+  <color name="focus">#b3ffb300</color>
+
+
+  <color name="white">#FFFFFFFF</color>
+  <color name="finder_mask">#80000000</color>
+  <color name="finder_frame">#FFFFFFFF</color>
+  <color name="finder_laser">#0db8f6</color>
+
+    <!-- caseMgnt畫面顏色設置 -->
+  <color name="title">#0080ff</color>
+  <color name="title_font">#FFFFFFFF</color>
+  <color name="content_background">#FFFFFFFF</color>
+  <color name="child_title">#595959</color>
+  <color name="value">#878787</color>
+  <color name="bodypart">#fcdc79</color>
+  <color name="bodypart_select">#235690</color>
+  <color name="bodypart_text">#7f000000</color>
+  <color name="img_background">#ffd6d6d6</color>
+  <color name="tabs_unselected">#e6e6e6</color>
+  <color name="tabs_selected">#fcdc79</color>
+  <color name="tabs_underline">#fdc435</color>
+  <color name="image_page_num">#bfbfbf</color>
+  <color name="image_page_frame">#7f000000</color>
+  <color name="image_page_text">#FFFFFFFF</color>
+</resources>

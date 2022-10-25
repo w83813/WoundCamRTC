@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 後面的path="images/"，實際上會對應到 -->
+    <!-- /data/data/com.example.app/files/images/ -->
+    <!-- (com.example.app為package name) -->
+
+    <external-path name="external" path="/Download/WoundCamRtc" />
+</paths>

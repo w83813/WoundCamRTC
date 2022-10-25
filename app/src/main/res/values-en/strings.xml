@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="please_set_the_boundary">Please set the boundary</string>
+    <string name="please_circle_the_wound">Please circle the wound</string>
+    <string name="taking_pictures">Taking pictures . . .</string>
+    <string name="restart">Reset</string>
+    <string name="remake_confirmation">Remake confirmation ?</string>
+    <string name="time_error">Time error</string>
+    <string name="please_connect_to_wifi_to_adjust_the_time">Please connect to Wi-Fi to adjust the time</string>
+</resources>

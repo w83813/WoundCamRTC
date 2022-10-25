@@ -1,0 +1,61 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+apply plugin: 'com.android.library'
+
+android { 
+
+    compileSdkVersion 27
+    buildToolsVersion '27.0.2'
+    publishNonDefault true
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 27
+        testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
+        consumerProguardFiles 'consumer-rules.pro'
+        ndk {
+            abiFilters "armeabi","armeabi-v7a","x86"
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
+            renderscriptOptimLevel 0
+            minifyEnabled false
+            multiDexEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
+            renderscriptOptimLevel 0
+            minifyEnabled false
+            multiDexEnabled false
+        }
+    }
+
+    packagingOptions {
+        doNotStrip "*/*/*.so"
+    }
+
+    externalNativeBuild {
+        ndkBuild {
+            // Provides a relative path to your ndkBuild script.
+            path file("src/main/jni/Android.mk")
+        }
+    }
+}
+
+configurations {
+    // Expose the debug version of the library to other modules
+    debug
+    release
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+}

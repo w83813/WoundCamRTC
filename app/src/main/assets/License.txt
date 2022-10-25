@@ -1,0 +1,12 @@
+ZXing, Apache 2.0, https://github.com/zxing/zxing
+OpenCV 4.1.2, 3-clause BSD License, https://opencv.org/
+jobqueue, MIT License, https://github.com/yigit/android-priority-jobqueue
+AnyVersion, Apache 2.0, https://github.com/yoojia/NextVersions
+OpenNI, Apache 2.0, https://github.com/OpenNI/OpenNI
+usb-serial-for-android, LGPL 2.1, https://github.com/mik3y/usb-serial-for-android
+lite http, Apache 2.0, https://github.com/litesuits/android-lite-http
+android-logging-log4j, Apache 2.0, https://github.com/eetac/android-logging-log4j
+log4j, Apache 2.0
+json-simple, Apache 2.0, https://github.com/fangyidong/json-simple
+jtar, Apache 2.0, https://github.com/kamranzafar/jtar
+ini4j, Apache 2.0, https://github.com/qxo/ini4j

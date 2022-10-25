@@ -1,0 +1,1540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tabhost"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            style="@style/Base.Theme.AppCompat.Light"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:showDividers="middle" />
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:id="@+id/front_scroll"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dialog_background"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/round_textview"
+                        android:gravity="center"
+                        android:text="@string/right_side"
+                        android:textColor="@color/dialog_text"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/round_textview"
+                        android:gravity="center"
+                        android:text="@string/left_side"
+                        android:textColor="@color/dialog_text"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <ScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:fillViewport="true">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/body_front"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@mipmap/body_front"
+                            android:gravity="center_horizontal"
+                            android:textColor="#000000"
+                            android:textSize="16dp" />
+
+                        <org.itri.woundcamrtc.view.ToggleButtonGroupTableLayout
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/front_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:shrinkColumns="*"
+                            android:stretchColumns="*"
+                            android:orientation="vertical">
+
+                            <!--頭部-->
+                            <TableRow android:paddingTop="15dp"
+                                android:paddingLeft="80dp"
+                                android:paddingRight="80dp">
+
+                                <RadioButton
+                                    android:id="@+id/head"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.4"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/head"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.6"/>
+
+
+                            </TableRow>
+
+                            <TableRow android:paddingTop="5dp"
+                                android:paddingLeft="80dp"
+                                android:paddingRight="80dp">
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.6"/>
+
+                                <RadioButton
+                                    android:id="@+id/face"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.4"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/face"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+                            </TableRow>
+
+                            <!--左耳及右耳-->
+                            <TableRow android:paddingTop="15dp"
+                                android:paddingLeft="50dp"
+                                android:paddingRight="50dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_ear"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_ear"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.4"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_ear"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_ear"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+                            </TableRow>
+
+                            <!--左肩及右肩-->
+                            <TableRow
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp"
+                                android:paddingTop="15dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_shoulder"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_shoulder"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.4"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_shoulder"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_shoulder"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+                            </TableRow>
+
+                            <!--左上臂及右上臂 左胸與右胸-->
+                            <TableRow
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:paddingTop="15dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_upper_arm"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_upper_arm"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"/>
+
+                                <RadioButton
+                                    android:id="@+id/right_chest"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_chest"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_chest"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_chest"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_upper_arm"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_upper_arm"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+                            </TableRow>
+
+                            <!--左前臂及右前臂 腹部-->
+                            <TableRow
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="20dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_foream"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.28"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_forearm"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.08"/>
+
+                                <RadioButton
+                                    android:id="@+id/abdomen"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.28"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/abdomen"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.08"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_foream"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.28"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_forearm"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+                            </TableRow>
+
+                            <!--陰部-->
+                            <TableRow
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="5dp">
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.36"/>
+
+                                <RadioButton
+                                    android:id="@+id/genitals"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.28"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/genitals"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.36"/>
+
+                            </TableRow>
+
+                            <!--左手及右手 左鼠蹊及右鼠蹊-->
+                            <TableRow
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:paddingTop="5dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_hand"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.2"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_hand"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.03"/>
+
+                                <RadioButton
+                                    android:id="@+id/right_groin"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_groin"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.03"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_groin"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_groin"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.03"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_hand"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.2"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_hand"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+                            </TableRow>
+
+                            <!--左大腿及右大腿-->
+                            <TableRow
+                                android:paddingLeft="50dp"
+                                android:paddingRight="50dp"
+                                android:paddingTop="10dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_thigh"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_thigh"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.4"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_thigh"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_thigh"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+                            </TableRow>
+
+                            <!--左膝及右膝-->
+                            <TableRow
+                                android:paddingLeft="50dp"
+                                android:paddingRight="50dp"
+                                android:paddingTop="15dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_knee"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_knee"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.4"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_knee"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_knee"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+                            </TableRow>
+
+                            <!--左小腿及右小腿-->
+                            <TableRow
+                                android:paddingLeft="50dp"
+                                android:paddingRight="50dp"
+                                android:paddingTop="25dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_legal"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_legal"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.4"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_legal"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_legal"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+                            </TableRow>
+
+                            <!--左腳及右腳-->
+                            <TableRow
+                                android:paddingLeft="50dp"
+                                android:paddingRight="50dp"
+                                android:paddingTop="30dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_foot"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.275"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_foot"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.45"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_foot"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.275"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_foot"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+                            </TableRow>
+
+                        </org.itri.woundcamrtc.view.ToggleButtonGroupTableLayout>
+
+                    </RelativeLayout>
+
+                </ScrollView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/back_scroll"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dialog_background"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/round_textview"
+                        android:gravity="center"
+                        android:text="@string/left_side"
+                        android:textColor="@color/dialog_text"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/round_textview"
+                        android:gravity="center"
+                        android:text="@string/right_side"
+                        android:textColor="@color/dialog_text"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <ScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:fillViewport="true">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/body_back"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@mipmap/body_back"
+                            android:gravity="center_horizontal"
+                            android:textColor="#000000"
+                            android:textSize="16dp" />
+
+                        <org.itri.woundcamrtc.view.ToggleButtonGroupTableLayout
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/back_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:shrinkColumns="*"
+                            android:stretchColumns="*"
+                            android:orientation="vertical">
+
+                            <!--後腦杓-->
+                            <TableRow android:paddingTop="60dp"
+                                android:paddingLeft="40dp"
+                                android:paddingRight="40dp">
+
+                                <RadioButton
+                                    android:id="@+id/hindbrain"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.35"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/hindbrain"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.65"/>
+
+                            </TableRow>
+
+                            <!--頸部-->
+                            <TableRow android:paddingTop="10dp"
+                                android:paddingLeft="50dp"
+                                android:paddingRight="50dp">
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.7"/>
+
+                                <RadioButton
+                                    android:id="@+id/neck"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/neck"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                            </TableRow>
+
+                            <!--左背部與右背部-->
+                            <TableRow android:paddingTop="10dp"
+                                android:paddingLeft="30dp"
+                                android:paddingRight="30dp">
+
+                                <RadioButton
+                                    android:id="@+id/left_back"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_back"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.15"/>
+
+                                <RadioButton
+                                    android:id="@+id/back"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.2"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/back"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.15"/>
+
+                                <RadioButton
+                                    android:id="@+id/right_back"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_back"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                            </TableRow>
+
+                            <!--左手肘、腰部與右手肘-->
+                            <TableRow android:paddingTop="35dp"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp">
+
+                                <RadioButton
+                                    android:id="@+id/left_elbow"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_elbow"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.15"/>
+
+                                <RadioButton
+                                    android:id="@+id/waist"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.2"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/waist"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.15"/>
+
+                                <RadioButton
+                                    android:id="@+id/right_elbow"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_elbow"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                            </TableRow>
+
+                            <!--尾薦骨-->
+                            <TableRow android:paddingTop="7dp"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp">
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.375"/>
+
+                                <RadioButton
+                                    android:id="@+id/sacrum"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/sacrum"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.375"/>
+
+                            </TableRow>
+
+                            <!--左手腕與右手腕-->
+                            <TableRow android:paddingTop="0dp"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp">
+
+                                <RadioButton
+                                    android:id="@+id/left_wrist"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_wrist"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.5"/>
+
+                                <RadioButton
+                                    android:id="@+id/right_wrist"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_wrist"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                            </TableRow>
+
+                            <!--肛門周圍-->
+                            <TableRow android:paddingTop="7dp"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp">
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.35"/>
+
+                                <RadioButton
+                                    android:id="@+id/anus"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/anus"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.35"/>
+
+                            </TableRow>
+
+                            <!--左屁股與右屁股-->
+                            <TableRow android:paddingTop="0dp"
+                                android:paddingLeft="30dp"
+                                android:paddingRight="30dp">
+
+                                <RadioButton
+                                    android:id="@+id/left_hip"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_hip"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.4"/>
+
+                                <RadioButton
+                                    android:id="@+id/right_hip"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_hip"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                            </TableRow>
+
+                            <!--左腳跟與右腳跟-->
+                            <TableRow android:paddingTop="130dp"
+                                android:paddingLeft="30dp"
+                                android:paddingRight="30dp">
+
+                                <RadioButton
+                                    android:id="@+id/left_heel"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_heel"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.4"/>
+
+                                <RadioButton
+                                    android:id="@+id/right_heel"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_heel"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                            </TableRow>
+
+                        </org.itri.woundcamrtc.view.ToggleButtonGroupTableLayout>
+                    </RelativeLayout>
+
+
+                </ScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/left_scroll"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:fillViewport="true">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/body_left"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@mipmap/body_left"
+                            android:gravity="center_horizontal"
+                            android:textColor="#000000"
+                            android:textSize="16dp" />
+
+                        <org.itri.woundcamrtc.view.ToggleButtonGroupTableLayout
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/left_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:shrinkColumns="*"
+                            android:stretchColumns="*"
+                            android:orientation="vertical">
+
+                            <!--右肘內-->
+                            <TableRow android:paddingTop="130dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_elbow_in"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_elbow_in"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.75"/>
+
+                            </TableRow>
+
+                            <!--左肋骨與左肘外-->
+                            <TableRow android:paddingTop="10dp"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp">
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.375"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_rib"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.225"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_rib"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.125"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_elbow_out"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.275"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_elbow_out"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                            </TableRow>
+
+                            <!--左腸骨-->
+                            <TableRow android:paddingTop="45dp"
+                                android:paddingLeft="70dp"
+                                android:paddingRight="70dp">
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.65"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_llium"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.35"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_llium"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                            </TableRow>
+
+                            <!--左股骨-->
+                            <TableRow android:paddingTop="40dp"
+                                android:paddingLeft="45dp"
+                                android:paddingRight="45dp">
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.7"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_femur"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_femur"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                            </TableRow>
+
+                            <!--右膝內-->
+                            <TableRow android:paddingTop="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_knee_in"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_knee_in"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.75"/>
+
+                            </TableRow>
+
+                            <!--左膝外-->
+                            <TableRow android:paddingTop="20dp"
+                                android:paddingLeft="40dp"
+                                android:paddingRight="40dp">
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.7"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_knee_out"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_knee_out"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                            </TableRow>
+
+                            <!--右踝內-->
+                            <TableRow android:paddingTop="0dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_ankle_in"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.275"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_ankle_in"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.725"/>
+
+                            </TableRow>
+
+                            <!--右足內-->
+                            <TableRow android:paddingTop="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_foot_in"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_foot_in"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.75"/>
+
+                            </TableRow>
+
+                            <!--左踝外-->
+                            <TableRow android:paddingTop="0dp"
+                                android:paddingLeft="65dp"
+                                android:paddingRight="25dp">
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.675"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_ankle_out"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.325"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_ankle_out"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                            </TableRow>
+
+                            <!--左足外-->
+                            <TableRow android:paddingTop="10dp"
+                                android:paddingLeft="30dp"
+                                android:paddingRight="30dp">
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.325"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_foot_out"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.35"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_foot_out"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.325"/>
+
+                            </TableRow>
+
+                        </org.itri.woundcamrtc.view.ToggleButtonGroupTableLayout>
+                    </RelativeLayout>
+
+
+                </ScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/right_scroll"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:fillViewport="true">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/body_right"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@mipmap/body_right"
+                            android:gravity="center_horizontal"
+                            android:textColor="#000000"
+                            android:textSize="16dp" />
+
+                        <org.itri.woundcamrtc.view.ToggleButtonGroupTableLayout
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/right_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:shrinkColumns="*"
+                            android:stretchColumns="*"
+                            android:orientation="vertical">
+
+                            <!--左肘內-->
+                            <TableRow android:paddingTop="130dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.75"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_elbow_in"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_elbow_in"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                            </TableRow>
+
+                            <!--右肋骨與右肘外-->
+                            <TableRow android:paddingTop="10dp"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_elbow_out"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.275"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_elbow_out"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.125"/>
+
+                                <RadioButton
+                                    android:id="@+id/right_rib"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.225"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_rib"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.375"/>
+
+                            </TableRow>
+
+                            <!--右腸骨-->
+                            <TableRow android:paddingTop="45dp"
+                                android:paddingLeft="70dp"
+                                android:paddingRight="70dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_llium"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.35"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_llium"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.65"/>
+
+                            </TableRow>
+
+                            <!--右股骨-->
+                            <TableRow android:paddingTop="40dp"
+                                android:paddingLeft="45dp"
+                                android:paddingRight="45dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_femur"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_femur"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.7"/>
+
+                            </TableRow>
+
+                            <!--左膝內-->
+                            <TableRow android:paddingTop="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.75"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_knee_in"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_knee_in"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                            </TableRow>
+
+                            <!--右膝外-->
+                            <TableRow android:paddingTop="20dp"
+                                android:paddingLeft="40dp"
+                                android:paddingRight="40dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_knee_out"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.3"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_knee_out"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.7"/>
+
+                            </TableRow>
+
+                            <!--左踝內-->
+                            <TableRow android:paddingTop="0dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.725"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_ankle_in"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.275"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_ankle_in"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                            </TableRow>
+
+                            <!--左足內-->
+                            <TableRow android:paddingTop="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.75"/>
+
+                                <RadioButton
+                                    android:id="@+id/left_foot_in"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/left_foot_in"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                            </TableRow>
+
+                            <!--右踝外-->
+                            <TableRow android:paddingTop="0dp"
+                                android:paddingLeft="25dp"
+                                android:paddingRight="65dp">
+
+                                <RadioButton
+                                    android:id="@+id/right_ankle_out"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.325"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_ankle_out"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.675"/>
+
+                            </TableRow>
+
+                            <!--右足外-->
+                            <TableRow android:paddingTop="10dp"
+                                android:paddingLeft="30dp"
+                                android:paddingRight="30dp">
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.325"/>
+
+                                <RadioButton
+                                    android:id="@+id/right_foot_out"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.35"
+                                    android:background="@drawable/selector"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:text="@string/right_foot_out"
+                                    android:textColor="@color/bodypart_name"
+                                    android:theme="@style/bodyBtn" />
+
+                                <View android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.325"/>
+
+                            </TableRow>
+
+                        </org.itri.woundcamrtc.view.ToggleButtonGroupTableLayout>
+                    </RelativeLayout>
+
+
+                </ScrollView>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+</TabHost>

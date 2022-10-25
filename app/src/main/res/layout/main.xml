@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/activity_main2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <org.webrtc.SurfaceViewRenderer
+        android:id="@+id/glview_call"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+
+    <!--
+    <Button
+        android:id="@+id/takePicL"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@xml/shutter_button"
+        android:visibility="invisible"/>
+
+
+    <Button
+        android:id="@+id/takePicR"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@xml/shutter_button"
+        android:visibility="invisible"/>
+        -->
+
+    <Button
+        android:id="@+id/button_ownerId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="5dp"
+        android:theme="@style/normalBtn"
+        android:text="@string/patient_id" />
+
+
+    <Button
+        android:id="@+id/button_bodyPart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="2dp"
+        android:layout_below="@+id/button_ownerId"
+        android:theme="@style/normalBtn"
+        android:text="@string/bodypart" />
+
+    <!--<Button
+        android:id="@+id/menuImageButton"
+        android:layout_width="57dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:clickable="true"
+        android:drawableTop="@mipmap/settings_40"
+        android:theme="@style/icon_text"
+        android:text="@string/setting"/>-->
+
+    <Button
+        android:id="@+id/menuImageButton_logout"
+        android:layout_width="52dp"
+        android:layout_height="65dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:clickable="true"
+        android:drawableTop="@mipmap/logout_40"
+        android:theme="@style/icon_small_text"
+        android:text="@string/logout"/>
+
+    <Button
+        android:id="@+id/menuImageButton_WebView"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toStartOf="@+id/menuImageButton_logout"
+        android:clickable="true"
+        android:drawableTop="@mipmap/website_40"
+        android:theme="@style/icon_small_text"
+        android:text="@string/case_mgnt" />
+
+   <!-- <Button
+        android:id="@+id/menuImageButton_help"
+        android:layout_width="57dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toStartOf="@+id/menuImageButton_WebView"
+        android:clickable="true"
+        android:drawableTop="@mipmap/callhelp_40"
+        android:theme="@style/icon_text"
+        android:text="@string/call" /> -->
+
+    <Button
+        android:id="@+id/menuImageButton_cam"
+        android:layout_width="52dp"
+        android:layout_height="65dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toStartOf="@+id/menuImageButton_WebView"
+        android:clickable="true"
+        android:drawableTop="@mipmap/video_call_40"
+        android:theme="@style/icon_small_text"
+        android:text="@string/cam" />
+
+
+    <Button
+        android:id="@+id/menuImageButton_list"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toStartOf="@+id/menuImageButton_cam"
+        android:drawableTop="@mipmap/list_40"
+        android:theme="@style/icon_small_text"
+        android:text="@string/list" />
+
+    <!--<ImageButton
+        android:id="@+id/menuImageButton_renew"
+        android:layout_width="57dp"
+        android:layout_height="57dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toStartOf="@+id/menuImageButton_help"
+        android:src="@mipmap/refresh_48" />-->
+
+    <Button
+        android:id="@+id/menuImageButton_light"
+        android:layout_width="52dp"
+        android:layout_height="65dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/menuImageButton_logout"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        android:drawableTop="@mipmap/light_40"
+        android:theme="@style/icon_small_text"
+        android:text="@string/light" />
+<!--
+    <Button
+        android:id="@+id/menuImageButton_marker"
+        android:layout_width="57dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menuImageButton_WebView"
+        android:layout_toStartOf="@+id/menuImageButton_light"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        android:drawableTop="@mipmap/marker_40"
+        android:theme="@style/icon_text"
+        android:text="@string/detect" />
+
+    <Button
+        android:id="@+id/menuImageButton_cam"
+        android:layout_width="57dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menuImageButton_help"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_toStartOf="@+id/menuImageButton_marker"
+        android:clickable="true"
+        android:drawableTop="@mipmap/webcam_40"
+        android:theme="@style/icon_text"
+        android:text="@string/cam" /> -->
+
+    <!-- <Button
+        android:id="@+id/menuImageButton_cam"
+        android:layout_width="57dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menuImageButton_WebView"
+        android:layout_toStartOf="@+id/menuImageButton_light"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        android:drawableTop="@mipmap/webcam_40"
+        android:theme="@style/icon_text"
+        android:text="@string/cam" /> -->
+
+    <Button
+        android:id="@+id/menuImageButton_help"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_below="@+id/menuImageButton_WebView"
+        android:layout_toStartOf="@+id/menuImageButton_light"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        android:drawableTop="@mipmap/callhelp_40"
+        android:theme="@style/icon_small_text"
+        android:text="@string/call" />
+
+    <Button
+        android:id="@+id/menuImageButton_marker"
+        android:layout_width="52dp"
+        android:layout_height="65dp"
+        android:layout_below="@+id/menuImageButton_cam"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_toStartOf="@+id/menuImageButton_help"
+        android:clickable="true"
+        android:drawableTop="@mipmap/marker_40"
+        android:theme="@style/icon_small_text"
+        android:text="@string/detect" />
+
+    <Button
+        android:id="@+id/menuImageButton_upload"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_below="@+id/menuImageButton_cam"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_toStartOf="@+id/menuImageButton_marker"
+        android:clickable="true"
+        android:drawableTop="@mipmap/upload_40"
+        android:theme="@style/icon_small_text"
+        android:text="@string/upload" />
+
+
+    <!--<ImageButton
+        android:id="@+id/menuImageButton_grabcut"
+        android:layout_width="57dp"
+        android:layout_height="57dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/menuImageButton_renew"
+        android:layout_toStartOf="@+id/menuImageButton_cam"
+        android:clickable="true"
+        android:src="@mipmap/graph_48" />-->
+
+    <Button
+        android:id="@+id/button_goback"
+        android:layout_width="57dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="320dp"
+        android:clickable="false"
+        android:drawableTop="@drawable/back"
+        android:text="@string/go_back"
+        android:textColor="#FFFFFF"
+        android:visibility="invisible"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/detection"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="#00FFFFFF"
+        android:drawableTop="@drawable/location_searching"
+        android:visibility="invisible" /> 
+
+    <TextView
+        android:id="@+id/file_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#0000"
+        android:clickable="true"
+        android:textAlignment="viewStart"
+        android:textSize="18dp"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        android:visibility="invisible" />
+
+
+    <ImageView
+        android:id="@+id/imgFocusArea"
+        android:layout_width="80dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="100dp"
+        android:clickable="false"
+        android:contentDescription="d"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/imgDetectedMarker"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="100dp"
+        android:clickable="false"
+        android:contentDescription="d"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/detect_dist"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentBottom="false"
+        android:background="#0000"
+        android:clickable="false"
+        android:text=""
+        android:textAlignment="textEnd"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:visibility="invisible" />
+
+
+    <top.defaults.camera.AutoFitTextureView
+        android:id="@+id/uvccamera_view0"
+        android:layout_width="60dp"
+        android:layout_height="80dp"
+        android:visibility="visible"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="392dp"
+        />
+
+    <top.defaults.camera.AutoFitTextureView
+        android:id="@+id/glview_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
+
+    <top.defaults.camera.AutoFitTextureView
+        android:id="@+id/cdpreview"
+        android:layout_width="60dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="478dp"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_pitch"
+        android:layout_width="80dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/menuImageButton_logout"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="350dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="5dp"
+        android:background="#8C8C8C"
+        android:clickable="true"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        tools:text="test" />
+
+    <TextView
+        android:id="@+id/tv_roll"
+        android:layout_width="80dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/menuImageButton_logout"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="320dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="5dp"
+        android:background="#8C8C8C"
+        android:clickable="true"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        tools:text="test" />
+
+    <RelativeLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/takePic"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@xml/shutter_button" />
+
+        <ImageView
+            android:id="@+id/media_preview"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/preview"
+            android:scaleType="fitXY"
+            android:contentDescription="d" />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/nonupload_filesize"
+            android:background="#0000"
+            android:clickable="true"
+            android:textAlignment="viewStart"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/nonupload_filesize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#0000"
+            android:clickable="true"
+            android:textAlignment="viewStart"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/detect_brightness"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:layout_above="@+id/media_preview"
+            android:gravity="right"
+            android:background="#0000"
+            android:clickable="false"
+            android:layout_alignParentRight="true"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:visibility="visible" />
+        <!--
+        <com.longdo.mjpegviewer.MjpegView
+            android:id="@+id/thermalMjpegview"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_above="@id/nonupload_filesize"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/preview"
+            android:visibility="invisible" />
+                    <pl.droidsonroids.gif.GifImageView
+                        android:id="@+id/uvc_gif_view1"
+                        android:layout_width="80dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:src="@mipmap/altdemo3"
+                        android:visibility="invisible"
+                        />
+                                           <pl.droidsonroids.gif.GifImageView
+                                                android:id="@+id/uvc_gif_view2"
+                                                android:layout_width="80dp"
+                                                android:layout_height="60dp"
+                                                android:layout_marginTop="15dp"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_below="@id/uvc_gif_view1"
+                                                android:src="@mipmap/altdemo2"
+                                                android:visibility="invisible"
+                                                />
+
+
+-->
+
+
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

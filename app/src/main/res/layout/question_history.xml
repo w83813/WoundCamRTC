@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/question_symptom"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/viewfinder_frame">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:padding="5dp"
+        android:background="@color/content_background">
+
+        <TextView
+            android:id="@+id/required_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/required_note"
+            android:text="@string/required_note"
+            android:gravity="center_vertical|left"
+            android:visibility="gone"
+            android:layout_marginVertical="5dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/case_child_title"
+            android:text="@string/question_overtime"
+            android:id="@+id/text_ownerId"
+            android:gravity="center_vertical|left"
+            android:layout_marginVertical="5dp" />
+
+        <org.itri.woundcamrtc.view.FlowRadioGroup
+            android:id="@+id/overtime_radioBtnGrp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/yes_568"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/yes"
+                android:textColor="#000"
+                android:theme="@style/radio_btn" />
+
+            <RadioButton
+                android:id="@+id/no_569"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/no"
+                android:textColor="#000"
+                android:theme="@style/radio_btn" />
+
+        </org.itri.woundcamrtc.view.FlowRadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/case_child_title"
+            android:text="@string/quesiton_firstOcurred"
+            android:gravity="center_vertical|left"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp" />
+
+        <org.itri.woundcamrtc.view.FlowRadioGroup
+            android:id="@+id/occur_radioBtnGrp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/yes_570"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/yes"
+                android:textColor="#000"
+                android:theme="@style/radio_btn" />
+
+            <RadioButton
+                android:id="@+id/no_571"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/no"
+                android:textColor="#000"
+                android:theme="@style/radio_btn" />
+
+        </org.itri.woundcamrtc.view.FlowRadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/case_child_title"
+            android:text="@string/quesiton_occurredDate"
+            android:gravity="center_vertical|left"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp" />
+
+        <EditText
+            android:id="@+id/datePicker"
+            android:hint="@string/date_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:digits="0123456789-/"
+            android:drawableRight="@drawable/date_selector"
+            android:drawablePadding="15dp" />
+
+    </LinearLayout>
+
+</ScrollView>

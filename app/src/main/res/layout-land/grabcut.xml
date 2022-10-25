@@ -1,0 +1,272 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/grabcut_background"
+    android:orientation="vertical"
+    tools:context=".GrabcutActivity">
+
+    <org.itri.woundcamrtc.analytics.GrabcutTouchView
+        android:id="@+id/touchDraw"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:bg_color="BLACK"
+        app:paint_color="BLUE"
+        app:paint_width="30f" />
+
+
+    <!--  預估尺寸與組織比例資訊 -->
+    <LinearLayout
+        android:id="@+id/layout_info"
+        android:layout_width="100dp"
+        android:layout_height="fill_parent"
+        android:layout_toStartOf="@id/grabcut_layout"
+        android:layout_marginRight="10dp"
+
+        android:background="@color/status_text_transparent"
+        android:orientation="horizontal">
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shrinkColumns="*"
+            android:stretchColumns="*"
+            android:weightSum="1"
+            android:orientation="vertical" >
+
+            <TableRow android:paddingTop="5dp" android:paddingBottom="5dp">
+
+                <TextView
+                    android:id="@+id/title_size"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center"
+                    android:layout_weight="1"
+                    android:text="@string/size"
+                    android:textColor="@color/dialog_title"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow android:paddingTop="5dp">
+
+                <TextView
+                    android:id="@+id/size_info1c"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|left"
+                    android:layout_weight="1"
+                    android:textColor="@color/result_view"
+                    android:text="@string/scale_info1c"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:lineSpacingExtra="10dp" />
+
+                <TextView
+                    android:id="@+id/size_info1v"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|left"
+                    android:layout_weight="1"
+                    android:textColor="@color/result_view"
+                    android:text="@string/wound_scale1v"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:lineSpacingExtra="10dp" />
+
+            </TableRow>
+
+            <TableRow android:paddingTop="5dp" >
+
+                <TextView
+                    android:id="@+id/size_info2c"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|left"
+                    android:layout_weight="1"
+                    android:textColor="@color/result_view"
+                    android:text="@string/scale_info2c"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:lineSpacingExtra="10dp" />
+
+                <TextView
+                    android:id="@+id/size_info2v"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|left"
+                    android:layout_weight="1"
+                    android:textColor="@color/result_view"
+                    android:text="@string/wound_scale2v"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:lineSpacingExtra="10dp" />
+
+            </TableRow>
+
+            <TableRow android:paddingTop="5dp" >
+
+                <TextView
+                    android:id="@+id/size_info3c"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|left"
+                    android:layout_weight="1"
+                    android:textColor="@color/result_view"
+                    android:text="@string/scale_info3c"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:lineSpacingExtra="10dp" />
+
+                <TextView
+                    android:id="@+id/size_info3v"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|left"
+                    android:layout_weight="1"
+                    android:textColor="@color/result_view"
+                    android:text="@string/wound_scale3v"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:lineSpacingExtra="10dp" />
+
+            </TableRow>
+
+            <TableRow android:paddingTop="5dp" >
+
+                <TextView
+                    android:id="@+id/size_info4c"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|left"
+                    android:layout_weight="1"
+                    android:textColor="@color/result_view"
+                    android:text="@string/scale_info4c"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:lineSpacingExtra="10dp" />
+
+                <TextView
+                    android:id="@+id/size_info4v"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|left"
+                    android:layout_weight="1"
+                    android:textColor="@color/result_view"
+                    android:text="@string/wound_scale4v"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:lineSpacingExtra="10dp" />
+
+            </TableRow>
+
+            <TableRow android:paddingTop="10dp" android:paddingBottom="5dp">
+
+                <TextView
+                    android:id="@+id/title_prop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center"
+                    android:text="@string/proportion"
+                    android:textColor="@color/dialog_title"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow android:paddingTop="5dp">
+
+                <TextView
+                    android:id="@+id/prop_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|left"
+                    android:textColor="@color/result_view"
+                    android:text="@string/prop_info"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:lineSpacingExtra="10dp" />
+
+            </TableRow>
+
+            <TableRow>
+                <io.apptik.widget.MultiSlider
+                    android:id="@+id/multiSlider"
+                    android:layout_width="100dp"
+                    android:layout_height="36dp"
+                    app:thumbNumber="3"
+                    app:drawThumbsApart="false"
+                    app:scaleMin="0"
+                    app:scaleMax="100"/>
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/grabcut_layout"
+        android:layout_width="70dp"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:divider="@drawable/divider"
+        android:orientation="vertical"
+        android:showDividers="beginning|middle|end">
+
+        <Button
+            android:id="@+id/add"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:background="@drawable/button_border"
+            android:text="@string/keep"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/remove"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:background="@drawable/button_border"
+            android:text="@string/exclude"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/clear"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:background="@drawable/button_border"
+            android:text="@string/clean"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/togo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:background="@drawable/button_border"
+            android:text="@string/togo"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/done"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:background="@drawable/button_border"
+            android:text="@string/finish"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
+

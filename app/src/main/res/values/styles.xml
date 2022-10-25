@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
+        <item name="dividerHorizontal">@style/divider</item>
+    </style>
+
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/dialog_button</item>
+        <item name="android:textColorPrimary">@color/dialog_text</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingRight">2dp</item>
+        <item name="android:windowTitleStyle">@style/WindowTitleStyle</item>
+        <item name="android:background">@color/dialog_background</item>
+    </style>
+
+    <style name="WindowTitleStyle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/dialog_title</item>
+        <item name="android:textStyle">bold</item>
+        <!--<item name="android:divider">@color/dialog_divider</item>
+        <item name="android:headerDividersEnabled">true</item>
+        <item name="android:dividerHeight">2px</item>-->
+    </style>
+
+    <!--  提示窗文字編輯樣式   -->
+    <style name="editTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textColorPrimary">@color/dialog_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:backgroundTint">@color/edit_line</item>
+        <item name="android:colorControlActivated">@color/edit_line</item>
+    </style>
+
+    <!--  身體部位勾選框樣式   -->
+    <style name="bodyBtn" parent="Theme.AppCompat.Light">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:elevation">5dp</item>
+        <item name="android:translationZ">3dp</item>
+    </style>
+
+    <style name="normalBtn">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/btnText</item>
+        <item name="android:background">@color/btnBackground</item>
+        <item name="android:gravity">center</item>
+        <item name="android:width">120dp</item>
+    </style>
+
+    <style name="wound_title">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/dialog_title</item>
+        <item name="android:gravity">center_vertical|center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+    <style name="case_title">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/title_font</item>
+    </style>
+
+    <style name="case_child_title">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/child_title</item>
+    </style>
+
+    <style name="required_note">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/required</item>
+    </style>
+
+    <style name="confirm_data">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/confirm_data</item>
+    </style>
+
+    <style name="case_basicInfo">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/value</item>
+    </style>
+
+    <style name="radio_btn">
+        <item name="android:textSize">18sp</item>
+        <item name="android:buttonTint">#1A99C4</item>
+    </style>
+
+    <style name="radio_btn_low">
+        <item name="android:textSize">16sp</item>
+        <item name="android:buttonTint">#1A99C4</item>
+    </style>
+
+    <style name="tab_content_number_type">
+        <item name="android:maxLength">4</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:inputType">number</item>
+    </style>
+
+    <style name="tab_content_character_type">
+        <item name="android:maxLength">10</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:inputType">textCapCharacters</item>
+        <item name="android:digits">0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ</item>
+    </style>
+
+    <style name="icon_text">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/btnText</item>
+        <item name="android:drawablePadding">2dp</item>
+    </style>
+
+    <style name="icon_small_text">
+        <item name="android:textSize">8dp</item>
+        <item name="android:textColor">@color/btnText</item>
+        <item name="android:drawablePadding">2dp</item>
+    </style>
+
+    <style name="CustomProgressDialog" parent="Theme.AppCompat.Dialog">
+        <!--此屬性控制懸浮窗背景是否變暗-->
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+
+</resources>

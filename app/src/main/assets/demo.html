@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" />
+    <script type="text/javascript" src="./lib/lazyload.js"></script>
+
+    <style>
+        .input_field {
+            font-size: 4vh;
+            margin-left: 5vw;
+            height: 6vh;
+            line-height: 6vh;
+            width: 60vw;
+        }
+
+        .input_value {
+            font-size: 4vh;
+            margin-left: 5vw;
+            height: 5vh;
+            line-height: 5vh;
+            width: 60vw;
+        }
+
+        .image_container{
+            width: 100vw;
+            height: 70vw;
+            padding: 2.5vh 2.5vw;
+            text-align: center;
+            border: 1px solid red;
+        }
+
+        .woundImg{
+            position: relative;
+            height: 47vh;
+            margin: 0.5vh 2vw;
+            background: #bfbfbf;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .insight-info{
+            position: relative;
+            background: #ffffff;
+            margin: 0.5vh 2vw;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .zoomIn-icon{
+            position: absolute;
+            background-image: url('./images/zoom_in.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            bottom: 1.5vh;
+            right: 2vw;
+            width: 8vw;
+            height: 4vh;
+            line-height: 4vh;
+        }
+
+        .zoomOut-icon{
+            position: absolute;
+            background-image: url('./images/zoom_out.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            bottom: 1.5vh;
+            left: 2vw;
+            width: 8vw;
+            height: 4vh;
+            line-height: 4vh;
+        }
+
+        .color-3d-icon{
+            position: absolute;
+            background-image: url('./images/3d_rotation.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            top: 1.5vh;
+            left: 2vw;
+            width: 8vw;
+            height: 4vh;
+            line-height: 4vh;
+        }
+
+        .color-3d2-icon{
+            position: absolute;
+            background-image: url('./images/thermometer.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            top: 8.5vh;
+            left: 2vw;
+            width: 8vw;
+            height: 4vh;
+            line-height: 4vh;
+        }
+
+        .imgZoomArea img{
+            /*min-width: 100%;
+            max-height: 47vh;*/
+            max-width: 100%;
+            height: 47vh;
+            margin: 0;
+            padding: 0;
+            display: block;
+        }
+
+        .thumbImg{
+            width: 100%;
+            height: 100%;
+            border: 1px solid #b3b3b3;
+            border-radius: 4px;
+            padding: 5px;
+            transition: 0.2s;
+            background: #ffffff;
+        }
+
+        .input-group-addon, .idNo, .bodypart{
+            font-size: 5vw;
+        }
+
+        .input-group{
+            padding: 0vh 2vw !important;
+        }
+
+        .input-group:nth-child(2){
+            margin-top: 0.3vh;
+        }
+
+        .input-group-addon, .form-control{
+            padding: 0vh 2vw !important;
+        }
+
+        .form-control{
+            height: 6vh !important;
+            line-height: 6vh !important;
+        }
+
+        .woundInfoTable{
+            position: absolute;
+            bottom: 1vh;
+            margin: 0 5vw 0 5vw;
+            width: 90vw;
+            font-size: 5vw;
+        }
+
+        .woundInfoTable tr td{
+            padding: 0.4vh 0vw;
+        }
+
+        .woundInfoTable tr:not(first-child) td:nth-child(2),
+        .woundInfoTable tr:not(first-child) td:nth-child(5){
+            text-align: right;
+        }
+
+        .infoTitle{
+            color: #157DEC;
+            border-bottom: 1px solid #157DEC;
+            width: 47%;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div id='settings_dialog' class='input_mode_shield' style='background-color: transparent;' onclick='hideSettingsDialog()'>
+    <div class='settings_dialog'>
+        <div onclick='gotoAnalysis()'>開始分析</div>
+    </div>
+</div>
+
+<div class='toolbar'>
+    <div class='tool_button' style='left: 2vw;' onclick='goback()'><img src="./images/arrow_back.svg" /></div>
+    <div class="title">評估分析</div>
+    <div class='tool_button' style='right: 2vw;' onclick='gotoAnalysis()'><img src="./images/arrow_forward.svg" /></div>
+</div>
+<div id='content'>
+    <div class="input-group col-md-12">
+        <span class="input-group-addon">病患編號</span>
+        <input type="text" id='ownerId' class="form-control idNo" aria-describedby="basic-addon1" onkeyup="this.value=this.value.trim().toUpperCase()" placeholder="請輸入病歷號或身分證">
+    </div>
+    <div class="input-group col-md-12">
+        <span class="input-group-addon">傷口部位</span>
+        <input type="text" id='bodyPart' class="form-control bodypart" aria-describedby="basic-addon1" onkeyup="this.value=this.value.trim()" placeholder="請輸入部位名稱">
+        <span class="input-group-addon btn" onclick="gotoBodyPartPicker()"><img src="./images/search.svg" /></span>
+    </div>
+
+    <!--<a class="image_container" >
+    <img id='preview' class="thumbImg">
+</a>-->
+
+    <div class="woundImg">
+        <div class="zoomOut-icon" onclick="zoomOut()"></div>
+        <div class="zoomIn-icon" onclick="zoomIn()"></div>
+        <div class="color-3d-icon" onclick="getGen3DColorImage()"></div>
+        <div class="color-3d2-icon" onclick="checkThmImage()"></div>
+        <div class="imgZoomArea">
+            <img />
+        </div>
+
+    </div>
+    <div class="insight-info" >溫度與深度顯示區域</div>
+
+    <table class="woundInfoTable">
+        <tr>
+            <td colspan="2" class="infoTitle">傷口尺寸</td>
+            <td width='6%'></td>
+            <td colspan="2" class="infoTitle">組織比例</td>
+        </tr>
+        <tr>
+            <td>長度:</td>
+            <td><span id='size1'>0.0</span></td>
+            <td></td>
+            <td>上皮:</td>
+            <td><span id='perc1'>0.0</span></td>
+        </tr>
+        <tr>
+            <td>寬度:</td>
+            <td><span id='size2'>0.0</span></td>
+            <td></td>
+            <td>肉芽:</td>
+            <td><span id='perc2'>0.0</span></td>
+        </tr>
+        <tr>
+            <td>深度:</td>
+            <td><span id='size3'>0.0</span></td>
+            <td></td>
+            <td>腐肉:</td>
+            <td><span id='perc3'>0.0</span></td>
+        </tr>
+        <tr>
+            <td>面積:</td>
+            <td><span id='size4'>0.0</span></td>
+            <td></td>
+            <td>焦痂:</td>
+            <td><span id='perc4'>0.0</span></td>
+        </tr>
+    </table>
+    <img class='testExistImg hidden' />
+</div>
+
+<script type="text/javascript">
+        var params;
+        var imagePath;
+        var imageType;
+        var viewer;
+
+        LazyLoad.css(['./css/bootstrap.css', './css/imageViewer.min.css', './css/app.css', './css/preview.css'], function() {
+            LazyLoad.js(['./lib/jquery.min.js', './lib/bootstrap.min.js', './lib/imageViewer.js', './lib/app.js', './lib/SDK.js'], function() {
+                $(document).ready(function() {
+                    $(".container_loading").fadeOut();
+                    //imagePath = "./2020-08-24 11-57-32-068_2020-08-24_1_jpg.jpg";
+                    //imageType = 'j';
+                    //checkGaiImage();
+                    params = SDK.getUrlValues();
+                    if (params) {
+                        console.info('demo: ' + JSON.stringify(params));
+                    } else {
+                        return;
+                    }
+                    //
+                    if (params.ownerId) {
+                        document.getElementById('ownerId').value = params.ownerId;
+                    }
+                    document.getElementById('bodyPart').value = params.bodyPart;
+                    //
+                    if (params.height) {
+                        document.getElementById('size1').innerHTML = params.height + " cm";
+                    }
+                    if (params.width) {
+                        document.getElementById('size2').innerHTML = params.width + " cm";
+                    }
+                    if (params.distance) {
+                        document.getElementById('size3').innerHTML = params.distance + " cm";
+                    }
+                    if (params.area) {
+                        document.getElementById('size4').innerHTML = params.area + " cm<sup>2</sup>";
+                    }
+                    if (params.epithelium) {
+                        document.getElementById('perc1').innerHTML = params.epithelium + " %";
+                    }
+                    if (params.granular) {
+                        document.getElementById('perc2').innerHTML = params.granular + " %";
+                    }
+                    if (params.slough) {
+                        document.getElementById('perc3').innerHTML = params.slough + " %";
+                    }
+                    if (params.eschar) {
+                        document.getElementById('perc4').innerHTML = params.eschar + " %";
+                    }
+                    //
+                    imagePath = params.img;
+                    imageType = 'j';
+                    checkGaiImage();
+                });
+                //$(document).ready
+            });
+            //LazyLoad.js
+        });
+        //LazyLoad.css
+
+
+        //啟動與顯示圖檔幻燈片
+        function showImgZoom(imgPath) {
+            console.info("圖片位置:" + imgPath);
+            if (viewer!==undefined && viewer!=null) {
+                viewer.destroy();
+                $(".imgZoomArea").html("<img height=100%/>");
+            }
+            var target = $(".imgZoomArea").find("img:first-child");
+            target.attr("src", imgPath);
+            viewer = ImageViewer(target, {
+                maxZoom: 1200
+            });
+            viewer.load(imgPath);
+            viewer.onTouchCallback = function(x, y, z) {
+                //for phone
+                console.log("x:" + x + ",y:" + y + ",z:" + z);
+
+
+                // call Model3DHelper.java.GetTouchPointWoundInfo(imgPath,x,y);
+                // return "{\"c\":\"32\",\"d\":\"35.3\"}"
+            }
+            viewer.onClickCallback = function(x, y, z) {
+                //for pc
+                console.log("x:" + x + ",y:" + y + ",z:" + z);
+
+
+                // call Model3DHelper.java.GetTouchPointWoundInfo(imgPath,x,y);
+                // return "{\"c\":\"32\",\"d\":\"35.3\"}"
+            }
+        }
+
+        //圖片放大
+        function zoomIn() {
+            viewer.zoom(600);
+        }
+
+        //圖片縮小
+        function zoomOut() {
+            viewer.zoom(100);
+        }
+
+        function saveParams() {
+            params.ownerId = document.getElementById('ownerId').value;
+            params.bodyPart = document.getElementById('bodyPart').value;
+        }
+
+        function goback() {
+            saveParams();
+            //
+            APP.saveTxtData(params);
+            //
+            document.location = "./index.html";
+        }
+
+        function showSettingsDialog() {
+            document.getElementById("settings_dialog").style.display = "block";
+        }
+
+        function hideSettingsDialog() {
+            document.getElementById("settings_dialog").style.display = "none";
+        }
+
+        function gotoAnalysis() {
+            saveParams();
+            APP.gotoAnalysis(params);
+        }
+
+        function gotoBodyPartPicker() {
+            saveParams();
+            APP.gotoBodyPartPicker(params);
+        }
+
+        function getGen3DColorImage() {
+            APP.vibrating();
+            var getImg = APP.getGen3DColorImage(params);
+            if (getImg) {
+                APP.returnGen3DColorImage();
+                //塞入圖資訊
+                //showImgZoom(params.img);
+            }
+        }
+
+        function checkGaiImage() {
+            var gaiPath = imagePath.replace("_jpg", "_gai");
+            $.ajax({
+                type: 'HEAD',
+                url: gaiPath,
+                success: function() {
+                    imageType = 'g';
+                    $('.color-3d2-icon').css('background-image', 'url(./images/thermometer.png)');
+                    showImgZoom(gaiPath);
+                    console.info("圖片存在");
+                },
+                error: function() {
+                    imageType = 'j';
+                    $('.color-3d2-icon').css('background-image', 'url(./images/thermometer.png)');
+                    showImgZoom(imagePath);
+                    console.info("圖片不存在");
+                }
+            });
+        }
+
+        function checkThmImage() {
+            APP.vibrating();
+            var imgPath = "";
+            if (imageType=='t') {
+                imgPath = imagePath;
+                $('.color-3d2-icon').css('background-image', 'url(./images/thermometer.png)');
+                imageType = 'j';
+            } else {
+                var strs = imagePath.split("_");
+                imgPath = strs[0] + "_" + strs[1] + "_" + (parseInt(strs[2]) + 99) + "_thm.png";
+                $('.color-3d2-icon').css('background-image', 'url(./images/photo.png)');
+                imageType = 't';
+            }
+
+            $.ajax({
+                type: 'HEAD',
+                url: imgPath,
+                success: function() {
+                    showImgZoom(imgPath);
+                    console.info("圖片存在");
+                },
+                error: function() {
+                    checkGaiImage();
+                    console.info("圖片不存在");
+                }
+            });
+        }
+
+        //確認是否有圖片，如有則先放置
+        function checkImage() {
+            if (imageType == 'j' || imageType == 'g') {
+                checkGaiImage();
+            } else {
+                checkThmImage();
+            }
+        }
+
+        function replaceImg() {
+
+        }
+    </script>
+</body>
+
+</html>

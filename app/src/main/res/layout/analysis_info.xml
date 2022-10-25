@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/analysisInfo"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="2dp"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/case_child_title"
+        android:text="@string/confirm_upload_save_data"
+        android:gravity="center_vertical|left"
+        android:layout_marginVertical="10dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/content_background">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/case_child_title"
+                android:text="@string/size"
+                android:background="@color/focus_title"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_marginVertical="5dp"
+                android:paddingVertical="2dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/case_child_title"
+                    android:layout_weight="0.2"
+                    android:text="@string/case_height"
+                    android:gravity="center_vertical|left" />
+
+                <TextView
+                    android:id="@+id/height_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/confirm_data"
+                    android:layout_weight="0.275"
+                    android:gravity="center_vertical|right" />
+
+                <View android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.05"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/case_child_title"
+                    android:layout_weight="0.175"
+                    android:text="@string/case_width"
+                    android:gravity="center_vertical|left" />
+
+                <TextView
+                    android:id="@+id/width_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/confirm_data"
+                    android:layout_weight="0.3"
+                    android:gravity="center_vertical|right" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/case_child_title"
+                    android:layout_weight="0.175"
+                    android:text="@string/case_depth"
+                    android:gravity="center_vertical|left" />
+
+                <TextView
+                    android:id="@+id/depth_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/confirm_data"
+                    android:layout_weight="0.3"
+                    android:gravity="center_vertical|right" />
+
+                <View android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.05"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/case_child_title"
+                    android:layout_weight="0.175"
+                    android:text="@string/case_area"
+                    android:gravity="center_vertical|left" />
+
+                <TextView
+                    android:id="@+id/area_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/confirm_data"
+                    android:layout_weight="0.3"
+                    android:gravity="center_vertical|right" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/case_child_title"
+                android:text="@string/proportion"
+                android:background="@color/focus_title"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_marginVertical="5dp"
+                android:paddingVertical="2dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/case_child_title"
+                    android:layout_weight="0.175"
+                    android:text="@string/case_epithelium"
+                    android:gravity="center_vertical|left" />
+
+                <TextView
+                    android:id="@+id/epithelium_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/confirm_data"
+                    android:layout_weight="0.3"
+                    android:gravity="center_vertical|right" />
+
+                <View android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.05"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/case_child_title"
+                    android:layout_weight="0.175"
+                    android:text="@string/case_granular"
+                    android:gravity="center_vertical|left" />
+
+                <TextView
+                    android:id="@+id/granular_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/confirm_data"
+                    android:layout_weight="0.3"
+                    android:gravity="center_vertical|right" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/case_child_title"
+                    android:layout_weight="0.175"
+                    android:text="@string/case_slough"
+                    android:gravity="center_vertical|left" />
+
+                <TextView
+                    android:id="@+id/slough_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/confirm_data"
+                    android:layout_weight="0.3"
+                    android:gravity="center_vertical|right" />
+
+                <View android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.05"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/case_child_title"
+                    android:layout_weight="0.175"
+                    android:text="@string/case_eschar"
+                    android:gravity="center_vertical|left" />
+
+                <TextView
+                    android:id="@+id/eschar_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/confirm_data"
+                    android:layout_weight="0.3"
+                    android:gravity="center_vertical|right" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/case_child_title"
+                android:text="@string/symptom"
+                android:background="@color/focus_title"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_marginVertical="5dp"
+                android:paddingVertical="2dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/case_child_title"
+                    android:layout_weight="0.55"
+                    android:text="@string/question_fever"
+                    android:gravity="center_vertical|left" />
+
+                <TextView
+                    android:id="@+id/fever_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/confirm_data"
+                    android:layout_weight="0.45"
+                    android:gravity="center_vertical|left" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/case_child_title"
+                    android:layout_weight="0.55"
+                    android:text="@string/question_smell"
+                    android:gravity="center_vertical|left" />
+
+                <TextView
+                    android:id="@+id/smell_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/confirm_data"
+                    android:layout_weight="0.45"
+                    android:gravity="center_vertical|left" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/case_child_title"
+                    android:layout_weight="0.55"
+                    android:text="@string/question_level"
+                    android:gravity="center_vertical|left" />
+
+                <TextView
+                    android:id="@+id/level_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/confirm_data"
+                    android:layout_weight="0.45"
+                    android:gravity="center_vertical|left" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/case_child_title"
+                    android:layout_weight="0.55"
+                    android:text="@string/question_character"
+                    android:gravity="center_vertical|left" />
+
+                <TextView
+                    android:id="@+id/character_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/confirm_data"
+                    android:layout_weight="0.45"
+                    android:gravity="center_vertical|left" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/case_child_title"
+                android:text="@string/history"
+                android:background="@color/focus_title"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_marginVertical="5dp"
+                android:paddingVertical="2dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/case_child_title"
+                    android:layout_weight="0.55"
+                    android:text="@string/question_overtime"
+                    android:gravity="center_vertical|left" />
+
+                <TextView
+                    android:id="@+id/overtime_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/confirm_data"
+                    android:layout_weight="0.45"
+                    android:gravity="center_vertical|left" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/case_child_title"
+                    android:layout_weight="0.55"
+                    android:text="@string/quesiton_firstOcurred"
+                    android:gravity="center_vertical|left" />
+
+                <TextView
+                    android:id="@+id/occur_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/confirm_data"
+                    android:layout_weight="0.45"
+                    android:gravity="center_vertical|left" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/case_child_title"
+                    android:layout_weight="0.55"
+                    android:text="@string/quesiton_occurredDate"
+                    android:gravity="center_vertical|left" />
+
+                <TextView
+                    android:id="@+id/occurDate_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/confirm_data"
+                    android:layout_weight="0.45"
+                    android:gravity="center_vertical|left" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

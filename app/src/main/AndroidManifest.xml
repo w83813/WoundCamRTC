@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.itri.woundcamrtc"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+
+    <application
+        android:name=".WoundCamRTC"
+        android:allowBackup="false"
+        android:directBootAware="true"
+        android:extractNativeLibs="true"
+        android:hardwareAccelerated="true"
+        android:debuggable="true"
+        android:label="@string/app_name"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:launchMode="singleInstance"
+        tools:ignore="HardcodedDebugMode">
+        <activity
+            android:name=".LoginActivity"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:alwaysRetainTaskState="true"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustPan"
+            android:largeHeap="true"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
+
+            <!-- <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+               <data
+                    android:host="@string/host"
+                    android:scheme="http" />
+            </intent-filter> -->
+
+        </activity>
+
+        <activity
+            android:name="org.itri.woundcamrtc.WebviewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+        <activity
+            android:name="org.itri.woundcamrtc.UpdatePwdActivity"
+            android:label="修改密碼"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="org.itri.woundcamrtc.ImageViewActivity"
+            android:label="照片分析"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name="org.itri.woundcamrtc.HistoryActivity"
+            android:label="@string/patientList"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+        <activity
+            android:name="org.itri.woundcamrtc.PreviewActivity"
+            android:label="@string/img_preview"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+        <activity
+            android:name="org.itri.woundcamrtc.MJViewActivity"
+            android:label="@string/mjview_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="org.itri.woundcamrtc.UVCViewActivity"
+            android:label="@string/mjview_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="org.itri.woundcamrtc.ocr.ScannerActivity"
+            android:label="@string/scan_ownerId"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="org.itri.woundcamrtc.GrabcutActivity"
+            android:label="@string/grabcut_name"
+            android:screenOrientation="portrait"
+            android:largeHeap="true"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+        <activity
+            android:name="org.itri.woundcamrtc.BodyPartActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar" />
+        <activity
+            android:name=".CaseMgntActivity"
+            android:label="個案管理"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.example.stickyheadergridview.StickyActivity"
+            android:label="@string/nonupload_jpg" />
+        <activity
+            android:name="com.example.stickyheadergridview.StickyActivity1"
+            android:label="@string/included_upload_jpg" />
+        <activity
+            android:name="com.example.stickyheadergridview.StickyActivity2"
+            android:label="@string/by_patient_id_jpg" />
+        <activity
+            android:name="com.nexdev.enyason.nestedrv.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <receiver
+            android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SCREEN_OFF"/>
+                <action android:name="android.intent.action.SCREEN_ON"/>
+            </intent-filter>
+        </receiver>
+
+    </application>
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <uses-feature
+        android:name="android.hardware.usb.host"
+        android:required="true" />
+    <uses-permission
+        android:name="android.permission.USB_PERMISSION"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.MANAGE_USB"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
+    <uses-feature android:name="android.hardware.sensor.gyroscope" android:required="true" />
+
+    <uses-permission
+        android:name="android.permission.CHANGE_CONFIGURATION"
+        tools:ignore="ProtectedPermissions" />
+
+
+</manifest>

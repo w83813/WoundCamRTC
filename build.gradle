@@ -1,0 +1,41 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+        maven { url  "https://dl.bintray.com/blazei/maven" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+
+
+        maven { url 'http://raw.github.com/saki4510t/libcommon/master/repository/' }
+        maven { url 'https://jitpack.io' }
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.1'
+        //classpath 'org.opencv:opencv-android:3+'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url 'http://raw.github.com/saki4510t/libcommon/master/repository/' }
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+    }
+}
+
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
